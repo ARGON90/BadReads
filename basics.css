@@ -63,6 +63,11 @@ nav:hover {
   box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
 }
 
+.green-bookshelf-dropdown-buttons {
+  background-color: #409D69;
+  color: #FFFFFF;
+  cursor: pointer;
+}
 
 /*
 image source for "x" on my-books
