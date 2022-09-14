@@ -1,0 +1,83 @@
+/* font-family from Google: https: //fonts.google.com/specimen/Lato */
+
+* {
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #181818;
+  font-size: 12px;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+
+nav {
+  display: flex;
+  background-color: #F4F1EA;
+  height: 50px;
+  font-size: 16px;
+  color: #382110;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+
+nav:hover {
+  background-color: #382110;
+  color: #FFFFFF;
+}
+
+.nav_dropdown_list {
+  display: block;
+  color: #333333;
+  font-size: 14px;
+  padding: 0 16px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+
+.my-books-borders {
+  border-bottom: 1px solid #EBE8D5;
+  color: #BBB596
+}
+
+.my-books-list {
+  font-size: 14px;
+  color: #00635d;
+}
+
+.profile-button {
+  border: 1px solid #D8D8D8;
+  border-radius: 16px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  background-color: #382110;
+}
+
+.profile-button-dropdown {
+  display: block;
+  font-size: 14px;
+  color: #333333;
+  line-height: 32px;
+  padding: 0 16px;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+
+
+/*
+image source for "x" on my-books
+https: //s.gr-assets.com/assets/layout/delete-a9a86f59648bf17079954ea50a673dbc.png
+*/
+
+/*
+image source for rating stars on my-books
+data:image/png;
+base64,
+iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABwElEQVR4Ab2WNbDVQBSGg0uLu+y5wUoqKrxHW0pK3B0q3N11N7hLg9e49A0VLrsXD/lmeK7RnVk95/+/3Mh5z0vafpyRoXSv6FY2spJeONga9YJeKPTHOX+w1Sqksy7wNpeWVYBZF3mbn1WAWRcC/R4M9iugFZ2zIt7mJbXBnOUOtlqe1AZzlu9tPqMEUH2dWG7gciCLGgITi2mmprmgtL2s1V5r5JAzcjzqgTPqfLS/arXcclruOK0eRvv3DYGJkUMuGrR44IUn3jBgwfTCq8M7RgKDuIgOC6ZX0aKDuc6o33kB8YbRwKfij7Va3mUNxRPvxp/5+SH9rJHHWUHxwtNrTgvPjOjgjJxIC8UDLy9uc1pmReJfCYC/0KYrGro0Pi4YTRa1eVRcMJrUYBeodXHBaDL5FycuGE0qqDOqT4qC0Sf5rw3U9IZLn+yiNxRHm+IXy6V6TD8440+syGHNWe08tImg4ZlhbSPx11oF/mF9t5AzYrXAX/GIDaa2VgP+sUatCc9MbdVQPjFyyK3Q4ZGkam36f+Vv4nyX5KJBi0eCz0he88c8vOp3jqtFgxaPeMLzQ3q4oDTTS9nwwKu+2D9N9rM09Bxb/wAAAABJRU5ErkJggg==
+*/
+
+
+/*
+image source for profile button icon
+https: //s.gr-assets.com/assets/nophoto/user/u_60x60-267f0ca0ea48fd3acfd44b95afa64f01.png
+*/
