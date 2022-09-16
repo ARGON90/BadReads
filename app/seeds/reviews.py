@@ -1,4 +1,4 @@
-from app.models import db, Review
+from app.models.review import db, Review
 
 def seed_reviews():
   for i in range(46):

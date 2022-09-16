@@ -1,5 +1,6 @@
-from app.models import db, Book, Bookshelf
-from books_list import books_list
+from app.models.book import db, Book
+from app.models.bookshelf import db,Bookshelf
+from .books_list import books_list
 
 
 # print(books_list)
@@ -11,6 +12,7 @@ def seed_books_bookshelves():
         author=book['author'],
         year=book['year'],
         image_url=book['image_url'],
+        user_id=1,
         description=book['description']
     )) for book in books_list]
 

@@ -1,4 +1,3 @@
-from app.seeds.bookshelves import seed_bookshelves, undo_bookshelves
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .books_bookshelves import seed_books_bookshelves,undo_books_bookshelves

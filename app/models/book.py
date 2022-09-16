@@ -1,5 +1,6 @@
 from .db import db
 from .bookshelves_books import bookshelves_books
+from datetime import datetime
 
 
 class Book(db.Model):
@@ -12,8 +13,8 @@ class Book(db.Model):
     author = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(5000), nullable=False)
     image_url = db.Column(db.String(1000), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     user = db.relationship("User",back_populates="books")
     reviews = db.relationship("Review",back_populates="books")
