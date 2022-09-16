@@ -1,4 +1,5 @@
 from .db import db
+from .bookshelves_books import bookshelves_books
 
 
 class Bookshelf(db.Model):
@@ -16,3 +17,12 @@ class Bookshelf(db.Model):
         secondary=bookshelves_books,
         back_populates="bookshelves"
     )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user,
+            'default': self.default,
+            'name': self.name,
+            'books': self.books
+        }
