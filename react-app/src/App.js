@@ -11,6 +11,7 @@ import BooksList from './components/BooksListAlex';
 // alex-code
 import User from './components/User';
 import { authenticate } from './store/session';
+import BookById from './components/BookByIdAlex';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         {/* alex-code */}
         <Route path='/books' exact={true} >
           <BooksList/>
+        </Route>
+        <Route path='/books/:id' exact={true} >
+          <BookById/>
         </Route>
         {/* alex-code */}
         <ProtectedRoute path='/users/:userId' exact={true} >
