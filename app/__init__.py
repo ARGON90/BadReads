@@ -19,6 +19,8 @@ app = Flask(__name__)
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 # comment from staging
+# comment from staging julie
+# comment from staging julie2
 
 @login.user_loader
 def load_user(id):
