@@ -34,6 +34,8 @@ class Book(db.Model):
             'author': self.author,
             'description': self.description,
             'image_url': self.image_url,
-            'reviews': self.reviews,
-            'bookshelves': self.bookshelves
+            # alex-code
+            # 'reviews': self.reviews,
+            # 'bookshelves': self.bookshelves
+            # alex-code
         }

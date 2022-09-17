@@ -6,6 +6,9 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+// alex-code
+import BooksList from './components/BooksListAlex';
+// alex-code
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -37,6 +40,11 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
+        {/* alex-code */}
+        <Route path='/books' exact={true} >
+          <BooksList/>
+        </Route>
+        {/* alex-code */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
