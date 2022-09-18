@@ -1,0 +1,138 @@
+
+/* entire splash page */
+.splashContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+    margin: 10%;
+    width: auto;
+}
+
+/* log in and sign up form  */
+.splashFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    border: 0.5px solid grey;
+    border-radius: 15px;
+    width: 225px;
+    height: 400px;
+}
+
+/* discover & read more text */
+.splashFormHeader {
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+
+/* log in form container */
+.loginForm {
+    background-color: #1982FC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+/* sign up form container */
+.signUpForm {
+    margin-top: 10px;
+}
+
+/* form individual inputs */
+input {
+    outline: none;
+    border: 1px solid #aaa;
+    width: 200px;
+    border-radius: 30px;
+    margin: 5px;
+    padding: 10px;
+}
+input:hover {
+    background: rgb(227, 227, 227);
+}
+
+/* form inputs container */
+.formFieldInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.formFieldInput input {
+    font-size: 10px;
+}
+
+.formFieldInput .placeholder {
+    position: absolute;
+    left: 12px;
+    transform: translateY(150%);
+}
+
+.formFieldInput input:valid + .placeholder,
+.formFieldInput input:focus + .placeholder {
+    top: -7px;
+    font-size: 12px;
+    color: #A9A6A6
+}
+
+/* log in button */
+.loginButton {
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+.createAccount {
+    color: #20212599;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.switchToSignUpButton,
+.splashLogInButton {
+    border: none;
+    background-color: #fafafa;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1982FC;
+    cursor: pointer;
+}
+
+/* already a member? log in container */
+.splashLogInDiv {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* not a member? sign up container */
+.switchToSignUpButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.loginErrors {
+    margin: 10px;
+    background-color: #FFF5F3;
+    border-radius: 20px;
+}
+
+.signUpErrors {
+    margin: 20px;
+    background-color: #FFF5F3;
+    border-radius: 20px;
+}
+
