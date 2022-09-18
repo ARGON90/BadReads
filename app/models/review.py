@@ -23,4 +23,7 @@ class Review(db.Model):
             'book_id': self.book_id,
             'review': self.review,
             'stars': self.stars,
+            # alex - code
+            # 'user': self.user,
+            # alex - code
         }
