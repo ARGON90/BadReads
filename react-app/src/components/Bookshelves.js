@@ -16,16 +16,13 @@ const Bookshelves = () => {
     if (bookshelvesDict) {
         console.log("in shelves")
         let shelfArr = Object.values(bookshelvesDict)
-        // console.log(shelfArr)
+
         userShelves = shelfArr.filter(shelf => shelf.user_id.id === userID)
-        // console.log(userShelves)
+
     }
 
-    // const singleBook = booksDict[id]
-    // // key into this like a d
 
     useEffect(() => {
-        // console.log('BOOKS BY ID USE EFFECT')
         dispatch(getAllBookshelvesThunk())
         //run this  for now until nav bar to bookshelves
         dispatch(getAllBooksThunk())
@@ -39,9 +36,6 @@ const Bookshelves = () => {
                 <div key={shelf.id}>
                     <div>{shelf.name}</div>
                     <div>Books:</div>
-                    {/* {console.log("shelf", shelf)}
-                    {console.log('bookids', shelf.books)}
-                    {console.log('allbooks', booksDict)} */}
                     {shelf.books.map((bookID) =>
                         <div>{booksDict[Number(bookID)]?.title}</div>
 
