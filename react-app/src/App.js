@@ -6,8 +6,12 @@ import SplashPage from './components/SplashPage';
 import HomePage from './components/HomePage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+// alex-code
+import BooksList from './components/BooksListAlex';
+// alex-code
 import User from './components/User';
 import { authenticate } from './store/session';
+import BookById from './components/BookByIdAlex';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,9 +37,29 @@ function App() {
         <Route path='/' exact={true}>
             <SplashPage />
         </Route>
-        <ProtectedRoute path='/home' exact={true} >
-            <HomePage />
-          </ProtectedRoute>
+        {/* <Route path='/sign-up' exact={true}>
+          <SignUpForm />
+        </Route> */}
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
+        </ProtectedRoute>
+        {/* alex-code */}
+        <Route path='/books' exact={true} >
+          <BooksList/>
+        </Route>
+        <Route path='/books/:id' exact={true} >
+          <BookById/>
+        </Route>
+        {/* alex-code */}
+        <ProtectedRoute path='/users/:userId' exact={true} >
+          <User />
+        </ProtectedRoute>
+        {/* <ProtectedRoute path='/' exact={true} >
+          <h1>My Home Page</h1>
+        </ProtectedRoute> */}
+        <Route>
+          <h1>404 - Page Not Found</h1>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

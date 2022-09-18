@@ -44,7 +44,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/home' />;
+    return <Redirect to='/books' />;
   }
 
   const handleDemoUser = async (e) => {

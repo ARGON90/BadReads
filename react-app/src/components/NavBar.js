@@ -32,12 +32,12 @@ useEffect(() => {
       <div className='navBarContainer'>
         <div className='navBarLeft'>
           <div className='navBarLogoDiv'>
-            <NavLink to='/home' exact={true}>
+            <NavLink to='/books' exact={true}>
              <img className="navBarLogo" src={IMAGE('badreads.png')} alt='badreads logo' />
             </NavLink>
           </div>
           <div className='navBarLinksContainer'>
-            <NavLink className='navBarHomeLink' to='/home' exact={true} activeClassName='active'>
+            <NavLink className='navBarHomeLink' to='/books' exact={true} activeClassName='active'>
               Home 
             </NavLink>
           </div>

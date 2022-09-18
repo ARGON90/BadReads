@@ -29,7 +29,7 @@ const LoginForm = ({ setLogIn }) => {
   };
 
   if (user) {
-    return <Redirect to='/home' />;
+    return <Redirect to='/books' />;
   }
 
   const handleDemo = () => {
