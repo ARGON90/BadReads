@@ -7,23 +7,25 @@ const BookById = () => {
     console.log('INSIDE BOOKS BY ID COMPONENT')
     const { id } = useParams()
     const dispatch = useDispatch();
-    const booksList = useSelector((state) => Object.values(state?.books))
-    const singleBook = booksList[id - 1]
+    const booksDict = useSelector((state) => (state?.books))
+
+    const singleBook = booksDict[id]
+    // key into this like a d
 
     useEffect(() => {
         console.log('BOOKS BY ID USE EFFECT')
         dispatch(getAllBooksThunk())
     }, [dispatch])
 
-    if (booksList.length < 1) return <div>Loading All Books...</div>
+    if (booksDict.length < 1) return <div>Loading All Books...</div>
     if (!singleBook) return <div>Sorry, this book doesn't exist</div>
     return (
         <>
-            <h1>All Books List: </h1>
+            <h1>{singleBook.title} </h1>
                 <div key={singleBook.id}>
+                    <h2>{singleBook.author}</h2>
                     <img src={singleBook.image_url} alt='Cover' style={{height: '100px'}}/>
-                    <div>{singleBook.title}</div>
-                    <div>{singleBook.author}</div>
+                    <div>{singleBook.description}</div>
                 </div>
 
         </>
