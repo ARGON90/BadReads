@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 # alex-code
 from .api.all_books_route_alex import all_books_route
 # alex-code
+from .api.bookshelves import bookshelves
 
 
 
@@ -39,6 +40,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 # alex-code
 app.register_blueprint(all_books_route, url_prefix='/api/books')
 # alex-code
+app.register_blueprint(bookshelves,url_prefix='/api/bookshelves')
 db.init_app(app)
 Migrate(app, db)
 
