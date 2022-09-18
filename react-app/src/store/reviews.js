@@ -7,8 +7,8 @@ const loadReviews = (reviews) => {
     }
 }
 
-//THUNK - ALL BOOKS
-export const getAllBooksThunk = () => async (dispatch) => {
+//THUNK - ALL REVIEWS
+export const getAllReviewsThunk = () => async (dispatch) => {
     console.log('ALL REVIEWS THUNK')
     const response = await fetch('/api/reviews/');
     if (response.ok) {
@@ -22,7 +22,7 @@ export const getAllBooksThunk = () => async (dispatch) => {
 const initialState = {}
 const reviewsReducer = (state = initialState, action ) => {
     switch(action.type) {
-        case GET_ALL_BOOKS: {
+        case GET_ALL_REVIEWS: {
             console.log('ALL REVIEWS REDUCER')
             const allReviews = action.reviews
             const newState = {...state, ...allReviews}
