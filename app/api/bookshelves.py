@@ -9,11 +9,12 @@ bookshelves = Blueprint('bookshelves', __name__)
 
 @bookshelves.route('/')
 def all_bookshelves():
-    print("LHDLSKAJGDJASKLDGBJLK:SADBG",current_user)
-    id = current_user.to_dict()
+
+    # id = current_user.to_dict()["id"]
 
     all_bookshelves = Bookshelf.query.all()
     bookshelves_list = [bookshelf.to_dict() for bookshelf in all_bookshelves]
+    # change all user and book instances to normal data, books arr just holds ids
     for bookshelf in bookshelves_list:
         bookshelf["user_id"] = bookshelf["user_id"].to_dict()
         book_list = []
@@ -21,11 +22,10 @@ def all_bookshelves():
             book_list.append(book.to_dict()["id"])
         bookshelf["books"] = book_list
 
-
-    # print("MOD",bookshelves_list)
-
+    bookshelves_dict = {bookshelf["id"]:bookshelf for bookshelf in bookshelves_list}
 
     # user_bookshelves = {bookshelf.id:bookshelf for bookshelf in bookshelves_list if bookshelf["user_id"].to_dict().id == userID}
-    # print(user_bookshelves)
-    # return userID
-    return {}
+    # # print(user_bookshelves)
+    # # return userID
+
+    return bookshelves_dict

@@ -4,12 +4,14 @@ import session from './session'
 // alex-code
 import booksReducer from './booksAlex'
 // alex-code
+import bookshelvesReducer from './bookshelvesRed'
 
 const rootReducer = combineReducers({
   session,
   // alex-code
-  books: booksReducer
+  books: booksReducer,
   // alex-code
+  bookshelves: bookshelvesReducer
 });
 
 
