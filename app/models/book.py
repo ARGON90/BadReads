@@ -38,4 +38,5 @@ class Book(db.Model):
             # 'reviews': self.reviews,
             # 'bookshelves': self.bookshelves
             # alex-code
+            # comment heroku
         }
