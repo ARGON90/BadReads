@@ -37,7 +37,7 @@ const Bookshelves = () => {
                     <div>{shelf.name}</div>
                     <div>Books:</div>
                     {shelf.books.map((bookID) =>
-                        <div>{booksDict[Number(bookID)]?.title}</div>
+                        <div key={bookID}>{booksDict[Number(bookID)]?.title}</div>
 
                     )}
                 </div>
