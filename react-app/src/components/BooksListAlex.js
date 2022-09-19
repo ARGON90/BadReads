@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { getAllBooksThunk } from '../store/booksAlex';
 
 const BooksList = () => {
@@ -19,7 +20,9 @@ const BooksList = () => {
             <h1>All Books List: </h1>
             {booksList.map((book) =>
                 <div key={book.id}>
+                    <NavLink to={`/books/${book.id}`}>
                     <img src={book.image_url} alt='cover' style={{height: '100px'}}/>
+                    </NavLink>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
                 </div>

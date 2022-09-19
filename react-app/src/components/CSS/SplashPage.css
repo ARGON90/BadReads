@@ -1,127 +1,204 @@
+body {
+    margin: 0 auto;
+}
 
-/* entire splash page */
-.splashContainer {
-    display: flex;
-    flex-direction: row-reverse;
-    align-content: center;
-    margin: 10%;
-    width: auto;
+/* badreads logo */
+.splashLogo {
+    position: absolute;
+    z-index: 2;
+    height: 65px;
+    object-fit: fill;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10%;
+}
+
+/* books background image  */
+.splashPageImg {
+    height: 370px;
+    border: 0;
+    background-position: center;
+    background-image: url("../../images/splashpagebooks.jpg");
+    background-repeat: repeat-x;
+    position: static;
+    background-color: #f4f2e9;
+}
+
+/* slogan and form container */
+.splashCenterDiv {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
+    justify-content: space-between;
+ }
+
+/* meet the collection text */
+.splashPageSlogan {
+    position: absolute;
+    height: 150px;
+    top: 7rem;
+    padding-left: 6em;
+    display: block;
+    z-index: 0;
 }
 
 /* log in and sign up form  */
+.splashContainer {
+    margin: -290px 20px 0 0;
+}
+
 .splashFormContainer {
+    float: right;
+    position: sticky;
+    margin: 25px 20px 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 50px;
-    border: 0.5px solid grey;
-    border-radius: 15px;
-    width: 225px;
-    height: 400px;
+    padding: 24px;
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    width: 260px;
+    height: auto;
+    background-color: #FFFFFF;
 }
 
 /* discover & read more text */
 .splashFormHeader {
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     display: flex;
+    color: #000;
     justify-content: center;
-    font-size: 18px;
+    padding-top:5px;
+    font-size: 19px;
+}
+
+/* sign up and log in form container */
+.loginForm,
+.signUpForm {
+    margin: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* create account text */
+.createAccount {
+    cursor: pointer;
+    color: #000;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 300;
 }
 
 /* log in form container */
 .loginForm {
-    background-color: #1982FC;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-}
-
-/* sign up form container */
-.signUpForm {
-    margin-top: 10px;
+    margin: 5px;
+    padding-top: 8px;
 }
 
 /* form individual inputs */
 input {
-    outline: none;
-    border: 1px solid #aaa;
-    width: 200px;
-    border-radius: 30px;
-    margin: 5px;
-    padding: 10px;
-}
-input:hover {
-    background: rgb(227, 227, 227);
+    background-color: #fafafa;
+    outline: 0;
+    border: 1px solid #a6a6a6;
+    border-top-color: #949494;
+    box-shadow: none;
+    width: 300px;
+    border-radius: 24px;
+    margin: 6px 0 6px 0 ;
+    padding: 0.4em 0.8em;
+    line-height: 18px;
 }
 
-/* form inputs container */
+input:hover {
+    background-color: rgba(135, 135, 135, 0.214);
+}
+
+/* log in and create account button */
+.splashSubmitButton {
+    background-color: #000;
+    border: none;
+    color: #FFFFFF;
+    width: 250px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 24px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+/* form individual inputs container */
 .formFieldInput {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-.formFieldInput input {
-    font-size: 10px;
-}
-
-.formFieldInput .placeholder {
-    position: absolute;
-    left: 12px;
-    transform: translateY(150%);
-}
-
-.formFieldInput input:valid + .placeholder,
-.formFieldInput input:focus + .placeholder {
-    top: -7px;
-    font-size: 12px;
-    color: #A9A6A6
-}
-
-/* log in button */
-.loginButton {
-    display: flex;
-    justify-content: center;
-    border-radius: 30px;
-    border: none;
-    background-color: black;
-    color: white;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-
-.createAccount {
-    color: #20212599;
-    padding: 10px 0;
-    text-align: center;
-    font-weight: bold;
-}
-
-
-.switchToSignUpButton,
-.splashLogInButton {
-    border: none;
-    background-color: #fafafa;
+/* form input placeholder */
+.formText {
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 16px;
-    font-weight: bold;
-    color: #1982FC;
-    cursor: pointer;
 }
 
-/* already a member? log in container */
-.splashLogInDiv {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
+ /* alert icon */
+.alertIcon {
+    display: inline-block;
+    background-image: url(https://images.gr-assets.com/misc/1645592390-1645592390_goodreads_misc.svg);
+    background-size: 100%;
+    height: 12px;
+    width: 12px;
 }
+
+/* alert text */
+.alertIconText {
+    display: inline-block;
+    padding-left: 5px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: grey;
+    height: 12px;
+    padding-bottom: 12px;
+}
+
+.formFieldInput input {
+    cursor: pointer;
+    font-size: 15px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+}
+
+
+/* log in and sign ip link button */
+/* already a member? log in container */
+.switchFormButton {
+    cursor: pointer;
+    border: none;
+    background-color:transparent;
+    font-size: 16px;
+    color: #00635D;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+}
+
+.switchFormButton:hover {
+    text-decoration: underline;
+}
+
+
 
 /* not a member? sign up container */
-.switchToSignUpButton {
+.switchFormText {
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    align-self: center;
+    margin: 5px;
+    border-top: 1px solid #D8D8D8;
+    padding: 20px;
+}
+
+.switchFormText {
+    display: inline-block;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }
 
 .loginErrors {
@@ -136,3 +213,22 @@ input:hover {
     border-radius: 20px;
 }
 
+.socialLinks {
+    height:40px;
+    width: 106px;
+    background-color: black;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 20px 5px;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+
+.fa-brands {
+    color: white;
+    font-size: 30px;
+}
