@@ -50,7 +50,7 @@ const LoginForm = ({ setLogIn }) => {
           ))}
         </div>
         <div>
-        <div>Email</div>
+        <div className='formText'>Email</div>
           <label className='formFieldInput' htmlFor='email'>
             <input
               name='email'
@@ -61,7 +61,7 @@ const LoginForm = ({ setLogIn }) => {
           </label>
         </div>
         <div>
-        <div>Password</div>
+        <div className='formText' >Password</div>
           <label className='formFieldInput' htmlFor='password'>
             <input
               name='password'
@@ -72,15 +72,13 @@ const LoginForm = ({ setLogIn }) => {
           </label>
         </div>
         <div>
-          <button className='loginButton' type='submit'>Login</button>
+          <button className='splashSubmitButton' type='submit'>Sign in</button>
         </div>
-        <div className='demoUserContainer'>
-            <button className='demoButton' onClick={handleDemo}>Demo User</button>
-        </div>
+        <button className='splashSubmitButton' onClick={handleDemo}>Demo User</button>
       </form>
-      <div className='switchToSignUpButton'>
+      <div className='switchFormText'>
         Not a member?
-        <button className='switchToSignUpButton' onClick={handleSignUp}> Sign up</button>
+        <button className='switchFormButton' onClick={handleSignUp}> Sign up</button>
       </div>
     </>
   );

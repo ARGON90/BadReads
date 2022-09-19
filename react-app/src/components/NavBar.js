@@ -53,8 +53,11 @@ useEffect(() => {
             {showDropdown &&
             <div className='navBarDropDownContainer'>
               <div className='navBarDMenuProfile'>Profile</div>
-              <div className='navBarDMenuReview'>Reviews</div>
-              <div className='navBarDMenuBookshelve'>Bookshelves</div>
+              <div className='navBarDMenuBookshelve'>
+                <NavLink to="/bookshelves" exact={true} activeClassName='active'>
+                  Bookshelves
+                </NavLink>
+              </div>
               <LogoutButton />
             </div>}
           </div>
