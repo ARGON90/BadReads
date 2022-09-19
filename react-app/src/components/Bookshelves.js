@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getUserBookshelvesThunk } from '../store/bookshelvesRed';
+import { getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk } from '../store/bookshelvesRed';
 import { getAllBooksThunk } from '../store/booksAlex';
 import "./CSS/Bookshelves.css"
 
@@ -15,14 +15,12 @@ const Bookshelves = () => {
     const [shelfID, setShelfID] = useState(false)
     const [toggleAddButton, setToggleAddButton] = useState(true)
     const [shelfName, setShelfName] = useState('')
+    const [toggleEdit, setToggleEdit] = useState(false)
 
+
+    //turn usershelves slice of store into arr
     let userShelves = []
-
     if (bookshelvesDict) {
-        console.log("in shelves")
-        // let shelfArr = Object.values(bookshelvesDict)
-
-        // userShelves = shelfArr.filter(shelf => shelf.user_id.id === userID)
         userShelves = Object.values(bookshelvesDict)
     }
 
@@ -48,23 +46,20 @@ const Bookshelves = () => {
             for (let id of shelf.books) {
                 bookIDArr.push(id)
             }
-
         }
         //gets rid of dupes
         bookIDArr = [...new Set(bookIDArr)]
-
     }
 
 
-
+    //run store dispatches on page load
     useEffect(() => {
         dispatch(getUserBookshelvesThunk())
-        //run this  for now until nav bar to bookshelves
         dispatch(getAllBooksThunk())
     }, [])
 
-    //handle adding a shelf submission
 
+    //handle adding a shelf submission
     const handleAddShelfSubmit = (e) => {
         e.preventDefault();
 
@@ -77,11 +72,21 @@ const Bookshelves = () => {
 
         //end
         //dispatch here
+        dispatch(addUserBookshelvesThunk(newBookShelf))
         setToggleAddButton(true)
         setShelfName('')
     }
 
-    if (bookshelvesDict.length < 1) return <div>Loading All Books...</div>
+    const handleDeleteShelf = (id) => {
+
+        console.log("yup")
+        dispatch(deleteUserBookshelfThunk(id))
+        // dispatch(getUserBookshelvesThunk())
+        // dispatch(getAllBooksThunk())
+        return
+    }
+
+    if (bookshelvesDict.length < 1) return <div></div>
     return (
         <>
             <div className='bookshelf_page_outer'>
@@ -91,17 +96,27 @@ const Bookshelves = () => {
                 <div className='bookshelf_page_inner1'>
                     <div className='bookshelf_page_subTitleOuter'>
                         <div className='bookshelf_page_subTitle'>Bookshelves  </div>
-                        <div className='bookshelf_page_subEdit'>(Edit)</div>
+                        <div
+                            onClick={() => setToggleEdit(!toggleEdit)}
+                            className='bookshelf_page_subEdit'>(Edit)</div>
                     </div>
                     <div
                         className='bookshelf_page_shelfName bookshelf_page_shelfNameAll'
-                        onClick={() => setShelfID(false)}>All ({bookIDArr.length})</div>
+                        onClick={() => {
+                            setToggleEdit(false)
+                            setShelfID(false)
+                            return
+                        }}>All ({bookIDArr.length})</div>
                     <div className='bookshelf_page_defaultArr'>
                         {defaultArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
                                     className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'
-                                    onClick={() => setShelfID(shelf.id)}>{shelf.name} ({shelf.books.length})</div>
+                                    onClick={() => {
+                                        setToggleEdit(false)
+                                        setShelfID(shelf.id)
+                                        return
+                                    }}>{shelf.name} ({shelf.books.length})</div>
                             </div>
                         )}
                     </div>
@@ -109,7 +124,11 @@ const Bookshelves = () => {
                         {customArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
-                                    onClick={() => setShelfID(shelf.id)}
+                                    onClick={() => {
+                                        setToggleEdit(false)
+                                        setShelfID(shelf.id)
+                                        return
+                                    }}
                                     className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'>{shelf.name} ({shelf.books.length})</div>
                             </div>
                         )}
@@ -117,28 +136,40 @@ const Bookshelves = () => {
                             onClick={() => setToggleAddButton(false)}
                             className='bookshelf_page_addShelfButton'> Add shelf</div>}
                         {!toggleAddButton &&
-                            <form className='bookshelf_page_addShelfForm' onSubmit={handleAddShelfSubmit}>
-                                <div>
-                                    <div className='bookshelf_page_addShelfFormTitle'>Add a Shelf:</div>
-                                    <input
-                                        id='addShelfName'
-                                        type="text"
-                                        value={shelfName}
-                                        onChange={(e) => setShelfName(e.target.value)}
-                                        required
-                                        maxLength={20}
-                                        minLength={2}
+                            <>
+                                <form className='bookshelf_page_addShelfForm' onSubmit={handleAddShelfSubmit}>
+                                    <div>
+                                        <div className='bookshelf_page_addShelfFormTitle'>Add a Shelf:</div>
+                                        <input
+                                            id='addShelfName'
+                                            type="text"
+                                            value={shelfName}
+                                            onChange={(e) => setShelfName(e.target.value)}
+                                            required
+                                            maxLength={20}
+                                            minLength={2}
 
-                                    />
-                                </div>
-                                <button
+                                        />
+                                    </div>
+                                    <button
 
-                                    className='bookshelf_page_submitShelfButton'> add</button>
-                            </form>
+                                        className='bookshelf_page_submitShelfButton'> add</button>
+                                    <div
+                                        onClick={() => {
+                                            setShelfName("")
+                                            setToggleAddButton(true)
+                                            return
+                                        }}
+                                        className='bookshelf_page_XaddShelf'>
+                                        X
+                                    </div>
+                                </form>
+                            </>
+
                         }
                     </div>
                 </div>
-                <div className='bookshelf_page_inner2'>
+                {!toggleEdit && <div className='bookshelf_page_inner2'>
                     {!shelfID && bookIDArr.map((id) =>
                         // {console.log(booksDict[id].image_url)}
 
@@ -159,8 +190,25 @@ const Bookshelves = () => {
                         </div>
 
                     )}
-                </div>
+                </div>}
+                {toggleEdit &&
+                    <div className='bookshelf_page_editInner2'>
+                        {customArr.map((shelf) =>
+                            <div key={shelf.id} className="bookshelf_page_editWrap">
+                                <div
+                                    onClick={() => handleDeleteShelf(shelf.id)}
+                                    className="bookshelf_page_delete">X</div>
+                                <div
+                                    className='bookshelf_page_editShelfName'>{shelf.name} ({shelf.books.length})</div>
+                                <div className="bookshelf_page_editRename"> rename</div>
+                            </div>
+                        )}
+                        <div
+                            onClick={() => setToggleEdit(false)}
+                            className="bookshelf_page_editDone">I'm Done</div>
 
+                    </div>
+                }
             </div>
         </>
     );
