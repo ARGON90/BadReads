@@ -8,12 +8,17 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-# alex-code
 from .api.all_books_route_alex import all_books_route
 # alex-code
+<<<<<<< HEAD
 from .api.bookshelves import bookshelves
+=======
+from .api.user_books_route import user_books_route
+>>>>>>> staging
 
 
+from .api.reviews_route import reviews_route
+# alex-code
 
 from .seeds import seed_commands
 
@@ -37,10 +42,13 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
-# alex-code
 app.register_blueprint(all_books_route, url_prefix='/api/books')
 # alex-code
 app.register_blueprint(bookshelves,url_prefix='/api/bookshelves')
+app.register_blueprint(user_books_route, url_prefix='/api/my-books')
+app.register_blueprint(reviews_route, url_prefix='/api/reviews')
+# alex-code
+
 db.init_app(app)
 Migrate(app, db)
 

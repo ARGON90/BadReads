@@ -68,19 +68,19 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-        <div>Your Name</div>
+        <div className='formText'>Your Name</div>
           <label className='formFieldInput'>
             <input
               type='text'
+              placeholder="First and last name"
               name='username'
               onChange={updateUsername}
               value={username}
             />
-          <span className='placeholder'>First and last name</span>
           </label>
         </div>
         <div>
-        <div>Email</div>
+        <div className='formText' >Email</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -90,20 +90,26 @@ const SignUpForm = () => {
             />
           </label>
         </div>
-        <div>
-        <div>Password</div>
+        <div className='passwordAlert'>
+        <div className='formText'>Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
+              placeholder="At least 6 characters"
               name='password'
               onChange={updatePassword}
               value={password}
             />
-            <span className='placeholder'>At least 6 characters</span>
           </label>
+          <div className="alertDiv">
+          <div className="alertIcon">
+            <i class="a-icon a-icon-alert"></i>
+          </div>
+          <span className="alertIconText">Passwords must be at least 6 characters.</span>
+          </div>
         </div>
         <div>
-        <div>Re-Password</div>
+        <div className='formText'>Re-Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
@@ -113,11 +119,9 @@ const SignUpForm = () => {
             />
           </label>
         </div>
-        <button className='loginButton' type='submit'>Create Account</button>
+        <button className='splashSubmitButton' type='submit'>Create account</button>
+        <button className='splashSubmitButton' onClick={handleDemoUser}>Log in with Demo User</button>
       </form>
-
-      <button onClick={handleDemoUser}>Log in with Demo User</button>
-  
     </>
   );
 };
