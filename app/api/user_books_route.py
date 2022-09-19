@@ -16,26 +16,26 @@ def get_user_books():
   return user_books_dict
 
 
-@user_books_route.route('/books', methods=['POST'])
-@login_required
-def add_user_book():
-  form = CreateBook()
-  form['csrf_token'].data = request.cookies['csrf_token']
-  data = form.data
+# @user_books_route.route('/books', methods=['POST'])
+# @login_required
+# def add_user_book():
+#   form = CreateBook()
+#   form['csrf_token'].data = request.cookies['csrf_token']
+#   data = form.data
 
-  if form.validate_on_submit():
-    book = Book(
-      title = data['title'],
-      year = data['year'],
-      author = data['author'],
-      description = data['description'],
-      image_url = data['image_url'],
-    )
+#   if form.validate_on_submit():
+#     book = Book(
+#       title = data['title'],
+#       year = data['year'],
+#       author = data['author'],
+#       description = data['description'],
+#       image_url = data['image_url'],
+#     )
 
-    db.session.add(book)
-    db.session.commit()
+#     db.session.add(book)
+#     db.session.commit()
 
-    print(book.to_dict())
-    return redirect('/api/my-books')
+#     return book.to_dict()
+#     # return redirect('/api/my-books')
 
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+#   return {'errors': validation_errors_to_error_messages(form.errors)}, 400

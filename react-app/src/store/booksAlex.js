@@ -65,7 +65,10 @@ const booksReducer = ( state = initialState, action ) => {
 
         case ADD_BOOK: {
             console.log('ADD BOOK REDUCER')
-            newState[action.book.id] = action.book;
+            newState = {
+                ...state,
+                [action.book.id]: action.book
+            };
             return newState;
         }
 
