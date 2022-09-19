@@ -190,6 +190,11 @@ const Bookshelves = () => {
                         </div>
 
                     )}
+                    {shelfID && bookshelvesDict[shelfID].books.length === 0 &&
+
+                        <div className="bookshelf_page_noMatch">No matching items!</div>
+
+                    }
                 </div>}
                 {toggleEdit &&
                     <div className='bookshelf_page_editInner2'>
