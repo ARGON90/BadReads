@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # REACT_APP_BASE_URL -> Your deployment URL
-ENV REACT_APP_BASE_URL=https.whatever-url-we-decide.com
+ENV REACT_APP_BASE_URL=https://aa-bad-reads.herokuapp.com/
 
 # FLASK_APP -> entry point to your flask app
 ENV FLASK_APP=app
@@ -20,7 +20,7 @@ WORKDIR /var/www
 COPY . .
 # Copy the built react app (it's built for us) from the
 # /react-app/build/ directory into your flasks app/static directory
-COPY /react-app/build* app/static
+COPY /react-app/build/* app/static/
 
 # Run the next two python install commands with PIP
 # install -r requirements.txt
