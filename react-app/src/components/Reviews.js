@@ -15,12 +15,11 @@ const Reviews = () => {
     const reviewsArray = useSelector((state) => Object.values(state?.reviews))
     const reviewsByBookId = reviewsArray.filter(review => review.book_id == id)
     const currentUser = useSelector((state) => (state?.session?.user))
-    const [button, setButton] = useState(0)
 
     useEffect(() => {
         console.log('REVIEWS USE EFFECT')
         dispatch(getAllReviewsThunk())
-    }, [dispatch, button])
+    }, [dispatch])
 
     if (currentUser == null) {
         return null
@@ -49,13 +48,13 @@ const Reviews = () => {
             reviewsByBookId.splice(currentUserReviewIndex, 1)
 
             function deleteReview() {
-                setButton((button) => button + 1)
+
                 dispatch(deleteReviewThunk(reviewId))
                 dispatch(getAllReviewsThunk())
             }
 
             function editReview() {
-                setButton((button) => button + 1)
+
                 console.log(`${reviewId}`)
             }
             //USER HAS A REVIEW
@@ -71,11 +70,9 @@ const Reviews = () => {
                     >Edit this Review</button>
 
                     <button
-                        id={button}
                         onClick={deleteReview}
                         className='reviews_page_gr-button'
                     >Delete this Review</button>
-                    <div>{button}</div>
 
                     {reviewsByBookId.map((review) =>
                         <div key={review.id}>
@@ -107,18 +104,21 @@ const Reviews = () => {
         }
     }
 
-    if (reviewsByBookId.length < 1) return <div>No Reviews for this book</div>
 
+    function noReviews() {
+        if (reviewsByBookId.length < 1)
+            return (
+                <div>No Reviews for this book</div>
+            )
+    }
 
     return (
         <>
             <h2>Reviews</h2>
             <div>{currentUserReviewCheck()}</div>
+            {noReviews()}
         </>
     );
 }
 
 export default Reviews;
-
-
-//todo - what routing with replace did I need to add at the top of the page?

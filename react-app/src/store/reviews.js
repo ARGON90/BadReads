@@ -56,10 +56,7 @@ const reviewsReducer = (state = initialState, action) => {
         case DELETE_ONE_REVIEW: {
             console.log('INSIDE DELETE REVIEW REDUCER');
             const newState = { ...state };
-            console.log('PRE-DELETE NEWSTATE', newState)
             delete newState[action.id]
-            console.log('ACTION.ID', action.id)
-            console.log('POST-DELETE NEWSTATE', newState)
             return newState;
         }
 
