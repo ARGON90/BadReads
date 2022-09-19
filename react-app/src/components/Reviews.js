@@ -30,6 +30,7 @@ const Reviews = () => {
     const reviewOfCurrentUser = reviewsByBookId.filter(review => review.user_id == currentUserId)
 
     function updatedDate(date) {
+        console.log('SINGLEBOOK', singleBook)
         let dateArray = date.split(' ')
         dateArray.splice(-2, 2)
         let newArray = dateArray.join(' ')
@@ -39,6 +40,8 @@ const Reviews = () => {
     function currentUserReviewCheck() {
         if (reviewOfCurrentUser.length > 0) {
             const review = reviewOfCurrentUser[0].review
+            const updated_at = reviewOfCurrentUser[0].updated_at
+            const created_at = reviewOfCurrentUser[0].updated_at
             const stars = reviewOfCurrentUser[0].stars
             const reviewId = reviewOfCurrentUser[0].id
             //make an array of reviews with only the user id, find index of current user
@@ -62,6 +65,7 @@ const Reviews = () => {
                 <div>
                     <div>Would you like to edit your review, {currentUserUsername}?</div>
                     <div>You rated {singleBook.title} {stars} stars</div>
+                    <div>{updatedDate(created_at)}</div>
                     <div>"{review}"</div>
 
                     <button

@@ -1,0 +1,127 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+
+const CreateReview = ({ setShowModal }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const currentUser = useSelector(state => state?.session?.user);
+  const [errors, setErrors] = useState([]);
+  const [review, setReview] = useState('');
+  const [stars, setStars] = useState('');
+
+  const updateReview = (e) => setReview(e.target.value);
+  const updateStars = (e) => setStars(e.target.value);
+
+
+//   useEffect(() => {
+//     const newErrors = [];
+
+//     if (!currentUser) {
+//       newErrors.push('Please log in or sign up with BadReads to continue.');
+//     }
+//     if (title.length <= 0) {
+//       newErrors.push('Title is required.');
+//     } else if (title.length > 255) {
+//       newErrors.push('Title must be 255 characters or less.');
+//     }
+//     if (year <= 0 || year > 2022) {
+//       newErrors.push('Please provide a valid release year.');
+//     }
+//     if (author.length <= 0) {
+//       newErrors.push('Author is required.');
+//     } else if (author.length > 255) {
+//       newErrors.push('Name of author must be 255 characters or less.');
+//     }
+//     if (description.length <= 0) {
+//       newErrors.push('Description is required.');
+//     } else if (description.length > 5000) {
+//       newErrors.push('Description must be 5000 characters or less.');
+//     }
+//     setErrors(newErrors);
+//   }, [currentUser, title, year, author, description])
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     const data = {
+//       title,
+//       year,
+//       author,
+//       description,
+//       image_url: imageUrl
+//     }
+
+//     const createdBook = await dispatch(createBook(data));
+
+//     if (createdBook) {
+//       setErrors([]);
+//       setShowModal(false);
+//       history.push('/my-books');
+//     }
+//   }
+  return (
+    <>
+
+      {/* <form className="create-book-form" onSubmit={handleSubmit}>
+        <div className="create-book-form-title">Add a Book to BadReads</div>
+        <div className="create-book-modal-body">
+          <div className="create-book-form-errors-container">
+            {errors.map((error, idx) => (
+              <span key={idx}>Error: {error}</span>
+            ))}
+          </div>
+          <label className="create-book-form-label">Title</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Title"
+            required
+            value={title}
+            onChange={updateTitle}
+          />
+          <label className="create-book-form-label">Year</label>
+          <input
+            className="create-book-form-input"
+            type="integer"
+            placeholder="Year"
+            required
+            value={year}
+            onChange={updateYear}
+          />
+          <label className="create-book-form-label">Author</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Author"
+            required
+            value={author}
+            onChange={updateAuthor}
+          />
+          <label className="create-book-form-label">Description</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Description"
+            required
+            value={description}
+            onChange={updateDescription}
+          />
+          <label className="create-book-form-label">Book Cover Image URL</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Book Cover Image URL"
+            required
+            value={imageUrl}
+            onChange={updateImageUrl}
+          />
+        </div>
+        <button className="create-book-form-submit" type="submit" disabled={errors.length ? true : false}>Add Book</button>
+      </form> */}
+    </>
+  )
+}
+
+export default CreateReview;
