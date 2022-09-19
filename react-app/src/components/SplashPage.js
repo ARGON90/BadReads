@@ -53,13 +53,13 @@ export default function SplashPage() {
                 <p>Alex</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-github"></i>
+                    <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                     Github
                     </div>
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-linkedin"></i>
+                    <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                     LinkedIn
                     </div>
                 </a>
@@ -68,13 +68,13 @@ export default function SplashPage() {
                 <p>Ben</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-github"></i>
+                    <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                     Github
                     </div>
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-linkedin"></i>
+                    <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                     LinkedIn
                     </div>
                 </a>
@@ -83,13 +83,13 @@ export default function SplashPage() {
                 <p>Julie</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-linkedin"></i>
+                    <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                     Github
                     </div>
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-linkedin"></i>
+                    <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                     LinkedIn
                     </div>
                 </a>
@@ -98,13 +98,13 @@ export default function SplashPage() {
                 <p>Justine</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-github"></i>
+                    <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                     Github
                     </div>
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands fa-linkedin"></i>
+                    <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                     LinkedIn
                     </div>
                 </a>
