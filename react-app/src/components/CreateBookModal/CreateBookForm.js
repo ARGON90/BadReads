@@ -62,64 +62,67 @@ const CreateBookForm = ({ setShowModal }) => {
 
     if (createdBook) {
       setErrors([]);
+      setShowModal(false);
       history.push('/my-books');
     }
   }
   return (
     <>
       <form className="create-book-form" onSubmit={handleSubmit}>
-
-        <div className="create-book-form-errors-container">
-          {errors.map((error, idx) => (
-            <span key={idx}>Error: {error}</span>
-          ))}
+        <div className="create-book-form-title">Add a Book to BadReads</div>
+        <div className="create-book-modal-body">
+          <div className="create-book-form-errors-container">
+            {errors.map((error, idx) => (
+              <span key={idx}>Error: {error}</span>
+            ))}
+          </div>
+          <label className="create-book-form-label">Title</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Title"
+            required
+            value={title}
+            onChange={updateTitle}
+          />
+          <label className="create-book-form-label">Year</label>
+          <input
+            className="create-book-form-input"
+            type="integer"
+            placeholder="Year"
+            required
+            value={year}
+            onChange={updateYear}
+          />
+          <label className="create-book-form-label">Author</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Author"
+            required
+            value={author}
+            onChange={updateAuthor}
+          />
+          <label className="create-book-form-label">Description</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Description"
+            required
+            value={description}
+            onChange={updateDescription}
+          />
+          <label className="create-book-form-label">Book Cover Image URL</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Book Cover Image URL"
+            required
+            value={imageUrl}
+            onChange={updateImageUrl}
+          />
         </div>
-        <label className="create-book-form-label">Title</label>
-        <input
-          className="title-input"
-          type="string"
-          placeholder="Title"
-          required
-          value={title}
-          onChange={updateTitle}
-        />
-        <label className="create-book-form-label">Year</label>
-        <input
-          className="year-input"
-          type="integer"
-          placeholder="Year"
-          required
-          value={year}
-          onChange={updateYear}
-        />
-        <label className="create-book-form-label">Author</label>
-        <input
-          className="author-input"
-          type="string"
-          placeholder="Author"
-          required
-          value={author}
-          onChange={updateAuthor}
-        />
-        <label className="create-book-form-label">Description</label>
-        <input
-          className="description-input"
-          type="string"
-          placeholder="Description"
-          required
-          value={description}
-          onChange={updateDescription}
-        />
-        <label className="create-book-form-label">Book Cover Image URL</label>
-        <input
-          className="image-url-input"
-          type="string"
-          placeholder="Book Cover Image URL"
-          required
-          value={imageUrl}
-          onChange={updateImageUrl}
-        />
-        <button type="submit" disabled={errors.length ? true : false}>Add Book</button>
+        <button className="create-book-form-submit" type="submit" disabled={errors.length ? true : false}>Add Book</button>
       </form>
     </>
   )

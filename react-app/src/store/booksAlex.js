@@ -26,15 +26,18 @@ export const getAllBooksThunk = () => async (dispatch) => {
 
 export const createBook = (data) => async dispatch => {
     console.log('CREATE BOOK THUNK')
-    const response = await fetch('/api/my-books/', {
+    const response = await fetch('/api/books/', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     });
 
+    console.log('response', response)
+
     if (response.ok) {
         const book = await response.json();
-        dispatch(addBook(book));
+        console.log('RESPONSE OK, BOOK', book)
+        await dispatch(addBook(book));
         return book;
     }
 }
@@ -42,23 +45,33 @@ export const createBook = (data) => async dispatch => {
 //REDUCER
 const initialState = {}
 const booksReducer = ( state = initialState, action ) => {
+    let newState = {...state}
     switch (action.type) {
+        // case GET_ALL_BOOKS: {
+        //     console.log('ALL BOOKS REDUCER')
+        //     const allbooks = action.books
+        //     const newState = {...state, ...allbooks}
+        //     return newState
+        // }
+
         case GET_ALL_BOOKS: {
             console.log('ALL BOOKS REDUCER')
-            const allbooks = action.books
-            const newState = {...state, ...allbooks}
-            return newState
+            const allBooks = action.books
+            return {
+                ...newState,
+                ...allBooks
+            }
         }
 
-        // case ADD_BOOK: {
-        //     console.log('ADD BOOK REDUCER')
-        //     newState[action.book.id] = action.book;
-        //     return newState;
-        // }
+        case ADD_BOOK: {
+            console.log('ADD BOOK REDUCER')
+            newState[action.book.id] = action.book;
+            return newState;
+        }
 
         default:
             return state
     }
 }
 
-export default booksReducer
+export default booksReducer;

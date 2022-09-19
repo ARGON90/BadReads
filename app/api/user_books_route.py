@@ -35,7 +35,7 @@ def add_user_book():
     db.session.add(book)
     db.session.commit()
 
-    book.to_dict()
+    print(book.to_dict())
     return redirect('/api/my-books')
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 400
