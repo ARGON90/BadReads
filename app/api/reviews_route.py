@@ -10,6 +10,11 @@ def reviews():
     print('INSIDE REVIEWS "/reviews"')
     reviews = Review.query.all()
     review = Review.query.get(1)
-    print('REVIEW USER!', review.user.to_dict())
     reviews_dict = {review.id:review.to_dict() for review in reviews}
     return reviews_dict
+
+@reviews_route.route('/<int:id>')
+def user(id):
+    review = Review.query.get(id)
+    console.log('REVIEW!', review)
+    return user.to_dict()
