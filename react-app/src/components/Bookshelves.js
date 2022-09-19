@@ -170,7 +170,7 @@ const Bookshelves = () => {
                     </div>
                 </div>
                 {!toggleEdit && <div className='bookshelf_page_inner2'>
-                    {!shelfID && bookIDArr.map((id) =>
+                    {!shelfID && bookIDArr?.map((id) =>
                         // {console.log(booksDict[id].image_url)}
 
                         <div key={booksDict[Number(id)]?.image_url} >
@@ -180,7 +180,7 @@ const Bookshelves = () => {
                         </div>
 
                     )}
-                    {shelfID && bookshelvesDict[shelfID].books.map((id) =>
+                    {shelfID && bookshelvesDict[shelfID]?.books.map((id) =>
                         // {console.log(booksDict[id].image_url)}
 
                         <div key={booksDict[Number(id)]?.image_url} >
