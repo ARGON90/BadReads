@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { getAllBooksThunk } from '../store/booksAlex';
+import Reviews from './Reviews';
 
 const BookById = () => {
     console.log('INSIDE BOOKS BY ID COMPONENT')
     const { id } = useParams()
     const dispatch = useDispatch();
     const booksDict = useSelector((state) => (state?.books))
-
     const singleBook = booksDict[id]
-    // key into this like a d
 
     useEffect(() => {
         console.log('BOOKS BY ID USE EFFECT')
@@ -27,7 +26,7 @@ const BookById = () => {
                     <img src={singleBook.image_url} alt='Cover' style={{height: '100px'}}/>
                     <div>{singleBook.description}</div>
                 </div>
-
+                <Reviews />
         </>
     );
 }

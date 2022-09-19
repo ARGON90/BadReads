@@ -43,6 +43,20 @@ export const createBook = (data) => async dispatch => {
 }
 
 //REDUCER
+// const initialState = {}
+// const booksReducer = (state = initialState, action ) => {
+//     switch(action.type) {
+//         case GET_ALL_BOOKS: {
+//             console.log('ALL BOOKS REDUCER')
+//             const allbooks = action.books
+//             const newState = {...state, ...allbooks}
+//             return newState
+//         }
+//         default:
+//             return state
+//     }
+// }
+
 const initialState = {}
 const booksReducer = ( state = initialState, action ) => {
     let newState = {...state}
