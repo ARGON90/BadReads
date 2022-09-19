@@ -28,6 +28,8 @@ const Reviews = () => {
             {reviewsByBookId.map((review) =>
                 <div key={review.id}>
                     <div>(PERSON NAME) rated it {review.stars} stars</div>
+                    <div>{review.updated_at}</div>
+                    <div>{console.log(typeof review.updated_at)}</div>
                     <div>{review.review}</div>
                 </div>
             )}
@@ -39,11 +41,17 @@ const Reviews = () => {
     // 1 put it at the top of the list, ask them if they'd like to edit your review
     // 2 remove it from the reviews array listed on the page
 // if a user does NOt have a review, ask them if they'd like to make one
+// format date correctly
 
 // getting users reviews:
     // get all users in state
     // filter reviews where review.user_id === user.id
 
     // or add username to review state
+
+    // qury for it in backend?
+
+
+
 
 export default Reviews;

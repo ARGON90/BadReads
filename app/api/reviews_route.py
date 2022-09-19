@@ -9,5 +9,7 @@ reviews_route = Blueprint('reviews', __name__)
 def reviews():
     print('INSIDE REVIEWS "/reviews"')
     reviews = Review.query.all()
+    review = Review.query.get(1)
+    print('REVIEW USER!', review.user.to_dict())
     reviews_dict = {review.id:review.to_dict() for review in reviews}
     return reviews_dict

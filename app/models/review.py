@@ -11,7 +11,7 @@ class Review(db.Model):
     review = db.Column(db.String(1000), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime)
 
     user = db.relationship("User",back_populates="reviews")
     books = db.relationship("Book",back_populates="reviews")
@@ -23,7 +23,6 @@ class Review(db.Model):
             'book_id': self.book_id,
             'review': self.review,
             'stars': self.stars,
-            # alex - code
-            # 'user': self.user,
-            # alex - code
+            'updated_at': self.updated_at,
         }
+
