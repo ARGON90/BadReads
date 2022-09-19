@@ -1,14 +1,14 @@
-const GET_ALL_BOOKSHELVES = '/bookshelves/all'
+const GET_USER_BOOKSHELVES = '/bookshelves/user'
 
 const loadBookshelves = (bookshelves) => {
     return {
-        type: GET_ALL_BOOKSHELVES,
+        type: GET_USER_BOOKSHELVES,
         payload: bookshelves
     }
 }
 
 // # //THUNK - ALL BOOKSHELVES
-export const getAllBookshelvesThunk = () => async (dispatch) => {
+export const getUserBookshelvesThunk = () => async (dispatch) => {
     // # console.log('ALL BOOKS THUNK')
     const response = await fetch('/api/bookshelves/');
     if (response.ok) {
@@ -19,14 +19,14 @@ export const getAllBookshelvesThunk = () => async (dispatch) => {
 }
 
 // # //REDUCER
-const initialState = { allBookshelves: {} }
+const initialState = { userBookshelves: {} }
 const bookshelvesReducer = (state = initialState, action) => {
     let bookshelves
     switch (action.type) {
-        case GET_ALL_BOOKSHELVES: {
+        case GET_USER_BOOKSHELVES: {
             // # console.log('ALL BOOKS REDUCER')
-            bookshelves = { ...state, allBookshelves: { ...state.allBookshelves } }
-            bookshelves.allBookshelves = action.payload
+            bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
+            bookshelves.userBookshelves = action.payload
 
             return bookshelves
         }

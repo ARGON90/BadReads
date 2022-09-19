@@ -1,0 +1,151 @@
+* {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    caret-color: transparent;
+}
+
+.bookshelf_page_outer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.bookshelf_page_inner1 {
+    background-color: white;
+    width: 170px;
+
+}
+
+.bookshelf_page_inner2 {
+    height: 400px;
+    width: 700px;
+    /* border: solid black 1px; */
+    display: flex;
+    margin-left: 30px;
+}
+
+.bookshelf_page_title {
+    font-size: 22px;
+    color: #00635d;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(170, 170, 170, 0.3);
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    /* needs to track width and margins of inner2 and inner1 */
+    width: 900px;
+}
+
+.bookshelf_page_shelfName {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.bookshelf_page_customArr {
+    padding-top: 7px;
+    /* background-color: aqua; */
+}
+
+.bookshelf_page_defaultArr {
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(170, 170, 170, 0.3);
+}
+
+.bookshelf_page_shelfNameAll {
+    color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.bookshelf_page_shelfNameDec {
+
+    color: #00635d;
+    cursor: pointer;
+}
+
+.bookshelf_page_shelfNameDec:hover,
+.bookshelf_page_shelfNameAll:hover,
+.bookshelf_page_subEdit:hover {
+
+    text-decoration: underline;
+}
+
+.bookshelf_page_subTitleOuter {
+    display: flex;
+
+}
+
+.bookshelf_page_subTitle {
+    margin-right: 3px;
+    font-weight: 600;
+}
+
+.bookshelf_page_subEdit {
+    font-size: 12px;
+    align-self: center;
+    margin-top: 2px;
+    color: #00635d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bookshelf_page_img {
+    margin: 10px;
+    height: 150px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.bookshelf_page_addShelfButton {
+
+    background-color: #F4F1EA;
+    height: 23px;
+    font-size: small;
+    text-align: center;
+    width: 80px;
+    padding-top: 5px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.bookshelf_page_addShelfButton:hover,
+.bookshelf_page_submitShelfButton:hover {
+    background-color: #e7e5e1;
+}
+
+#addShelfName {
+    caret-color: black;
+    width: 100px;
+    border: 1px solid rgba(170, 170, 170, 0.5);
+    border-radius: 5px;
+    height: 0px;
+    margin: 0px;
+
+}
+
+#addShelfName:hover {
+    background-color: white;
+
+}
+
+.bookshelf_page_addShelfForm {
+    display: flex;
+    margin-top: 20px;
+}
+
+.bookshelf_page_addShelfFormTitle {
+    font-weight: bold;
+}
+
+.bookshelf_page_submitShelfButton {
+    height: 23px;
+    align-self: flex-end;
+    background-color: #F4F1EA;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    margin-left: 5px;
+    color: rgba(0, 0, 0, 0.7);
+    width: 40px;
+    padding: 3px;
+    cursor: pointer;
+}
