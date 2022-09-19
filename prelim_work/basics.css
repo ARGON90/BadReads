@@ -1,0 +1,127 @@
+/* font-family from Google: https: //fonts.google.com/specimen/Lato */
+
+* {
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #181818;
+  font-size: 12px;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+
+footer {
+  background-color: #f9f8f4;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  color: #382110;
+  font-size: 14px;
+}
+
+.footer-heading {
+  color: #767676;
+  font-size: 16px;
+}
+
+nav {
+  display: flex;
+  background-color: #F4F1EA;
+  height: 50px;
+  font-size: 16px;
+  color: #382110;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+
+nav:hover {
+  background-color: #382110;
+  color: #FFFFFF;
+}
+
+.nav_dropdown_list {
+  display: block;
+  color: #333333;
+  font-size: 14px;
+  padding: 0 16px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.my-books-borders {
+  border-bottom: 1px solid #EBE8D5;
+  color: #BBB596
+}
+
+.my-books-list {
+  font-size: 14px;
+  color: #00635d;
+}
+
+.profile-button {
+  border: 1px solid #D8D8D8;
+  border-radius: 16px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  background-color: #382110;
+}
+
+.profile-button-dropdown {
+  display: block;
+  font-size: 14px;
+  color: #333333;
+  line-height: 32px;
+  padding: 0 16px;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+
+.green-bookshelf-dropdown-buttons {
+  background-color: #409D69;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.gr-button {
+  border-radius: 3px;
+  border: 1px solid #D6D0C4;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 14px;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: #333333;
+  background-color: #F4F1EA;
+  line-height: 1;
+  padding: 8px 12px;
+}
+
+/*
+image source for "x" on my-books
+https: //s.gr-assets.com/assets/layout/delete-a9a86f59648bf17079954ea50a673dbc.png
+*/
+
+/*
+image source for rating stars on my-books
+<svg viewBox="0 0 24 24" role="presentation"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path class="RatingStar__fill" d="M12.4770229,1.34326985 L15.0891563,9.1315756 L23.4968842,9.1315756 C23.7747474,9.1315756 24,9.35682823 24,9.63469143 C24,9.79809886 23.9206399,9.95132779 23.7871766,10.0456121 L16.9959586,14.8432273 L19.5982827,22.6117477 C19.6865419,22.8752212 19.5445026,23.1603569 19.2810291,23.2486161 C19.1293386,23.2994298 18.9625235,23.2750752 18.8316924,23.1830139 L12.0000207,18.3758025 L5.1685337,23.1876292 C4.94136559,23.3476374 4.62749722,23.2931935 4.46748907,23.0660254 C4.37533831,22.9351963 4.35092131,22.7683321 4.4017231,22.616585 L7.00408269,14.8432273 L0.212864685,10.0456121 C-0.0140805533,9.88528803 -0.0680876559,9.57134421 0.0922364448,9.34439897 C0.186520784,9.21093568 0.339749724,9.1315756 0.503157148,9.1315756 L8.910885,9.1315756 L11.5230185,1.34326985 C11.6113744,1.0798288 11.8965622,0.937894292 12.1600033,1.02625024 C12.3095218,1.07639751 12.4268756,1.19375135 12.4770229,1.34326985 Z"></path></g></svg>
+*/
+
+/*
+image source for profile button icon
+https: //s.gr-assets.com/assets/nophoto/user/u_60x60-267f0ca0ea48fd3acfd44b95afa64f01.png
+*/
+
+
+/*
+image source for splash page ("Meet your next favorite book")
+https: //s.gr-assets.com/assets/home/headline-e2cd420e71737ff2815d09af5b65c4e4.png
+*/
+
+
+/*
+image source for splash page background ("books")
+https: //s.gr-assets.com/assets/home/masthead_background.jpg
+*/
