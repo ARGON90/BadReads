@@ -10,11 +10,8 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.all_books_route_alex import all_books_route
 # alex-code
-<<<<<<< HEAD
 from .api.bookshelves import bookshelves
-=======
 from .api.user_books_route import user_books_route
->>>>>>> staging
 
 
 from .api.reviews_route import reviews_route
