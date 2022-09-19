@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getAllBooksThunk } from '../store/booksAlex';
-import { getAllReviewsThunk } from '../store/reviews';
+import { getAllReviewsThunk, deleteReviewThunk } from '../store/reviews';
 import '../components/CSS/Reviews.css'
 
 const Reviews = () => {
@@ -15,11 +15,12 @@ const Reviews = () => {
     const reviewsArray = useSelector((state) => Object.values(state?.reviews))
     const reviewsByBookId = reviewsArray.filter(review => review.book_id == id)
     const currentUser = useSelector((state) => (state?.session?.user))
+    const [button, setButton] = useState(0)
 
     useEffect(() => {
         console.log('REVIEWS USE EFFECT')
         dispatch(getAllReviewsThunk())
-    }, [dispatch])
+    }, [dispatch, button])
 
     if (currentUser == null) {
         return null
@@ -36,7 +37,6 @@ const Reviews = () => {
         return newArray
     }
 
-
     function currentUserReviewCheck() {
         if (reviewOfCurrentUser.length > 0) {
             const review = reviewOfCurrentUser[0].review
@@ -49,10 +49,13 @@ const Reviews = () => {
             reviewsByBookId.splice(currentUserReviewIndex, 1)
 
             function deleteReview() {
-                console.log(`${reviewId}`)
+                setButton((button) => button + 1)
+                dispatch(deleteReviewThunk(reviewId))
+                dispatch(getAllReviewsThunk())
             }
 
             function editReview() {
+                setButton((button) => button + 1)
                 console.log(`${reviewId}`)
             }
             //USER HAS A REVIEW
@@ -61,15 +64,19 @@ const Reviews = () => {
                     <div>Would you like to edit your review, {currentUserUsername}?</div>
                     <div>You rated {singleBook.title} {stars} stars</div>
                     <div>"{review}"</div>
+
                     <button
                         onClick={editReview}
                         className='reviews_page_gr-button'
                     >Edit this Review</button>
 
                     <button
+                        id={button}
                         onClick={deleteReview}
                         className='reviews_page_gr-button'
                     >Delete this Review</button>
+                    <div>{button}</div>
+
                     {reviewsByBookId.map((review) =>
                         <div key={review.id}>
                             <div>{review.user.username} rated it {review.stars} stars</div>

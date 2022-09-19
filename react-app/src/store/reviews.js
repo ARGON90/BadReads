@@ -1,3 +1,6 @@
+
+
+
 const GET_ALL_REVIEWS = '/reviews/allReviews'
 const DELETE_ONE_REVIEW = '/reviews/deleteReview'
 
@@ -9,7 +12,7 @@ const deleteReviewById = (id) => {
 }
 
 const loadReviews = (reviews) => {
-    return{
+    return {
         type: GET_ALL_REVIEWS,
         reviews
     }
@@ -26,9 +29,8 @@ export const getAllReviewsThunk = () => async (dispatch) => {
     }
 }
 
-//THUNK - DELETE A SPOT
-export const deleteReview = (id) => async (dispatch) => {
-    await dispatch(getAllReviewsThunk())
+//THUNK - DELETE A REVIEW
+export const deleteReviewThunk = (id) => async (dispatch) => {
     console.log("INSIDE DELETE REVIEW THUNK")
     const response = await fetch(`/api/reviews/${id}`, {
         method: 'DELETE',
@@ -43,19 +45,24 @@ export const deleteReview = (id) => async (dispatch) => {
 
 //REDUCER
 const initialState = {}
-const reviewsReducer = (state = initialState, action ) => {
-    switch(action.type) {
+const reviewsReducer = (state = initialState, action) => {
+    switch (action.type) {
         case GET_ALL_REVIEWS: {
             console.log('ALL REVIEWS REDUCER')
             const allReviews = action.reviews
-            const newState = {...state, ...allReviews}
+            const newState = { ...state, ...allReviews }
             return newState
         }
         case DELETE_ONE_REVIEW: {
             console.log('INSIDE DELETE REVIEW REDUCER');
             const newState = { ...state };
+            console.log('PRE-DELETE NEWSTATE', newState)
+            delete newState[action.id]
+            console.log('ACTION.ID', action.id)
+            console.log('POST-DELETE NEWSTATE', newState)
             return newState;
         }
+
         default:
             return state
     }
