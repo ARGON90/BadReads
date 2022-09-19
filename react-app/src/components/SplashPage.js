@@ -59,7 +59,7 @@ export default function SplashPage() {
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands  fa-linkedin"></i>
+                    <i className="fa-brands fa-linkedin"></i>
                     LinkedIn
                     </div>
                 </a>
@@ -74,7 +74,7 @@ export default function SplashPage() {
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands f fa-linkedin"></i>
+                    <i className="fa-brands fa-linkedin"></i>
                     LinkedIn
                     </div>
                 </a>
@@ -89,7 +89,7 @@ export default function SplashPage() {
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands  fa-linkedin"></i>
+                    <i className="fa-brands fa-linkedin"></i>
                     LinkedIn
                     </div>
                 </a>
@@ -104,7 +104,7 @@ export default function SplashPage() {
                 </a>
                 <a href="https://www.linkedin.com/" target='_blank'>
                     <div className='socialLinks'>
-                    <i className="fa-brands  fa-linkedin"></i>
+                    <i className="fa-brands fa-linkedin"></i>
                     LinkedIn
                     </div>
                 </a>
