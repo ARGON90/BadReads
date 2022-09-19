@@ -8,6 +8,19 @@
   text-align: left;
 }
 
+footer {
+  background-color: #f9f8f4;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  color: #382110;
+  font-size: 14px;
+}
+
+.footer-heading {
+  color: #767676;
+  font-size: 16px;
+}
+
 nav {
   display: flex;
   background-color: #F4F1EA;
@@ -30,7 +43,6 @@ nav:hover {
   line-height: 32px;
   cursor: pointer;
 }
-
 
 .my-books-borders {
   border-bottom: 1px solid #EBE8D5;
@@ -76,13 +88,22 @@ https: //s.gr-assets.com/assets/layout/delete-a9a86f59648bf17079954ea50a673dbc.p
 
 /*
 image source for rating stars on my-books
-data:image/png;
-base64,
-iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABwElEQVR4Ab2WNbDVQBSGg0uLu+y5wUoqKrxHW0pK3B0q3N11N7hLg9e49A0VLrsXD/lmeK7RnVk95/+/3Mh5z0vafpyRoXSv6FY2spJeONga9YJeKPTHOX+w1Sqksy7wNpeWVYBZF3mbn1WAWRcC/R4M9iugFZ2zIt7mJbXBnOUOtlqe1AZzlu9tPqMEUH2dWG7gciCLGgITi2mmprmgtL2s1V5r5JAzcjzqgTPqfLS/arXcclruOK0eRvv3DYGJkUMuGrR44IUn3jBgwfTCq8M7RgKDuIgOC6ZX0aKDuc6o33kB8YbRwKfij7Va3mUNxRPvxp/5+SH9rJHHWUHxwtNrTgvPjOjgjJxIC8UDLy9uc1pmReJfCYC/0KYrGro0Pi4YTRa1eVRcMJrUYBeodXHBaDL5FycuGE0qqDOqT4qC0Sf5rw3U9IZLn+yiNxRHm+IXy6V6TD8440+syGHNWe08tImg4ZlhbSPx11oF/mF9t5AzYrXAX/GIDaa2VgP+sUatCc9MbdVQPjFyyK3Q4ZGkam36f+Vv4nyX5KJBi0eCz0he88c8vOp3jqtFgxaPeMLzQ3q4oDTTS9nwwKu+2D9N9rM09Bxb/wAAAABJRU5ErkJggg==
+<svg viewBox="0 0 24 24" role="presentation"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path class="RatingStar__fill" d="M12.4770229,1.34326985 L15.0891563,9.1315756 L23.4968842,9.1315756 C23.7747474,9.1315756 24,9.35682823 24,9.63469143 C24,9.79809886 23.9206399,9.95132779 23.7871766,10.0456121 L16.9959586,14.8432273 L19.5982827,22.6117477 C19.6865419,22.8752212 19.5445026,23.1603569 19.2810291,23.2486161 C19.1293386,23.2994298 18.9625235,23.2750752 18.8316924,23.1830139 L12.0000207,18.3758025 L5.1685337,23.1876292 C4.94136559,23.3476374 4.62749722,23.2931935 4.46748907,23.0660254 C4.37533831,22.9351963 4.35092131,22.7683321 4.4017231,22.616585 L7.00408269,14.8432273 L0.212864685,10.0456121 C-0.0140805533,9.88528803 -0.0680876559,9.57134421 0.0922364448,9.34439897 C0.186520784,9.21093568 0.339749724,9.1315756 0.503157148,9.1315756 L8.910885,9.1315756 L11.5230185,1.34326985 C11.6113744,1.0798288 11.8965622,0.937894292 12.1600033,1.02625024 C12.3095218,1.07639751 12.4268756,1.19375135 12.4770229,1.34326985 Z"></path></g></svg>
 */
-
 
 /*
 image source for profile button icon
 https: //s.gr-assets.com/assets/nophoto/user/u_60x60-267f0ca0ea48fd3acfd44b95afa64f01.png
+*/
+
+
+/*
+image source for splash page ("Meet your next favorite book")
+https: //s.gr-assets.com/assets/home/headline-e2cd420e71737ff2815d09af5b65c4e4.png
+*/
+
+
+/*
+image source for splash page background ("books")
+https: //s.gr-assets.com/assets/home/masthead_background.jpg
 */
