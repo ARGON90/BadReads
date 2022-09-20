@@ -3,8 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './CSS/NavBar.css'
+import SearchBar from './SearchBooks/SearchBooks';
 
 const NavBar = () => {
+
+  const [showSearch, setSearchBar] = useState(false)
   const [ showDropdown, setShowDropdown ] = useState(false)
   const handleDropdown = () => {
     if (showDropdown) return
@@ -46,19 +49,20 @@ useEffect(() => {
             </NavLink>
           </div>
           <div className='navBarLinksContainer'>
-            <button className='navBarRightButton'>
-            <NavLink className='navBarTextLink' to='/books' exact={true} activeClassName='active'>
-              Home 
+            <NavLink className='navBarLinksContainer' to='/books' exact={true} activeClassName='active'> 
+            Home
             </NavLink>
-            </button>
           </div>
           <div className='navBarLinksContainer'>
-           <button className='navBarRightButton'>
-            <NavLink className='navBarTextLink' to='/my-books' exact={true} activeClassName='active'>
-              My Books
+            <NavLink className='navBarLinksContainer' to='/my-books' exact={true} activeClassName='active'>
+            My Books
             </NavLink>
-            </button>
           </div>
+        </div>
+        <div>
+        <div className='navBarSearch'>
+          <SearchBar setSearchBar={setSearchBar}/>     
+        </div>   
         </div>
         <div className='navBarRight'>
           <div className='navBarRightMenu'>

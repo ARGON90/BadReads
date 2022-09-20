@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;900&family=Merriweather:wght@300;700;900&display=swap');
+
 .alex_gr-button {
     border-radius: 3px;
     border: 1px solid #D6D0C4;
@@ -14,4 +16,38 @@
     background-color: #F4F1EA;
     line-height: 1;
     padding: 8px 12px;
+    height: 32px;
+    width: 122px;
 }
+
+.alex_review_page_title {
+    font-weight: 900;
+    font-size: 24px;
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    color: #333333
+}
+
+.alex_merriweather_300 {
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    font-weight: 300px;
+    color: #181818
+}
+
+.alex_font_16 {
+    font-size: 16px;
+}
+
+.alex_font_14 {
+    font-size: 14px;
+}
+
+
+/* CREATE Review Page */
+
+.alex_text_area {
+    border: #F4F1EA;
+}
+
+.alex_text_area:focus {
+    box-shadow: -0.5px 3.5px 6px #0a6a0a;
+  }

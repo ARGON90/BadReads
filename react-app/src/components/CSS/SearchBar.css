@@ -1,0 +1,53 @@
+
+
+.searchBarInput {
+    width: 300px;
+    background-color: blanchedalmond;
+}
+
+ /* search bar main div */
+.searchBarDiv input{
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    border: #DCD6CC 1px solid;
+    background: #FFFFFF;
+    border-radius: 3px;
+    color: #333333;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    resize: none;
+    height: 32px;
+}
+
+.bookResultsDiv {
+    position: fixed;
+    top: 89px;
+    width: 357px;
+}
+
+.searchBookBarResult {
+    padding: 8px;
+    border-bottom: #DCD6CC 0.5px solid;
+    border-left: #DCD6CC 0.5px solid;;
+    border-right: #DCD6CC 0.5px solid;;
+    background: #FFFFFF;
+}
+
+.searchBarTitle {
+    color: #333333;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.searchBarAuthor {
+    color: #333333;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.searchBarTitle 
+.searchBarAuthor:active {
+    text-decoration: none;
+}
+
