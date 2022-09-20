@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
-import { createReviewThunk } from "../store/reviews";
 import '../components/CSS/Reviews.css'
 
 
-const CreateReview = ({bookId, userId}) => {
+const EditReview = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector(state => state?.session?.user);
@@ -21,36 +19,35 @@ const CreateReview = ({bookId, userId}) => {
   useEffect(() => {
     const newErrors = [];
 
-    if (!currentUser) newErrors.push('Please log in or sign up with BadReads to continue.');
-    if (stars <= 0 || stars > 5) newErrors.push('Star Rating must be between 1 and 5.');
-    if (review.length <= 0) newErrors.push('Review is required.');
-    if (review.length > 1000) newErrors.push('Review must be 1000 characters or less.');
-
+    if (!currentUser) {
+      newErrors.push('Please log in or sign up with BadReads to continue.');
+    }
+    if (review.length <= 0) {
+      newErrors.push('Review is required.');
+    } else if (review.length > 1000) {
+      newErrors.push('Review must be 1000 characters or less.');
+    }
+    if (stars <= 0 || stars > 5) {
+      newErrors.push('Star Rating must be between 1 and 5.');
+    }
     setErrors(newErrors);
   }, [currentUser, review, stars])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let bookIdInteger = Number(bookId)
-    console.log(bookIdInteger)
-    console.log(typeof bookIdInteger)
     const reviewData = {
       review,
       stars,
-      book_id: bookId,
-      user_id: userId
     }
 
-    console.log('REVIEW DATA ', reviewData)
+    // const createdBook = await dispatch(createReview(reviewData));
 
-    const createdReview = await dispatch(createReviewThunk(reviewData));
-
-    if (createdReview) {
-      setErrors([]);
-      history.push('/');
-    //   need to work on this push
-    }
+    // if (createdBook) {
+    //   setErrors([]);
+    //   history.push('/');
+    // //   need to work on this push
+    // }
   }
   return (
     <>
@@ -95,10 +92,10 @@ const CreateReview = ({bookId, userId}) => {
         type="submit"
         disabled={errors.length ? true : false}
         className="alex_gr-button"
-        >Create Review</button>
+        >Edit Review</button>
       </form>
     </>
   )
 }
 
-export default CreateReview;
+export default EditReview;

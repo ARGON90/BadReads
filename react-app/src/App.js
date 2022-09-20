@@ -12,7 +12,6 @@ import { authenticate } from './store/session';
 import BookById from './components/BookByIdAlex';
 import Bookshelves from './components/Bookshelves';
 import UserBooks from './components/UserBooks';
-import CreateReview from './components/CreateReview';
 
 
 function App() {
@@ -55,9 +54,6 @@ function App() {
         </Route>
         <Route path='/my-books' exact={true}>
           <UserBooks />
-        </Route>
-        <Route path='/reviews/create' exact={true}>
-          <CreateReview />
         </Route>
         <Route>
           <h1>404 - Page Not Found</h1>
