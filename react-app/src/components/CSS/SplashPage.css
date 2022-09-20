@@ -14,7 +14,7 @@ body {
 }
 
 /* books background image  */
-.splashPageImg {
+div.splashPageImg {
     height: 370px;
     border: 0;
     background-position: center;
@@ -22,6 +22,7 @@ body {
     background-repeat: repeat-x;
     position: static;
     background-color: #f4f2e9;
+    border-bottom: solid #f4f2e9 15px;
 }
 
 /* slogan and form container */
@@ -50,11 +51,9 @@ body {
 
 .splashFormContainer {
     float: right;
-    position: sticky;
+    position: relative;
     margin: 25px 20px 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: block;
     padding: 24px;
     border: 1px solid #D8D8D8;
     border-radius: 10px;
@@ -97,7 +96,7 @@ body {
 }
 
 /* form individual inputs */
-input {
+.formFieldInput input {
     background-color: #fafafa;
     outline: 0;
     border: 1px solid #a6a6a6;
@@ -110,7 +109,7 @@ input {
     line-height: 18px;
 }
 
-input:hover {
+.formFieldInput input:hover {
     background-color: rgba(135, 135, 135, 0.214);
 }
 
@@ -185,8 +184,6 @@ input:hover {
     text-decoration: underline;
 }
 
-
-
 /* not a member? sign up container */
 .switchFormText {
     display: flex;
@@ -213,22 +210,85 @@ input:hover {
     border-radius: 20px;
 }
 
-.socialLinks {
-    height:40px;
-    width: 106px;
-    background-color: black;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin: 20px 5px;
-    color: white;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content:space-around;
-    align-items: center;
+/* left side bottom half */
+.splashMiddleDiv {
+    float: right;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 18rem;
+    margin-right: 2em;
+    width: 35rem;
+    height: auto;
+}
+
+.splashMiddleLeft {
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    color: #382110;
+    width: 260px;;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.splashMiddleRight {
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    color: #382110;
+    width: 260px;
+    font-size: 14px;
+}
+
+.splashMiddleLeft h2 {
+    color: #382110;
+    font-size: 16px;
+}
+.splashMiddleRight h2 {
+    color: #382110;
+    font-size: 16px;
+}
+
+.splashMiddleContainer {
+    position: absolute;
+    width: 95%;
+    margin: 10em 1em 0 0;
+    border-radius: 10px;
+    background-color: #f4f2e9;
+    padding: 10px 0px 10px 0px;
+}
+
+.splashMiddleContainer h2 {
+    color: #382110;
+    font-size: 18px;
+}
+
+.splashMiddleContainer p {
+    color: #382110;
+    font-size: 15px;
+}
+
+.splashMiddleRow {
+    width: 100%;
+    height: 6em;
+    border-bottom: 40px solid;
+    border-image: linear-gradient(0deg, #DDDAC4, #C2BFAA) 100 ;
+}
+
+.splashBook {
+    width: 80px;    
+}
+
+img.splashBook {
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(255, 255, 255, 0.5)));
 }
 
 
-.fa-brands {
-    color: white;
-    font-size: 30px;
+/* links to our social account */
+.socialLinks {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.splashMiddleContainer hr {
+    margin: 0;
+    border: 1px solid #CCC9B5;
 }

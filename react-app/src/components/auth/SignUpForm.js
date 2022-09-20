@@ -68,11 +68,11 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-        <div className='formText'>Your Name</div>
+        <div className='formText'>Username</div>
           <label className='formFieldInput'>
             <input
               type='text'
-              placeholder="First and last name"
+              placeholder="Username"
               name='username'
               onChange={updateUsername}
               value={username}
