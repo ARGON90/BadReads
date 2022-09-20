@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
 import { createReviewThunk } from "../store/reviews";
 import '../components/CSS/Reviews.css'
 
 
-const CreateReview = ({bookId, userId}) => {
+const CreateReview = ({bookId, userId, displayLanding}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector(state => state?.session?.user);
@@ -32,9 +31,6 @@ const CreateReview = ({bookId, userId}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let bookIdInteger = Number(bookId)
-    console.log(bookIdInteger)
-    console.log(typeof bookIdInteger)
     const reviewData = {
       review,
       stars,
@@ -48,8 +44,9 @@ const CreateReview = ({bookId, userId}) => {
 
     if (createdReview) {
       setErrors([]);
-      history.push('/');
-    //   need to work on this push
+      displayLanding()
+      history.push(`/books/${bookId}`);
+      //   need to work on this push
     }
   }
   return (

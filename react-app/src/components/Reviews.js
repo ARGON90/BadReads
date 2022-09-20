@@ -151,7 +151,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
 
                     {display === 'create' ?
                         <div>
-                            <CreateReview userId={currentUserId} bookId={id}/>
+                            <CreateReview userId={currentUserId} bookId={id} displayLanding={displayLanding}/>
                             <button
                                 onClick={displayLanding}
                                 className='alex_gr-button'
