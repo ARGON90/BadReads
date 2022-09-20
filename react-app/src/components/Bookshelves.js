@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { updateLibraryThunk, getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk, renameUserBookshelfThunk } from '../store/bookshelvesRed';
 import { getAllBooksThunk } from '../store/booksAlex';
 import "./CSS/Bookshelves.css"
 
 const Bookshelves = () => {
+
+    const history = useHistory()
 
     const dispatch = useDispatch();
     const bookshelvesDict = useSelector((state) => (state?.bookshelves?.userBookshelves))
@@ -150,6 +153,11 @@ const Bookshelves = () => {
             .then(() => dispatch(getAllBooksThunk()))
 
         setBookEditID(false)
+    }
+
+    const spotIDredirect = (id) => {
+
+        history.push(`/books/${id}`)
     }
 
     if (bookshelvesDict.length < 1 && bookshelfIDArr.length < 1) return <div></div>
@@ -329,6 +337,7 @@ const Bookshelves = () => {
                                 </form>
                             }
                             <img
+                                onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />
                         </div>
@@ -412,6 +421,7 @@ const Bookshelves = () => {
                                 </form>
                             }
                             <img
+                                onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />
                         </div>
