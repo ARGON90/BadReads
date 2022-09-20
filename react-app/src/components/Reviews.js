@@ -41,7 +41,6 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
     const reviewOfCurrentUser = reviewsByBookId.filter(review => review.user_id == currentUserId)
 
     function updatedDate(date) {
-        console.log('SINGLEBOOK', singleBook)
         let dateArray = date.split(' ')
         dateArray.splice(-2, 2)
         let newArray = dateArray.join(' ')
@@ -49,20 +48,14 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
     }
 
 
-
     function noReviews() {
-        if (reviewsByBookId.length < 1)
+        if (reviewsByBookId.length == 0) {
             return (
                 <div>This book hasn't been reviewed yet</div>
             )
+        }
     }
 
-    return (
-        <>
-            <div>{currentUserReviewCheck()}</div>
-            {display === 'landing' ? <div>{noReviews()}</div> : null}
-        </>
-    );
 
     function currentUserReviewCheck() {
         if (reviewOfCurrentUser.length > 0) {
@@ -111,7 +104,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
 
                     {display === 'edit' ?
                         <div>
-                            <EditReview />
+                            <EditReview userId={currentUserId} bookId={id} displayLanding={displayLanding} userReview={review} userStars={stars} reviewOfCurrentUser={reviewOfCurrentUser} />
                             <button
                                 onClick={displayLanding}
                                 className='alex_gr-button'
@@ -151,7 +144,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
 
                     {display === 'create' ?
                         <div>
-                            <CreateReview userId={currentUserId} bookId={id} displayLanding={displayLanding}/>
+                            <CreateReview userId={currentUserId} bookId={id} displayLanding={displayLanding} />
                             <button
                                 onClick={displayLanding}
                                 className='alex_gr-button'
@@ -170,10 +163,19 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
                             )}
                         </div>
                         : null}
+                    {display === 'landing' ? <div>{noReviews()}</div> : null}
                 </div>
             )
         }
     }
+
+    return (
+        <>
+            <div>{currentUserReviewCheck()}</div>
+        </>
+    );
 }
+// todo - user rated it 1 STARS => user rated it 1 STAR
+
 
 export default Reviews;

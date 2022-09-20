@@ -38,8 +38,6 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
       user_id: userId
     }
 
-    console.log('REVIEW DATA ', reviewData)
-
     const createdReview = await dispatch(createReviewThunk(reviewData));
 
     if (createdReview) {
