@@ -11,6 +11,7 @@ const BookById = () => {
     const dispatch = useDispatch();
     const booksDict = useSelector((state) => (state?.books))
     const singleBook = booksDict[id]
+    console.log(singleBook, 'SINGLE BOOK')
     /* julie code */
     const currentUser = useSelector((state) => state?.session?.user);
     const [ display, setDisplay ] = useState('landing')
@@ -20,7 +21,6 @@ const BookById = () => {
         dispatch(getAllBooksThunk())
     }, [dispatch])
 
-
     if (booksDict.length < 1) return <div>Loading All Books...</div>
     if (!singleBook) return <div>Sorry, this book doesn't exist</div>
     return (
@@ -29,6 +29,7 @@ const BookById = () => {
                 <div key={singleBook.id}>
                     <h2>by {singleBook.author}</h2>
                     <img src={singleBook.image_url} alt='Cover' style={{height: '100px'}}/>
+                    {display == 'landing' ? <div>{singleBook.banned}</div> : null}
                     {display == 'landing' ? <div>{singleBook.description}</div> : null}
                 </div>
                 {/* julie code */}

@@ -12,6 +12,7 @@ class Book(db.Model):
     year = db.Column(db.Integer, nullable=False)
     author = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(5000), nullable=False)
+    banned = db.Column(db.String(5000), nullable=False)
     image_url = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -33,6 +34,7 @@ class Book(db.Model):
             'year': self.year,
             'author': self.author,
             'description': self.description,
+            'banned': self.banned,
             'image_url': self.image_url,
             # alex-code
             # 'reviews': self.reviews,
