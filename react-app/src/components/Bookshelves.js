@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk, renameUserBookshelfThunk } from '../store/bookshelvesRed';
 import { getAllBooksThunk } from '../store/booksAlex';
 import "./CSS/Bookshelves.css"
@@ -18,7 +17,10 @@ const Bookshelves = () => {
     const [renameShelfName, setRenameShelfName] = useState('')
     const [toggleEdit, setToggleEdit] = useState(false)
     const [toggleRename, setToggleRename] = useState(false)
+    // const [toggleBookEdit, setToggleBookEdit] = useState(false)
+    const [bookEditID, setBookEditID] = useState(false)
 
+    const [bookshelfIDArr, setBookshelfIDArr] = useState([])
 
     //turn usershelves slice of store into arr
     let userShelves = []
@@ -26,13 +28,15 @@ const Bookshelves = () => {
         userShelves = Object.values(bookshelvesDict)
     }
 
-    //organize into default shelves and custom
+    //organize into default shelves and custom, generate defaultIDs for bookedit logic
     let defaultArr = []
+    let defaultIDArr = []
     let customArr = []
     if (userShelves.length > 0) {
         for (let shelf of userShelves) {
             if (shelf.default) {
                 defaultArr.push(shelf)
+                defaultIDArr.push(shelf.id)
             } else { customArr.push(shelf) }
         }
     }
@@ -111,6 +115,29 @@ const Bookshelves = () => {
         return
     }
 
+    const genShelfIDArr = (bookID) => {
+        let genShelfIDArr = []
+        for (let shelf of userShelves) {
+            // console.log("each shelf books arr", shelf.books)
+            // console.log("passed book id", bookID)
+            if (shelf.books.includes(bookID)) {
+                if (!genShelfIDArr.includes(shelf.id)) {
+
+
+                    genShelfIDArr.push(shelf.id)
+                }
+            }
+        }
+
+
+        return genShelfIDArr
+    }
+
+    const handleBookEdit = (e) => {
+        e.preventDefault();
+        console.log(bookshelfIDArr)
+    }
+
     if (bookshelvesDict.length < 1) return <div></div>
     return (
         <>
@@ -126,6 +153,7 @@ const Bookshelves = () => {
                                 setToggleAddButton(true)
                                 setToggleEdit(!toggleEdit)
                                 setShelfName('')
+                                setBookEditID(false)
                                 return
                             }}
                             className='bookshelf_page_subEdit'>(Edit)</div>
@@ -135,6 +163,7 @@ const Bookshelves = () => {
                         onClick={() => {
                             setToggleEdit(false)
                             setShelfID(false)
+                            setBookEditID(false)
                             return
                         }}>All ({bookIDArr.length})</div>
                     <div className='bookshelf_page_defaultArr'>
@@ -145,6 +174,7 @@ const Bookshelves = () => {
                                     onClick={() => {
                                         setToggleEdit(false)
                                         setShelfID(shelf.id)
+                                        setBookEditID(false)
                                         return
                                     }}>{shelf.name} ({shelf.books.length})</div>
                             </div>
@@ -157,6 +187,7 @@ const Bookshelves = () => {
                                     onClick={() => {
                                         setToggleEdit(false)
                                         setShelfID(shelf.id)
+                                        setBookEditID(false)
                                         return
                                     }}
                                     className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'>{shelf.name} ({shelf.books.length})</div>
@@ -166,6 +197,7 @@ const Bookshelves = () => {
                             onClick={() => {
                                 setToggleRename(false)
                                 setToggleAddButton(false)
+                                setBookEditID(false)
                                 return
                             }}
                             className='bookshelf_page_addShelfButton'> Add shelf</div>}
@@ -206,9 +238,77 @@ const Bookshelves = () => {
                 </div>
                 {!toggleEdit && <div className='bookshelf_page_inner2'>
                     {!shelfID && bookIDArr?.map((id) =>
-                        // {console.log(booksDict[id].image_url)}
 
-                        <div key={booksDict[Number(id)]?.image_url} >
+                        //Repeat this div once more below
+                        <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
+                            <div
+                                onClick={() => {
+                                    if (bookEditID === id) {
+                                        setBookEditID(false)
+                                    } else { setBookEditID(id) }
+
+                                    let arr = genShelfIDArr(id)
+                                    setBookshelfIDArr(arr)
+                                    // console.log(bookshelfIDArr)
+                                    return
+                                }}
+                                className='bookshelf_page_imageEdit'>edit</div>
+                            {bookEditID === id &&
+                                <form className='bookshelf_page_bookEditForm' onSubmit={handleBookEdit}>
+                                    {customArr.map((shelf) =>
+                                        <div>
+                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                            <input
+                                                type='checkbox'
+                                                id={`${shelf.name}${shelf.id}`}
+
+                                                defaultChecked={shelf.books.includes(id) ? 'checked' : ''}
+                                                onChange={() => {
+                                                    if (bookshelfIDArr.includes(shelf.id)) {
+                                                        let tempArr = [...bookshelfIDArr]
+                                                        let finalArr = []
+                                                        for (let id of tempArr) {
+                                                            if (id !== shelf.id) {
+                                                                finalArr.push(id)
+                                                            }
+                                                        }
+                                                        setBookshelfIDArr(finalArr)
+                                                    } else { setBookshelfIDArr([...bookshelfIDArr, shelf.id]) }
+
+                                                }}
+
+                                            ></input>
+                                        </div>
+                                    )}
+                                    {defaultArr.map((shelf) =>
+                                        <div>
+                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                            <input
+                                                type='radio'
+                                                id={`${shelf.name}${shelf.id}`}
+                                                name='defaultRadio'
+                                                defaultChecked={shelf.books.includes(id) ? 'checked' : ''}
+                                                onChange={() => {
+
+                                                    let tempArr = [...bookshelfIDArr]
+                                                    let finalArr = []
+                                                    for (let id of tempArr) {
+                                                        if (!defaultIDArr.includes(id)) {
+                                                            finalArr.push(id)
+                                                        }
+
+                                                    }
+                                                    finalArr.push(shelf.id)
+                                                    setBookshelfIDArr(finalArr)
+
+                                                }}
+
+                                            ></input>
+                                        </div>
+                                    )}
+                                    <button>Save</button>
+                                </form>
+                            }
                             <img
                                 className="bookshelf_page_img"
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />
@@ -216,9 +316,77 @@ const Bookshelves = () => {
 
                     )}
                     {shelfID && bookshelvesDict[shelfID]?.books.map((id) =>
-                        // {console.log(booksDict[id].image_url)}
 
-                        <div key={booksDict[Number(id)]?.image_url} >
+                        //REPEAT OF UPPER DIV
+                        <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
+                            <div
+                                onClick={() => {
+                                    if (bookEditID === id) {
+                                        setBookEditID(false)
+                                    } else { setBookEditID(id) }
+
+                                    let arr = genShelfIDArr(id)
+                                    setBookshelfIDArr(arr)
+                                    // console.log(bookshelfIDArr)
+                                    return
+                                }}
+                                className='bookshelf_page_imageEdit'>edit</div>
+                            {bookEditID === id &&
+                                <form className='bookshelf_page_bookEditForm' onSubmit={handleBookEdit}>
+                                    {customArr.map((shelf) =>
+                                        <div>
+                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                            <input
+                                                type='checkbox'
+                                                id={`${shelf.name}${shelf.id}`}
+
+                                                defaultChecked={shelf.books.includes(id) ? 'checked' : ''}
+                                                onChange={() => {
+                                                    if (bookshelfIDArr.includes(shelf.id)) {
+                                                        let tempArr = [...bookshelfIDArr]
+                                                        let finalArr = []
+                                                        for (let id of tempArr) {
+                                                            if (id !== shelf.id) {
+                                                                finalArr.push(id)
+                                                            }
+                                                        }
+                                                        setBookshelfIDArr(finalArr)
+                                                    } else { setBookshelfIDArr([...bookshelfIDArr, shelf.id]) }
+
+                                                }}
+
+                                            ></input>
+                                        </div>
+                                    )}
+                                    {defaultArr.map((shelf) =>
+                                        <div>
+                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                            <input
+                                                type='radio'
+                                                id={`${shelf.name}${shelf.id}`}
+                                                name='defaultRadio'
+                                                defaultChecked={shelf.books.includes(id) ? 'checked' : ''}
+                                                onChange={() => {
+
+                                                    let tempArr = [...bookshelfIDArr]
+                                                    let finalArr = []
+                                                    for (let id of tempArr) {
+                                                        if (!defaultIDArr.includes(id)) {
+                                                            finalArr.push(id)
+                                                        }
+
+                                                    }
+                                                    finalArr.push(shelf.id)
+                                                    setBookshelfIDArr(finalArr)
+
+                                                }}
+
+                                            ></input>
+                                        </div>
+                                    )}
+                                    <button>Save</button>
+                                </form>
+                            }
                             <img
                                 className="bookshelf_page_img"
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />

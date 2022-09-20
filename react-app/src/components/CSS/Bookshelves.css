@@ -97,12 +97,41 @@
     cursor: pointer;
 }
 
+.bookshelf_page_imageEdit {
+    margin-left: 10px;
+
+    background-color: #F4F1EA;
+    height: 10px;
+    font-size: small;
+    text-align: center;
+    width: 30px;
+    padding: 3px 3px 8px 3px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    /* position: fixed; */
+    color: rgba(0, 0, 0, 0.7);
+
+}
+
 .bookshelf_page_img {
     margin: 10px;
-    height: 150px;
+    max-width: 100%;
+    max-height: 100%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s;
+}
+
+.bookshelf_page_outerImage {
+    height: 150px;
+    transition: 0.3s;
+
+}
+
+.bookshelf_page_outerImage:hover {
+    height: 200px;
+    /* box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); */
 }
 
 .bookshelf_page_img:hover {
@@ -129,7 +158,8 @@
 .bookshelf_page_submitShelfButton:hover,
 .bookshelf_page_editDone:hover,
 .bookshelf_page_XRenameShelf:hover,
-.bookshelf_page_submitRenameShelfButton:hover {
+.bookshelf_page_submitRenameShelfButton:hover,
+.bookshelf_page_imageEdit:hover {
     background-color: #e7e5e1;
 }
 
