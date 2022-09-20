@@ -30,12 +30,39 @@ def create_review(id):
             book_id=id,
             user_id=current_user.id,
         )
-        print('REVIEW BACKEND', review)
+
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
 
-    print('REVIEW FORM ERRORS', form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@reviews_route.route('/<int:id>/<int:reviewId>', methods=["PUT"])
+@login_required
+def edit_review(id, reviewId):
+    print(reviewId)
+    form = CreateReview()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
+    print('BACKEND FORM DATA', data)
+    if form.validate_on_submit():
+            review = Review.query.get(reviewId)
+            print('!!!!!REVIEW IN BACKEND!!!!!', review.to_dict())
+            testing =  review.to_dict()
+            print(testing['id'],        'testing!!!!!!!!!!')
+            print(testing['user_id'],   'testing!!!!!!!!!!')
+            print(testing['review'],    'testing!!!!!!!!!!')
+            print(testing['stars'],     'testing!!!!!!!!!!')
+            print(data['stars'],        'testing!!!!!!!!!!')
+
+            review.review=data['review']
+            review.stars=data['stars']
+            review.book_id=id
+            review.user_id=current_user.id
+
+            db.session.commit()
+            return review.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 

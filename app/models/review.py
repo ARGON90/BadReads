@@ -23,9 +23,7 @@ class Review(db.Model):
             'book_id': self.book_id,
             'review': self.review,
             'stars': self.stars,
-            # alex-code
             'updated_at': self.updated_at,
             'created_at': self.created_at,
             'user': self.user.to_dict()
-            # alex-code
         }

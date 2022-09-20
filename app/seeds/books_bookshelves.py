@@ -13,7 +13,8 @@ def seed_books_bookshelves():
         year=book['year'],
         image_url=book['image_url'],
         user_id=1,
-        description=book['description']
+        description=book['description'],
+        banned=book['banned']
     )) for book in books_list]
 
     have_read_1 = Bookshelf(

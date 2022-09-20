@@ -1,10 +1,11 @@
-.edit-book-button {
+.delete-book-button {
   display: inline-flex;
   align-items: center;
   text-align: center;
   font-size: small;
   justify-content: center;
   color: rgba(0, 0, 0, 0.7);
+  padding: 3px;
   border: 1px solid rgba(170, 170, 170, 0.3);
   border-radius: 5px;
   background-color: #F4F1EA;
@@ -13,56 +14,28 @@
   height: 23px;
 }
 
-.edit-book-button:hover {
+.delete-book-button:hover {
   background-color: rgba(39, 28, 20, 0.75);
 }
 
-.edit-book-form {
+.delete-book-form {
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   flex-direction: column;
   max-height: 100%;
   max-width: 100%;
   background-color: white;
-  font-size: 14px;
-  color: #181818;
-  /* position: relative; */
+  position: relative;
 }
 
-.edit-book-form-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333333;
-  /* text-align: center; */
+.delete-book-form-title {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
   /* padding-bottom: 20px; */
 }
 
-.edit-book-form-errors-container {
-  padding: 10px 0px;
-  color: red;
-}
-
-.edit-book-form-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 5px;
-  margin-top: 6px;
-}
-
-.edit-book-form-input {
-  min-width: 300px;
-  width: 800px;
-  height: 30px;
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  border: 1px solid #DCD6CC;
-  padding: 2px;
-  cursor: pointer;
-  caret-color: black;
-}
-
-.edit-book-modal-body {
+.delete-book-modal-body {
   display: flex;
   flex-direction: column;
   max-height: 100%;
@@ -72,7 +45,8 @@
   border-radius: 20px;
 }
 
-.edit-book-form-submit {
+.delete-book-form-delete-button,
+.delete-book-form-cancel-button {
   color: white;
   font-size: 14px;
   font-weight: 600;

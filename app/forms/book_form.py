@@ -11,4 +11,5 @@ class CreateBook(FlaskForm):
   author = StringField('Author', validators=[DataRequired(), Length(
       min=1, max=255, message="You have exceeded the maximum number of characters allowed.")])
   description = StringField('Description', validators=[DataRequired(), Length(min=1, max=5000, message='You have exceeded the maximum number of characters allowed.')])
+  banned = StringField('Banned Reason', validators=[DataRequired(), Length(min=1, max=5000, message="You have exceeded the maximum number of characters allowed.")])
   image_url = StringField('Image URL', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'tiff'])])

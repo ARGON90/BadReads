@@ -12,12 +12,14 @@ const CreateBookForm = ({ setShowModal }) => {
   const [year, setYear] = useState('');
   const [author, setAuthor] = useState('');
   const [description, setDescription] = useState('');
+  const [banned, setBanned] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateYear = (e) => setYear(e.target.value);
   const updateAuthor = (e) => setAuthor(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
+  const updateBanned = (e) => setBanned(e.target.value);
   const updateImageUrl = (e) => setImageUrl(e.target.value);
 
   useEffect(() => {
@@ -44,8 +46,13 @@ const CreateBookForm = ({ setShowModal }) => {
     } else if (description.length > 5000) {
       newErrors.push('Description must be 5000 characters or less.');
     }
+    if (banned.length <= 0) {
+      newErrors.push('Banned reason is required.');
+    } else if (banned.length > 5000) {
+      newErrors.push('Banned reason must be 5000 characters or less.');
+    }
     setErrors(newErrors);
-  }, [currentUser, title, year, author, description])
+  }, [currentUser, title, year, author, description, banned])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,6 +62,7 @@ const CreateBookForm = ({ setShowModal }) => {
       year,
       author,
       description,
+      banned,
       image_url: imageUrl
     }
 
@@ -73,7 +81,7 @@ const CreateBookForm = ({ setShowModal }) => {
         <div className="create-book-modal-body">
           <div className="create-book-form-errors-container">
             {errors.map((error, idx) => (
-              <span key={idx}>Error: {error}</span>
+              <div key={idx}>{error}</div>
             ))}
           </div>
           <label className="create-book-form-label">Title</label>
@@ -112,6 +120,15 @@ const CreateBookForm = ({ setShowModal }) => {
             value={description}
             onChange={updateDescription}
           />
+          <label className="create-book-form-label">Banned Reason</label>
+          <input
+            className="create-book-form-input"
+            type="string"
+            placeholder="Banned Reason"
+            required
+            value={banned}
+            onChange={updateBanned}
+          />
           <label className="create-book-form-label">Book Cover Image URL</label>
           <input
             className="create-book-form-input"
@@ -122,7 +139,8 @@ const CreateBookForm = ({ setShowModal }) => {
             onChange={updateImageUrl}
           />
         </div>
-        <button className="create-book-form-submit" type="submit" disabled={errors.length ? true : false}>Add Book</button>
+        <div className="create-book-form-body-separator"></div>
+        <button className="create-book-form-submit" type="submit" disabled={errors.length ? true : false}>Submit</button>
       </form>
     </>
   )

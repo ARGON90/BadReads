@@ -38,8 +38,6 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
       user_id: userId
     }
 
-    console.log('REVIEW DATA ', reviewData)
-
     const createdReview = await dispatch(createReviewThunk(reviewData));
 
     if (createdReview) {
@@ -66,7 +64,7 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
           </div>
           <label
             // className="create-book-form-label"
-          >Stars</label>
+          >My rating:</label>
           <input
             // className="create-book-form-input"
             type="integer"
@@ -77,7 +75,7 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
           />
                     <label
             // className="create-book-form-label"
-          >Review</label>
+          >What did you think?</label>
           <textarea
             // className="create-book-form-input"
             type="string"
