@@ -15,7 +15,9 @@ const Bookshelves = () => {
     const [shelfID, setShelfID] = useState(false)
     const [toggleAddButton, setToggleAddButton] = useState(true)
     const [shelfName, setShelfName] = useState('')
+    const [renameShelfName, setRenameShelfName] = useState('')
     const [toggleEdit, setToggleEdit] = useState(false)
+    const [toggleRename, setToggleRename] = useState(false)
 
 
     //turn usershelves slice of store into arr
@@ -83,7 +85,27 @@ const Bookshelves = () => {
         dispatch(deleteUserBookshelfThunk(id))
         // dispatch(getUserBookshelvesThunk())
         // dispatch(getAllBooksThunk())
+        setToggleRename(false)
+        setRenameShelfName('')
         return
+    }
+
+    //handle renaming a shelf submission
+    const handleRenameShelfSubmit = (e) => {
+        e.preventDefault();
+
+        let editBookShelf = {
+            user_id: userID,
+            name: renameShelfName,
+        }
+
+        console.log(editBookShelf)
+
+        //end
+        //dispatch here
+
+        setToggleRename(false)
+        setRenameShelfName('')
     }
 
     if (bookshelvesDict.length < 1) return <div></div>
@@ -203,13 +225,52 @@ const Bookshelves = () => {
                                 <div
                                     onClick={() => handleDeleteShelf(shelf.id)}
                                     className="bookshelf_page_delete">X</div>
-                                <div
-                                    className='bookshelf_page_editShelfName'>{shelf.name} ({shelf.books.length})</div>
-                                <div className="bookshelf_page_editRename"> rename</div>
+                                {toggleRename !== shelf.id &&
+                                    <div
+                                        className='bookshelf_page_editShelfName'>{shelf.name} ({shelf.books.length})</div>
+                                }
+                                {toggleRename !== shelf.id && <div
+                                    onClick={() => setToggleRename(shelf.id)}
+                                    className="bookshelf_page_editRename"> rename</div>}
+                                {toggleRename == shelf.id &&
+                                    <div className="bookshelf_page_renameFormOuter">
+                                        <form className='bookshelf_page_renameShelfForm' onSubmit={handleRenameShelfSubmit}>
+                                            <div>
+                                                <input
+                                                    id='renameShelfName'
+                                                    type="text"
+                                                    value={renameShelfName ? renameShelfName : shelf.name}
+                                                    onChange={(e) => setRenameShelfName(e.target.value)}
+                                                    required
+                                                    maxLength={20}
+                                                    minLength={2}
+
+                                                />
+                                            </div>
+                                            <button
+
+                                                className='bookshelf_page_submitRenameShelfButton'> Save</button>
+                                            <div
+                                                onClick={() => {
+                                                    setRenameShelfName("")
+                                                    setToggleRename(false)
+                                                    return
+                                                }}
+                                                className='bookshelf_page_XRenameShelf'>
+                                                Cancel
+                                            </div>
+                                        </form>
+                                    </div>
+                                }
                             </div>
                         )}
                         <div
-                            onClick={() => setToggleEdit(false)}
+                            onClick={() => {
+                                setShelfID(false)
+                                setToggleEdit(false)
+                                setToggleRename(false)
+                                setRenameShelfName('')
+                            }}
                             className="bookshelf_page_editDone">I'm Done</div>
 
                     </div>
