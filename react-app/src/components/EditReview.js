@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { editReviewThunk } from "../store/reviews";
+import { getAllReviewsThunk } from "../store/reviews";
 import '../components/CSS/Reviews.css'
 
 
-const EditReview = () => {
+const EditReview = ({bookId, userId, userReview, userStars, displayLanding, reviewOfCurrentUser}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector(state => state?.session?.user);
+  const currentReviewId = reviewOfCurrentUser[0].id
   const [errors, setErrors] = useState([]);
-  const [review, setReview] = useState('');
-  const [stars, setStars] = useState('');
+  const [review, setReview] = useState(`${userReview}`);
+  const [stars, setStars] = useState(`${userStars}`);
 
   const updateReview = (e) => setReview(e.target.value);
   const updateStars = (e) => setStars(e.target.value);
 
+  useEffect(() => {
+    console.log('EDIT REVIEWS USE EFFECT FOR ALL REVIEWS')
+    dispatch(getAllReviewsThunk())
+}, [dispatch])
 
   useEffect(() => {
     const newErrors = [];
@@ -37,17 +44,20 @@ const EditReview = () => {
     e.preventDefault();
 
     const reviewData = {
+      id: currentReviewId,
       review,
       stars,
+      book_id: bookId,
+      user_id: userId
     }
 
-    // const createdBook = await dispatch(createReview(reviewData));
+    const editedBook = await dispatch(editReviewThunk(reviewData));
 
-    // if (createdBook) {
-    //   setErrors([]);
-    //   history.push('/');
-    // //   need to work on this push
-    // }
+    if (editedBook) {
+      setErrors([]);
+      displayLanding();
+      history.push(`/books/${bookId}`);
+    }
   }
   return (
     <>
@@ -97,5 +107,7 @@ const EditReview = () => {
     </>
   )
 }
+
+// todo - user rated it 1 STARS => user rated it 1 STAR
 
 export default EditReview;

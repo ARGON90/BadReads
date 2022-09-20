@@ -22,9 +22,9 @@ const BooksList = () => {
                 <div key={book.id}>
                     <NavLink to={`/books/${book.id}`}>
                     <img src={book.image_url} alt='cover' style={{height: '100px'}}/>
-                    </NavLink>
                     <div>{book.title}</div>
                     <div>{book.author}</div>
+                    </NavLink>
                 </div>
 
             )}

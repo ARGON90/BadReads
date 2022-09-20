@@ -1,5 +1,6 @@
 const GET_ALL_REVIEWS = '/reviews/allReviews'
 const CREATE_REVIEW = '/reviews/createReview'
+const EDIT_REVIEW = '/reviews/editReview'
 const DELETE_ONE_REVIEW = '/reviews/deleteReview'
 
 const deleteReviewById = (id) => {
@@ -12,6 +13,13 @@ const deleteReviewById = (id) => {
 const createReview = (review) => {
     return {
         type: CREATE_REVIEW,
+        review
+    }
+}
+
+const editReview = (review) => {
+    return {
+        type: EDIT_REVIEW,
         review
     }
 }
@@ -34,9 +42,9 @@ export const getAllReviewsThunk = () => async (dispatch) => {
     }
 }
 
+//THUNK - CREATE A REVIEW
 export const createReviewThunk = (data) => async (dispatch) => {
     console.log('CREATE REVIEW  THUNK')
-    console.log('CREATE REVIEW THUNK', data)
     const response = await fetch(`/api/reviews/${data.book_id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,6 +53,22 @@ export const createReviewThunk = (data) => async (dispatch) => {
     if (response.ok) {
         const review = await response.json();
         await dispatch(createReview(review));
+        return review;
+    }
+}
+
+//THUNK - EDIT A REVIEW
+export const editReviewThunk = (data) => async (dispatch) => {
+    console.log('EDIT REVIEW THUNK')
+    console.log('DATA', data)
+    const response = await fetch(`/api/reviews/${data.book_id}/${data.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const review = await response.json();
+        await dispatch(editReview(review));
         return review;
     }
 }
@@ -76,6 +100,15 @@ const reviewsReducer = (state = initialState, action) => {
 
         case CREATE_REVIEW: {
             console.log('CREATE REVIEW REDUCER')
+            const newState = {
+                ...state,
+                [action.review.id]: action.review
+            };
+            return newState;
+        }
+
+        case EDIT_REVIEW: {
+            console.log('EDIT REVIEW REDUCER')
             const newState = {
                 ...state,
                 [action.review.id]: action.review
