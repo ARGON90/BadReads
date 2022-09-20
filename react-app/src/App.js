@@ -12,6 +12,8 @@ import { authenticate } from './store/session';
 import BookById from './components/BookByIdAlex';
 import Bookshelves from './components/Bookshelves';
 import UserBooks from './components/UserBooks';
+import SearchBookFilter from './components/SearchBooks/SearchFilter';
+
 
 
 function App() {
