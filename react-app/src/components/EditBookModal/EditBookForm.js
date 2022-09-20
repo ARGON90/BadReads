@@ -16,12 +16,14 @@ const EditBookForm = ({ setShowModal, userBook }) => {
   const [year, setYear] = useState(userBook?.year);
   const [author, setAuthor] = useState(userBook?.author);
   const [description, setDescription] = useState(userBook?.description);
+  const [banned, setBanned] = useState(userBook?.banned);
   const [imageUrl, setImageUrl] = useState(userBook?.image_url);
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateYear = (e) => setYear(e.target.value);
   const updateAuthor = (e) => setAuthor(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
+  const updateBanned = (e) => setBanned(e.target.value);
   const updateImageUrl = (e) => setImageUrl(e.target.value);
 
   useEffect(() => {
@@ -52,6 +54,11 @@ const EditBookForm = ({ setShowModal, userBook }) => {
     } else if (description.length > 5000) {
       newErrors.push("Description must be 5000 characters or less.");
     }
+    if (banned.length <= 0) {
+      newErrors.push("Banned reason is required.");
+    } else if (banned.length > 5000) {
+      newErrors.push("Banned reason must be 5000 characters or less.");
+    }
     setErrors(newErrors);
   }, [currentUser, title, year, author, description]);
 
@@ -65,6 +72,7 @@ const EditBookForm = ({ setShowModal, userBook }) => {
       year,
       author,
       description,
+      banned,
       image_url: imageUrl,
     };
 
@@ -84,7 +92,7 @@ const EditBookForm = ({ setShowModal, userBook }) => {
         <div className="edit-book-modal-body">
           <div className="edit-book-form-errors-container">
             {errors.map((error, idx) => (
-              <span key={idx}>Error: {error}</span>
+              <div key={idx}>{error}</div>
             ))}
           </div>
           <label className="edit-book-form-label">Title</label>
@@ -122,6 +130,15 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             required
             value={description}
             onChange={updateDescription}
+          />
+          <label className="edit-book-form-label">Banned Reason</label>
+          <input
+            className="edit-book-form-input"
+            type="string"
+            placeholder="Banned Reason"
+            required
+            value={banned}
+            onChange={updateBanned}
           />
           <label className="edit-book-form-label">Book Cover Image URL</label>
           <input

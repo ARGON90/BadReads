@@ -24,10 +24,6 @@ const UserBooks = () => {
     }
 
     const userBooks = booksList.filter((book) => book.user_id === currentUser['id'])
-    console.log('currentUser', currentUser)
-    console.log('currentUserId', currentUser['id'])
-    console.log('books', booksList)
-    console.log('userBooks', userBooks)
 
     return (
         <>

@@ -30,6 +30,7 @@ def add_user_book():
         year=data['year'],
         author=data['author'],
         description=data['description'],
+        banned=data['banned'],
         image_url=data['image_url'],
     )
 
@@ -54,6 +55,7 @@ def edit_user_book(id):
         book.year = data['year']
         book.author = data['author']
         book.description = data['description']
+        book.banned = data['banned']
         book.image_url = data['image_url']
 
         db.session.commit()
