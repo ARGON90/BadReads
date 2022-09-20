@@ -134,7 +134,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
                 <div>
                     {display === 'landing' ?
                         <div>
-                            <div>Would you like to say something about this book, {currentUserUsername}?</div>
+                            <div>{currentUserUsername}, start your review of {singleBook.title}</div>
                             <button
                                 onClick={displayCreate}
                                 className='alex_gr-button'

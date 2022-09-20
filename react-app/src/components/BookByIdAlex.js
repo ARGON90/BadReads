@@ -5,6 +5,8 @@ import { getAllBooksThunk } from '../store/booksAlex';
 import Reviews from './Reviews';
 import EditBookModal from './EditBookModal';
 
+import "./CSS/Reviews.css"
+
 const BookById = () => {
     console.log('INSIDE BOOKS BY ID COMPONENT')
     const { id } = useParams()
@@ -25,12 +27,14 @@ const BookById = () => {
     if (!singleBook) return <div>Sorry, this book doesn't exist</div>
     return (
         <>
-            <h1>{singleBook.title} </h1>
-                <div key={singleBook.id}>
-                    <h2>by {singleBook.author}</h2>
+            <h1
+            className='alex_review_page_title'
+            >{singleBook.title} </h1>
+                <div className='alex_merriweather_300' key={singleBook.id}>
+                    <h2 className='alex_font_16'>by {singleBook.author}</h2>
                     <img src={singleBook.image_url} alt='Cover' style={{height: '100px'}}/>
-                    {display == 'landing' ? <div>{singleBook.banned}</div> : null}
-                    {display == 'landing' ? <div>{singleBook.description}</div> : null}
+                    {display == 'landing' ? <div className='alex_font_14'>{singleBook.banned}</div> : null}
+                    {display == 'landing' ? <div className='alex_font_14'>{singleBook.description}</div> : null}
                 </div>
                 {/* julie code */}
                 {singleBook && currentUser && currentUser.id === singleBook.user_id && (
