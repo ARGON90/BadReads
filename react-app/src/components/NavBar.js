@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './CSS/NavBar.css'
-
 
 const NavBar = () => {
   const [ showDropdown, setShowDropdown ] = useState(false)
   const handleDropdown = () => {
     if (showDropdown) return
     setShowDropdown(true)
-}
+  }
 
-const IMAGE = (img) => {
+  const sessionUser = useSelector(state => state.session.user)
+
+  const IMAGE = (img) => {
   return require(`../images/${img}`).default
-}
+  }
+
+
 
 useEffect(() => {
     if (!showDropdown) return
@@ -28,7 +32,12 @@ useEffect(() => {
 
 
   return (
+    <>
     <div className='navBarMainDiv'>
+      <div className='navBarHeader'>
+        <img alt="hand wave icon" src="https://img.icons8.com/ios/50/000000/so-so.png" width="30" height="30"/>
+        <h2>Welcome, {sessionUser.username} !</h2>
+      </div>
       <div className='navBarContainer'>
         <div className='navBarLeft'>
           <div className='navBarLogoDiv'>
@@ -37,33 +46,44 @@ useEffect(() => {
             </NavLink>
           </div>
           <div className='navBarLinksContainer'>
-            <NavLink className='navBarHomeLink' to='/books' exact={true} activeClassName='active'>
+            <NavLink className='navBarTextLink' to='/books' exact={true} activeClassName='active'>
               Home 
             </NavLink>
           </div>
           <div className='navBarLinksContainer'>
-            <NavLink className='navBarMyBooksLink' to='/my-books' exact={true} activeClassName='active'>
+            <NavLink className='navBarTextLink' to='/my-books' exact={true} activeClassName='active'>
               My Books
             </NavLink>
           </div>
         </div>
         <div className='navBarRight'>
           <div className='navBarRightMenu'>
-            <button onClick={handleDropdown} className='navBarDropDownMenu'/>
+            <div className='navbarHoverSquare'>
+            <button onClick={handleDropdown} className='navBarDropDownMenu'>
+              <div className="usernameLetter">
+              {sessionUser.username[0]}
+              </div>
+            </button>
+            </div>
             {showDropdown &&
             <div className='navBarDropDownContainer'>
-              <div className='navBarDMenuProfile'>Profile</div>
-              <div className='navBarDMenuBookshelve'>
-                <NavLink to="/bookshelves" exact={true} activeClassName='active'>
+              <div className='navBarDMenuName'>
+              {sessionUser.username}
+              </div>
+              <div class="navBarBookshelveLink">
+                <NavLink className='navBarDMenuText' to="/bookshelves" exact={true} activeClassName='active'>
                   Bookshelves
                 </NavLink>
               </div>
+              <div className="dDownMenuLine">
               <LogoutButton />
+              </div>
             </div>}
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 }
 
