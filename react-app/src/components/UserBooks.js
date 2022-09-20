@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBooksThunk } from '../store/booksAlex';
 import CreateBookModal from './CreateBookModal';
+import EditBookModal from './EditBookModal';
+import DeleteBookModal from './DeleteBookModal';
 
 const UserBooks = () => {
     console.log('INSIDE USER BOOKS COMPONENT')
@@ -40,6 +42,8 @@ const UserBooks = () => {
                             <div>{userBook.title}</div>
                             <div>{userBook.author}</div>
                         </NavLink>
+                        <EditBookModal userBook={userBook} />
+                        <DeleteBookModal userBook={userBook} />
                     </div>
                 )}
                 </>

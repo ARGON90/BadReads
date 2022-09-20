@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import EditBookForm from "./EditBookForm";
-import "./EditBookModal.css";
+import DeleteBookForm from "./DeleteBookForm";
+import "./DeleteBookModal.css";
 
-function EditBookModal({ userBook }) {
+function DeleteBookModal({ userBook }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <div className="edit-book-container">
-        <button
-          className="edit-book-button"
-          onClick={() => setShowModal(true)}
-        >
-          Edit Book
+        <button className="edit-book-button" onClick={() => setShowModal(true)}>
+          Delete Book
         </button>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
-            <EditBookForm setShowModal={setShowModal} userBook={userBook} />
+            <DeleteBookForm setShowModal={setShowModal} userBook={userBook} />
           </Modal>
         )}
       </div>
@@ -25,4 +22,4 @@ function EditBookModal({ userBook }) {
   );
 }
 
-export default EditBookModal;
+export default DeleteBookModal;

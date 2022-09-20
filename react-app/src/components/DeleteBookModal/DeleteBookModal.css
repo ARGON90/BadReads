@@ -1,4 +1,4 @@
-.edit-book-button {
+.delete-book-button {
   display: inline-flex;
   align-items: center;
   text-align: center;
@@ -14,11 +14,11 @@
   height: 23px;
 }
 
-.edit-book-button:hover {
+.delete-book-button:hover {
   background-color: rgba(39, 28, 20, 0.75);
 }
 
-.edit-book-form {
+.delete-book-form {
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -28,35 +28,14 @@
   position: relative;
 }
 
-.edit-book-form-title {
+.delete-book-form-title {
   font-size: 22px;
   font-weight: 500;
   text-align: center;
   /* padding-bottom: 20px; */
 }
 
-.edit-book-form-errors-container {
-  padding-bottom: 15px;
-  color: red;
-}
-
-.edit-book-form-label {
-  font-size: 12px;
-  font-weight: 800;
-  color: #00635d;
-}
-
-.edit-book-form-input {
-  min-width: 300px;
-  width: 500px;
-  height: 40px;
-  border-radius: 5px;
-  margin: 5px 0px;
-  background-color: transparent;
-  border: 1px solid #484848;
-}
-
-.edit-book-modal-body {
+.delete-book-modal-body {
   display: flex;
   flex-direction: column;
   max-height: 100%;
@@ -66,7 +45,8 @@
   border-radius: 20px;
 }
 
-.edit-book-form-submit {
+.delete-book-form-delete-button,
+.delete-book-form-cancel-button {
   color: white;
   font-size: 14px;
   font-weight: 600;
