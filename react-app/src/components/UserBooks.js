@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBooksThunk } from '../store/booksAlex';
 import CreateBookModal from './CreateBookModal';
@@ -7,7 +7,6 @@ import CreateBookModal from './CreateBookModal';
 const UserBooks = () => {
     console.log('INSIDE USER BOOKS COMPONENT')
 
-    // const history = useHistory();
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state?.session?.user);
     const booksList = useSelector((state) => Object.values(state?.books))
@@ -19,7 +18,6 @@ const UserBooks = () => {
 
     if (currentUser == null) {
         console.log('currentUser == null conditional')
-        // history.push("/")
         return null
     }
 
@@ -37,9 +35,11 @@ const UserBooks = () => {
                 <h1>My Books List:</h1>
                 {userBooks?.map((userBook, index) =>
                     <div key={index}>
-                        <img src={userBook.image_url} alt='bookcover' style={{height: '100px'}} />
-                        <div>{userBook.title}</div>
-                        <div>{userBook.author}</div>
+                        <NavLink to={`/books/${userBook.id}`}>
+                            <img src={userBook.image_url} alt='bookcover' style={{height: '100px'}} />
+                            <div>{userBook.title}</div>
+                            <div>{userBook.author}</div>
+                        </NavLink>
                     </div>
                 )}
                 </>

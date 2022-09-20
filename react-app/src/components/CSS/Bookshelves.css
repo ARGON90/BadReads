@@ -61,12 +61,14 @@
 .bookshelf_page_shelfNameAll {
     color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
+    width: fit-content;
 }
 
 .bookshelf_page_shelfNameDec {
 
     color: #00635d;
     cursor: pointer;
+    width: fit-content;
 }
 
 .bookshelf_page_shelfNameDec:hover,
@@ -100,6 +102,12 @@
     height: 150px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.bookshelf_page_img:hover {
+    height: 200px;
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
 }
 
 .bookshelf_page_addShelfButton {
@@ -119,7 +127,9 @@
 
 .bookshelf_page_addShelfButton:hover,
 .bookshelf_page_submitShelfButton:hover,
-.bookshelf_page_editDone:hover {
+.bookshelf_page_editDone:hover,
+.bookshelf_page_XRenameShelf:hover,
+.bookshelf_page_submitRenameShelfButton:hover {
     background-color: #e7e5e1;
 }
 
@@ -128,7 +138,7 @@
     width: 100px;
     border: 1px solid rgba(170, 170, 170, 0.5);
     border-radius: 5px;
-    height: 0px;
+    height: 10px;
     margin: 0px;
 
 }
@@ -179,14 +189,17 @@
     display: flex;
     border-bottom: 1px solid rgba(170, 170, 170, 0.3);
     padding: 2px 5px 10px 5px;
+    height: 29px;
 
 }
 
 .bookshelf_page_delete {
-    align-self: flex-end;
+
     color: rgba(210, 46, 46, 0.8);
     font-weight: bolder;
     cursor: pointer;
+    margin-top: 10px;
+    align-self: center;
 }
 
 .bookshelf_page_editRename {
@@ -221,4 +234,56 @@
     color: rgba(0, 0, 0, 0.5);
     font-size: large;
     margin-left: 200px;
+}
+
+.bookshelf_page_renameShelfForm {
+    display: flex;
+}
+
+#renameShelfName {
+    caret-color: black;
+    width: 100px;
+    border: 1px solid rgba(170, 170, 170, 0.5);
+    border-radius: 5px;
+    height: 13px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+    color: rgba(0, 0, 0, 0.8);
+
+}
+
+#renameShelfName:hover {
+    background-color: white;
+}
+
+.bookshelf_page_submitRenameShelfButton {
+    background-color: #F4F1EA;
+    height: 10px;
+    font-size: small;
+    text-align: center;
+    width: 80px;
+    padding-top: 5px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    padding-bottom: 19px;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.bookshelf_page_XRenameShelf {
+    background-color: #F4F1EA;
+    height: 10px;
+    font-size: small;
+    text-align: center;
+    width: 80px;
+    padding-top: 5px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    padding-bottom: 9px;
+    margin-top: 6px;
+    margin-left: 10px;
 }

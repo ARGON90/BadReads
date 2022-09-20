@@ -19,7 +19,6 @@ function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user)
 
-
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
