@@ -1,7 +1,10 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.api.auth_routes import validation_errors_to_error_messages
+from app.models import review
 from app.models.review import Review
 from app.models.db import db
+from app.forms.create_review_form import CreateReview
 
 reviews_route = Blueprint('reviews', __name__)
 
@@ -13,7 +16,31 @@ def get_all_reviews():
     reviews_dict = {review.id:review.to_dict() for review in reviews}
     return reviews_dict
 
+@reviews_route.route('/<int:id>', methods=["POST"])
+@login_required
+def create_review(id):
+    form = CreateReview()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
+    print('BACKEND FORM DATA', data)
+    if form.validate_on_submit():
+        review = Review(
+            review=data['review'],
+            stars=data['stars'],
+            book_id=id,
+            user_id=current_user.id,
+        )
+        print('REVIEW BACKEND', review)
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
+
+    print('REVIEW FORM ERRORS', form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
 @reviews_route.route('/<int:id>', methods=["DELETE"])
+@login_required
 def delete_one_review(id):
     review = Review.query.get(id)
     db.session.delete(review)
