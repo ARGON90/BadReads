@@ -32,7 +32,6 @@ const SearchBookBar = ({ setSearchBar}) => {
         }
     }
 
-
     const handleSubmit = () => {
         history.push(`/books/${searchable}`)
         setFilterBooks([])
