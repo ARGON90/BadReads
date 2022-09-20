@@ -1,5 +1,6 @@
 body {
-    margin: 0 auto;
+    margin: 0 auto; 
+
 }
 
 /* badreads logo */
@@ -86,7 +87,7 @@ div.splashPageImg {
     color: #000;
     font-size: 30px;
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* log in form container */
@@ -199,16 +200,34 @@ div.splashPageImg {
 }
 
 .loginErrors {
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 24px;
     background-color: #FFF5F3;
-    border-radius: 20px;
+    border-radius: 16px;
+    line-height: 30px;
+    font-size: 15px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }
 
 .signUpErrors {
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 24px;
     background-color: #FFF5F3;
-    border-radius: 20px;
+    border-radius: 16px;
+    line-height: 30px;
+    font-size: 15px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }
+
+
 
 /* left side bottom half */
 .splashMiddleDiv {
@@ -218,8 +237,9 @@ div.splashPageImg {
     flex-direction: row;
     margin-top: 18rem;
     margin-right: 2em;
+    padding-bottom: 50em;
     width: 35rem;
-    height: auto;
+    height: 1000;
 }
 
 .splashMiddleLeft {
@@ -228,7 +248,7 @@ div.splashPageImg {
     width: 260px;;
     font-size: 14px;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 35px;
 }
 
 .splashMiddleRight {
@@ -249,21 +269,24 @@ div.splashPageImg {
 
 .splashMiddleContainer {
     position: absolute;
-    width: 95%;
-    margin: 10em 1em 0 0;
+    width: 100%;
+    margin-top: 10em;
+    margin-left: 1em;
     border-radius: 10px;
     background-color: #f4f2e9;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 30px 0px;
 }
 
 .splashMiddleContainer h2 {
     color: #382110;
     font-size: 18px;
+    padding-left: 20px;
 }
 
 .splashMiddleContainer p {
     color: #382110;
     font-size: 15px;
+    padding-left: 20px;
 }
 
 .splashMiddleRow {
@@ -281,7 +304,6 @@ img.splashBook {
     -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(255, 255, 255, 0.5)));
 }
 
-
 /* links to our social account */
 .socialLinks {
     cursor: pointer;
@@ -291,4 +313,52 @@ img.splashBook {
 .splashMiddleContainer hr {
     margin: 0;
     border: 1px solid #CCC9B5;
+}
+
+/* footer */
+.footerMainDiv {
+    position: relative;
+    margin-top: 20px;
+    background-color: #f9f8f4;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    padding: 32px;
+}
+
+.footerContainerDiv {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin: auto;
+    width: 960px;
+}
+
+.footerColumnTitle{
+    display: block;
+    color: #767676;
+    margin-right: 50px;
+    font-size: 14px;
+    padding-bottom: 5px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+}
+
+.footerColumn {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+
+.footerColumn a {
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-size: 14px;
+    color: #382110;
+    text-decoration: none;
+    padding-bottom: 8px;
+}
+
+.footerColumn a:hover {
+    text-decoration: underline;
+    color: #382110;
 }

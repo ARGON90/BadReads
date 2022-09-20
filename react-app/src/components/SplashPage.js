@@ -46,6 +46,7 @@ export default function SplashPage() {
             </div>
         </div>
         </div>
+         <div className="splashMiddle">
         <div className="splashMiddleDiv">
             <div className="splashMiddleLeft">
                 <h2>Deciding what to read next?</h2>
@@ -55,6 +56,7 @@ export default function SplashPage() {
                 <h2>What will you discover?</h2>
                 <p>Find and read the top banned books of yesterday and today; keep track of banned books you want to read and be part of the world's largest community of banned book lovers on badreads.</p>
             </div>
+
         <div className="splashMiddleContainer">
             <h2>Meet the team</h2>
             <div className="splashMiddleTeam">
@@ -115,8 +117,28 @@ export default function SplashPage() {
              </div>
                 <hr></hr>
             </div>
+         </div>
         </div>
         </div>
+        </div>
+        <div className="footerMainDiv">
+            <div className='footerContainerDiv'>
+                <div className='footerColumn'>
+                    <h2 className='footerColumnTitle'>INSPIRED BY</h2>
+                    <a href="https://www.goodreads.com/">goodreads</a>       
+                </div>
+                <div className='footerColumn'>
+                    <h2 className='footerColumnTitle'>WORK WITH US</h2>
+                    <a href="https://github.com/">Alex Gonglach</a>
+                    <a href="https://github.com/">Ben Waldee</a>
+                    <a href="https://github.com/">Julie Jung</a>
+                    <a href="https://github.com/">Justine Jang</a>
+                </div>
+                <div className='footerColumn'>
+                    <h2 className='footerColumnTitle'>CONNECT</h2>
+                    <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
+                </div>
+            </div>
         </div>
         </>
     )
