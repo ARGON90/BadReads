@@ -1,0 +1,82 @@
+.edit-book-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 25px;
+  border-color: transparent;
+  background-color: #1e1915;
+  cursor: pointer;
+  width: 7rem;
+  transition: 0.2s ease;
+}
+
+.edit-book-button:hover {
+  background-color: rgba(39, 28, 20, 0.75);
+}
+
+.edit-book-form {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+  background-color: white;
+  position: relative;
+}
+
+.edit-book-form-title {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  /* padding-bottom: 20px; */
+}
+
+.edit-book-form-errors-container {
+  padding-bottom: 15px;
+  color: red;
+}
+
+.edit-book-form-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #00635d;
+}
+
+.edit-book-form-input {
+  min-width: 300px;
+  width: 500px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 5px 0px;
+  background-color: transparent;
+  border: 1px solid #484848;
+}
+
+.edit-book-modal-body {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+}
+
+.edit-book-form-submit {
+  /* margin-top: 10px; */
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  /* border-radius: 25px; */
+  display: block;
+  align-self: center;
+  width: 7rem;
+  height: 100%;
+  min-width: 10rem;
+  /* border: none; */
+  background-color: #1e1915;
+}

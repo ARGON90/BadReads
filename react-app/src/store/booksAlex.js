@@ -1,5 +1,7 @@
 const GET_ALL_BOOKS = '/books/allBooks'
 const ADD_BOOK = '/my-books/ADD_BOOK'
+const EDIT_BOOK = '/my-books/EDIT_BOOK'
+const REMOVE_BOOK = '/my-books/DELETE_BOOK'
 
 const loadBooks = (books) => {
     return{
@@ -11,6 +13,16 @@ const loadBooks = (books) => {
 const addBook = (book) => ({
     type: ADD_BOOK,
     book
+})
+
+const editBook = (book) => ({
+    type: EDIT_BOOK,
+    book
+})
+
+const removeBook = (id) => ({
+    type: REMOVE_BOOK,
+    id
 })
 
 //THUNK - ALL BOOKS
@@ -42,31 +54,38 @@ export const createBook = (data) => async dispatch => {
     }
 }
 
-//REDUCER
-// const initialState = {}
-// const booksReducer = (state = initialState, action ) => {
-//     switch(action.type) {
-//         case GET_ALL_BOOKS: {
-//             console.log('ALL BOOKS REDUCER')
-//             const allbooks = action.books
-//             const newState = {...state, ...allbooks}
-//             return newState
-//         }
-//         default:
-//             return state
-//     }
-// }
+export const updateBook = (data) => async dispatch => {
+    console.log('UPDATE BOOK THUNK')
+    const response = await fetch(`/api/books/${data.id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
 
+    if (response.ok) {
+        const updatedBook = await response.json();
+        await dispatch(editBook(updatedBook));
+        return updatedBook;
+    };
+};
+
+export const deleteBook = (id) => async dispatch => {
+    const response = await fetch(`/api/books/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        const book = await response.json();
+        await dispatch(removeBook(id));
+        return book;
+    };
+};
+
+//REDUCER
 const initialState = {}
 const booksReducer = ( state = initialState, action ) => {
     let newState = {...state}
     switch (action.type) {
-        // case GET_ALL_BOOKS: {
-        //     console.log('ALL BOOKS REDUCER')
-        //     const allbooks = action.books
-        //     const newState = {...state, ...allbooks}
-        //     return newState
-        // }
 
         case GET_ALL_BOOKS: {
             console.log('ALL BOOKS REDUCER')
@@ -86,8 +105,22 @@ const booksReducer = ( state = initialState, action ) => {
             return newState;
         }
 
+        case EDIT_BOOK: {
+            console.log('ADD BOOK REDUCER')
+            newState = {
+                ...state,
+                [action.book.id]: action.book
+            };
+            return newState;
+        }
+
+        case REMOVE_BOOK: {
+            delete newState[action.id];
+            return newState;
+        }
+
         default:
-            return state
+            return state;
     }
 }
 
