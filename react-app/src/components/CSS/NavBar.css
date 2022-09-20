@@ -77,8 +77,6 @@
 /* home and my books link */
 .navBarLinksContainer {
     padding: 13px 9px 7px 9px;
-    height: 30px;
-    width: fit-content;
 }
 
 .navBarTextLink {
@@ -86,6 +84,14 @@
     text-decoration: none;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 18px;
+}
+
+.navBarRightButton {
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    width: fit-content;
+
 }
 
 .navBarTextLink:hover {
@@ -148,7 +154,7 @@
 
 .navBarDMenuName {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     padding-top: 15px;
     margin-left: 15px;

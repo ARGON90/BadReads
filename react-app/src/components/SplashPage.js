@@ -61,7 +61,7 @@ export default function SplashPage() {
             <h2>Meet the team</h2>
             <div className="splashMiddleTeam">
              <div className="splashMiddleRow">
-                <p>Alex</p>
+                <p>Connect with Alex</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
                     <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
@@ -75,7 +75,7 @@ export default function SplashPage() {
             </div>
             <hr></hr>
              <div className="splashMiddleRow">
-                <p>Ben</p>
+                <p>Connect with Ben</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
                     <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
@@ -89,7 +89,7 @@ export default function SplashPage() {
              </div>
              <hr></hr>
              <div className="splashMiddleRow">
-                <p>Julie</p>
+                <p>Connect with Julie</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
                     <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
@@ -103,7 +103,7 @@ export default function SplashPage() {
              </div>
              <hr></hr>
              <div className="splashMiddleRow">
-                <p>Justine</p>
+                <p>Connect with Justine</p>
                 <a href="https://github.com/" target='_blank'>
                     <div className='socialLinks'>
                     <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
@@ -114,6 +114,7 @@ export default function SplashPage() {
                     <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                     </div>
                 </a>
+        
              </div>
                 <hr></hr>
             </div>
