@@ -54,11 +54,11 @@ def edit_review(id, reviewId):
             print(testing['review'],    'testing!!!!!!!!!!')
             print(testing['stars'],     'testing!!!!!!!!!!')
             print(data['stars'],        'testing!!!!!!!!!!')
-            print(data['reviews'],      'testing!!!!!!!!!!')
-            review.review=data['review'],
-            review.stars=data['stars'],
-            review.book_id=id,
-            review.user_id=current_user.id,
+
+            review.review=data['review']
+            review.stars=data['stars']
+            review.book_id=id
+            review.user_id=current_user.id
 
             db.session.commit()
             return review.to_dict()
