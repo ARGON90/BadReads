@@ -360,6 +360,26 @@
     background-color: #558482;
 }
 
+.bookshelf_page_bookEditStatus {
+    margin-top: 10px;
+    padding-left: 5px;
+    font-weight: bolder;
+    border-bottom: 1px solid rgba(170, 170, 170, 1);
+    color: #00635d;
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+}
+
+.bookshelf_page_bookEditShelves {
+    margin-top: 2px;
+    padding-left: 5px;
+    font-weight: bolder;
+    border-bottom: 1px solid rgba(170, 170, 170, 1);
+    color: #00635d;
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+}
+
 /* .bookshelf_page_bookRadio,
 .bookshelf_page_bookCheck {
     height: 13px;

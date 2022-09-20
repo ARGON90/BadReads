@@ -282,6 +282,7 @@ const Bookshelves = () => {
                                         handleBookEdit(e, id)
                                         return
                                     }}>
+                                    <div className="bookshelf_page_bookEditShelves">Shelves</div>
                                     {customArr.map((shelf) =>
                                         <div className='bookshelf_page_bookInputWrapDiv'>
                                             <label className='bookshelf_page_bookLabel' for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
@@ -308,8 +309,9 @@ const Bookshelves = () => {
                                             ></input>
                                         </div>
                                     )}
+                                    <div className="bookshelf_page_bookEditStatus">Status</div>
                                     {defaultArr.map((shelf) =>
-                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                        <div className='bookshelf_page_bookInputWrapDiv bookshelf_page_bookInputWrapDivBot'>
                                             <label
                                                 className='bookshelf_page_bookLabel'
                                                 for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
@@ -372,6 +374,7 @@ const Bookshelves = () => {
                                         handleBookEdit(e, id)
                                         return
                                     }}>
+                                    <div className="bookshelf_page_bookEditShelves">Shelves</div>
                                     {customArr.map((shelf) =>
                                         <div className='bookshelf_page_bookInputWrapDiv'>
                                             <label
@@ -400,8 +403,9 @@ const Bookshelves = () => {
                                             ></input>
                                         </div>
                                     )}
+                                    <div className="bookshelf_page_bookEditStatus">Status</div>
                                     {defaultArr.map((shelf) =>
-                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                        <div className='bookshelf_page_bookInputWrapDiv bookshelf_page_bookInputWrapDivBot'>
                                             <label
                                                 className='bookshelf_page_bookLabel'
                                                 for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
