@@ -82,30 +82,10 @@ export const deleteBook = (id) => async dispatch => {
 };
 
 //REDUCER
-// const initialState = {}
-// const booksReducer = (state = initialState, action ) => {
-//     switch(action.type) {
-//         case GET_ALL_BOOKS: {
-//             console.log('ALL BOOKS REDUCER')
-//             const allbooks = action.books
-//             const newState = {...state, ...allbooks}
-//             return newState
-//         }
-//         default:
-//             return state
-//     }
-// }
-
 const initialState = {}
 const booksReducer = ( state = initialState, action ) => {
     let newState = {...state}
     switch (action.type) {
-        // case GET_ALL_BOOKS: {
-        //     console.log('ALL BOOKS REDUCER')
-        //     const allbooks = action.books
-        //     const newState = {...state, ...allbooks}
-        //     return newState
-        // }
 
         case GET_ALL_BOOKS: {
             console.log('ALL BOOKS REDUCER')
