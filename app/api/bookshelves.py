@@ -25,7 +25,7 @@ def all_bookshelves():
         bookshelf["books"] = book_list
 
     user_bookshelves = {bookshelf["id"]:bookshelf for bookshelf in bookshelves_list if bookshelf["user_id"] == id}
-    print(user_bookshelves)
+    # print(user_bookshelves)
 
     return user_bookshelves
 
@@ -59,9 +59,41 @@ def add_bookshelf():
     added_shelf["books"] = book_list
 
     # return cleaned up dict
-    print(added_shelf)
+    # print(added_shelf)
     # return added_shelf
     return added_shelf
+
+@bookshelves.route('/library',methods=['PUT'])
+def update_library():
+
+
+    data = request.json
+    bookID = data["bookID"]
+    shelfIDArr = data["bookshelfIDArr"]
+
+    upBook = Book.query.get(bookID)
+
+    # print(upBook.to_dict())
+    # print(upBook.bookshelves)
+
+    shelfInst = []
+    for id in shelfIDArr:
+        shelfInst.append(Bookshelf.query.get(id))
+    # print(shelfIDArr)
+
+
+    upBook.bookshelves = shelfInst
+
+    print("i am new bookshelf list in book",upBook.bookshelves)
+
+    db.session.add(upBook)
+    db.session.commit()
+
+#    //send back all user shelves
+
+    print("i amshelfidarr",shelfIDArr)
+    # shelves_user = [x.to_dict() for x in current_user.bookshelves]
+    return  {}
 
 
 @bookshelves.route('/<id>',methods=['DELETE'])

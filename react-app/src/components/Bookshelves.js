@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk, renameUserBookshelfThunk } from '../store/bookshelvesRed';
+import { updateLibraryThunk, getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk, renameUserBookshelfThunk } from '../store/bookshelvesRed';
 import { getAllBooksThunk } from '../store/booksAlex';
 import "./CSS/Bookshelves.css"
 
@@ -44,6 +44,7 @@ const Bookshelves = () => {
 
     //get total books in all bookshelves non Dupes and make arr of ALL ids, exclude dups
     //and grab user id why not
+
     let bookIDArr = []
     let userID
     if (userShelves.length > 0) {
@@ -56,6 +57,7 @@ const Bookshelves = () => {
         //gets rid of dupes
         bookIDArr = [...new Set(bookIDArr)]
     }
+
 
 
     //run store dispatches on page load
@@ -118,8 +120,7 @@ const Bookshelves = () => {
     const genShelfIDArr = (bookID) => {
         let genShelfIDArr = []
         for (let shelf of userShelves) {
-            // console.log("each shelf books arr", shelf.books)
-            // console.log("passed book id", bookID)
+
             if (shelf.books.includes(bookID)) {
                 if (!genShelfIDArr.includes(shelf.id)) {
 
@@ -128,17 +129,30 @@ const Bookshelves = () => {
                 }
             }
         }
-
-
         return genShelfIDArr
     }
 
-    const handleBookEdit = (e) => {
+    const handleBookEdit = (e, bookID) => {
         e.preventDefault();
-        console.log(bookshelfIDArr)
+
+        // console.log("send shelfID arr back", bookshelfIDArr)
+        // console.log("send bookID back", bookID)
+
+        const updateLibrary = {
+            bookshelfIDArr: bookshelfIDArr,
+            bookID: bookID
+        }
+
+        //end
+        //run thunk for book edit
+        dispatch(updateLibraryThunk(updateLibrary))
+            .then(() => dispatch(getUserBookshelvesThunk()))
+            .then(() => dispatch(getAllBooksThunk()))
+
+        setBookEditID(false)
     }
 
-    if (bookshelvesDict.length < 1) return <div></div>
+    if (bookshelvesDict.length < 1 && bookshelfIDArr.length < 1) return <div></div>
     return (
         <>
             <div className='bookshelf_page_outer'>
@@ -254,7 +268,12 @@ const Bookshelves = () => {
                                 }}
                                 className='bookshelf_page_imageEdit'>edit</div>
                             {bookEditID === id &&
-                                <form className='bookshelf_page_bookEditForm' onSubmit={handleBookEdit}>
+                                <form className='bookshelf_page_bookEditForm'
+                                    onSubmit={(e) => {
+                                        console.log(id)
+                                        handleBookEdit(e, id)
+                                        return
+                                    }}>
                                     {customArr.map((shelf) =>
                                         <div>
                                             <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
@@ -306,7 +325,7 @@ const Bookshelves = () => {
                                             ></input>
                                         </div>
                                     )}
-                                    <button>Save</button>
+                                    <button >Save</button>
                                 </form>
                             }
                             <img
@@ -332,7 +351,12 @@ const Bookshelves = () => {
                                 }}
                                 className='bookshelf_page_imageEdit'>edit</div>
                             {bookEditID === id &&
-                                <form className='bookshelf_page_bookEditForm' onSubmit={handleBookEdit}>
+                                <form className='bookshelf_page_bookEditForm'
+                                    onSubmit={(e) => {
+                                        console.log(id)
+                                        handleBookEdit(e, id)
+                                        return
+                                    }}>
                                     {customArr.map((shelf) =>
                                         <div>
                                             <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
@@ -391,6 +415,7 @@ const Bookshelves = () => {
                                 className="bookshelf_page_img"
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />
                         </div>
+
 
                     )}
                     {shelfID && bookshelvesDict[shelfID].books.length === 0 &&
