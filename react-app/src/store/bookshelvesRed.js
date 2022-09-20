@@ -2,6 +2,7 @@
 const GET_USER_BOOKSHELVES = '/bookshelves/user'
 const ADD_USER_BOOKSHELF = '/bookshelves/user/add'
 const DELETE_USER_BOOKSHELF = '/bookshelves/user/delete'
+const EDIT_USER_BOOKSHELF = '/bookshelves/user/edit'
 
 //actions
 
@@ -15,6 +16,13 @@ const loadBookshelves = (bookshelves) => {
 const addUserBookshelf = (bookshelf) => {
     return {
         type: ADD_USER_BOOKSHELF,
+        payload: bookshelf
+    }
+}
+
+const renameUserBookshelf = (bookshelf) => {
+    return {
+        type: EDIT_USER_BOOKSHELF,
         payload: bookshelf
     }
 }
@@ -55,6 +63,24 @@ export const addUserBookshelvesThunk = (bookshelf) => async (dispatch) => {
     }
 }
 
+export const renameUserBookshelfThunk = (bookshelf, id) => async (dispatch) => {
+
+    const response = await fetch(`/api/bookshelves/${id}`,
+        {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bookshelf)
+        }
+    );
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(renameUserBookshelf(data));
+        return JSON.stringify(data);
+    }
+}
+
 export const deleteUserBookshelfThunk = (id) => async (dispatch) => {
     const response = await fetch(`/api/bookshelves/${id}`, {
         method: 'DELETE'
@@ -88,6 +114,12 @@ const bookshelvesReducer = (state = initialState, action) => {
 
             delete bookshelves.userBookshelves[deleteShelfID]
 
+            return bookshelves
+
+        case EDIT_USER_BOOKSHELF:
+            bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
+            let editBookShelf = action.payload
+            bookshelves.userBookshelves[editBookShelf.id] = editBookShelf
             return bookshelves
 
         default:

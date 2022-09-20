@@ -66,8 +66,31 @@ def add_bookshelf():
 
 @bookshelves.route('/<id>',methods=['DELETE'])
 def delete_bookshelf(id):
-    print("ID HERE", id)
+    # print("ID HERE", id)
     delete_me_shelf = Bookshelf.query.get(id)
     db.session.delete(delete_me_shelf)
     db.session.commit()
     return id
+
+@bookshelves.route('/<id>',methods=['PUT'])
+def edit_bookshelf(id):
+    data = request.json
+    edit_me_shelf = Bookshelf.query.get(id)
+    edit_me_shelf.name = data["name"]
+
+    db.session.add(edit_me_shelf)
+    db.session.commit()
+
+    edit_me_shelf= edit_me_shelf.to_dict()
+    # to_dict stuff that isnt
+    temp = edit_me_shelf["user_id"].to_dict()
+    edit_me_shelf["user_id"] = temp["id"]
+
+    book_list = []
+    for book in edit_me_shelf["books"]:
+        book_list.append(book.to_dict()["id"])
+    edit_me_shelf["books"] = book_list
+
+    # return cleaned up dict
+
+    return edit_me_shelf

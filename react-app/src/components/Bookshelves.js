@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk } from '../store/bookshelvesRed';
+import { getUserBookshelvesThunk, addUserBookshelvesThunk, deleteUserBookshelfThunk, renameUserBookshelfThunk } from '../store/bookshelvesRed';
 import { getAllBooksThunk } from '../store/booksAlex';
 import "./CSS/Bookshelves.css"
 
@@ -91,21 +91,24 @@ const Bookshelves = () => {
     }
 
     //handle renaming a shelf submission
-    const handleRenameShelfSubmit = (e) => {
+    const handleRenameShelfSubmit = (e, id) => {
         e.preventDefault();
+
 
         let editBookShelf = {
             user_id: userID,
-            name: renameShelfName,
-        }
+            name: renameShelfName
+        };
 
-        console.log(editBookShelf)
+        console.log(editBookShelf);
 
         //end
         //dispatch here
+        dispatch(renameUserBookshelfThunk(editBookShelf, id));
 
-        setToggleRename(false)
-        setRenameShelfName('')
+        setToggleRename(false);
+        setRenameShelfName('');
+        return
     }
 
     if (bookshelvesDict.length < 1) return <div></div>
@@ -119,7 +122,12 @@ const Bookshelves = () => {
                     <div className='bookshelf_page_subTitleOuter'>
                         <div className='bookshelf_page_subTitle'>Bookshelves  </div>
                         <div
-                            onClick={() => setToggleEdit(!toggleEdit)}
+                            onClick={() => {
+                                setToggleAddButton(true)
+                                setToggleEdit(!toggleEdit)
+                                setShelfName('')
+                                return
+                            }}
                             className='bookshelf_page_subEdit'>(Edit)</div>
                     </div>
                     <div
@@ -155,7 +163,11 @@ const Bookshelves = () => {
                             </div>
                         )}
                         {toggleAddButton && <div
-                            onClick={() => setToggleAddButton(false)}
+                            onClick={() => {
+                                setToggleRename(false)
+                                setToggleAddButton(false)
+                                return
+                            }}
                             className='bookshelf_page_addShelfButton'> Add shelf</div>}
                         {!toggleAddButton &&
                             <>
@@ -180,6 +192,7 @@ const Bookshelves = () => {
                                         onClick={() => {
                                             setShelfName("")
                                             setToggleAddButton(true)
+                                            setShelfName('')
                                             return
                                         }}
                                         className='bookshelf_page_XaddShelf'>
@@ -230,20 +243,26 @@ const Bookshelves = () => {
                                         className='bookshelf_page_editShelfName'>{shelf.name} ({shelf.books.length})</div>
                                 }
                                 {toggleRename !== shelf.id && <div
-                                    onClick={() => setToggleRename(shelf.id)}
+                                    onClick={() => {
+                                        setToggleAddButton(true)
+                                        setShelfName("")
+                                        setToggleRename(shelf.id)
+                                        return
+                                    }}
                                     className="bookshelf_page_editRename"> rename</div>}
                                 {toggleRename == shelf.id &&
                                     <div className="bookshelf_page_renameFormOuter">
-                                        <form className='bookshelf_page_renameShelfForm' onSubmit={handleRenameShelfSubmit}>
+                                        <form className='bookshelf_page_renameShelfForm' onSubmit={(e) => handleRenameShelfSubmit(e, shelf.id)}>
                                             <div>
                                                 <input
                                                     id='renameShelfName'
                                                     type="text"
-                                                    value={renameShelfName ? renameShelfName : shelf.name}
+                                                    value={renameShelfName}
                                                     onChange={(e) => setRenameShelfName(e.target.value)}
                                                     required
                                                     maxLength={20}
                                                     minLength={2}
+                                                    placeholder={shelf.name}
 
                                                 />
                                             </div>
