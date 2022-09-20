@@ -61,12 +61,14 @@
 .bookshelf_page_shelfNameAll {
     color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
+    width: fit-content;
 }
 
 .bookshelf_page_shelfNameDec {
 
     color: #00635d;
     cursor: pointer;
+    width: fit-content;
 }
 
 .bookshelf_page_shelfNameDec:hover,
