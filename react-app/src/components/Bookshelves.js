@@ -283,9 +283,10 @@ const Bookshelves = () => {
                                         return
                                     }}>
                                     {customArr.map((shelf) =>
-                                        <div>
-                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                            <label className='bookshelf_page_bookLabel' for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
                                             <input
+                                                className='bookshelf_page_bookCheck'
                                                 type='checkbox'
                                                 id={`${shelf.name}${shelf.id}`}
 
@@ -308,9 +309,12 @@ const Bookshelves = () => {
                                         </div>
                                     )}
                                     {defaultArr.map((shelf) =>
-                                        <div>
-                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                            <label
+                                                className='bookshelf_page_bookLabel'
+                                                for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
                                             <input
+                                                className='bookshelf_page_bookRadio'
                                                 type='radio'
                                                 id={`${shelf.name}${shelf.id}`}
                                                 name='defaultRadio'
@@ -333,7 +337,9 @@ const Bookshelves = () => {
                                             ></input>
                                         </div>
                                     )}
-                                    <button >Save</button>
+                                    <button
+                                        className='bookshelf_page_bookSave'
+                                    >Save</button>
                                 </form>
                             }
                             <img
@@ -367,9 +373,12 @@ const Bookshelves = () => {
                                         return
                                     }}>
                                     {customArr.map((shelf) =>
-                                        <div>
-                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                            <label
+                                                className='bookshelf_page_bookLabel'
+                                                for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
                                             <input
+                                                className='bookshelf_page_bookCheck'
                                                 type='checkbox'
                                                 id={`${shelf.name}${shelf.id}`}
 
@@ -392,9 +401,12 @@ const Bookshelves = () => {
                                         </div>
                                     )}
                                     {defaultArr.map((shelf) =>
-                                        <div>
-                                            <label for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                            <label
+                                                className='bookshelf_page_bookLabel'
+                                                for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
                                             <input
+                                                className='bookshelf_page_bookRadio'
                                                 type='radio'
                                                 id={`${shelf.name}${shelf.id}`}
                                                 name='defaultRadio'
@@ -417,7 +429,9 @@ const Bookshelves = () => {
                                             ></input>
                                         </div>
                                     )}
-                                    <button>Save</button>
+                                    <button
+                                        className='bookshelf_page_bookSave'
+                                    >Save</button>
                                 </form>
                             }
                             <img
