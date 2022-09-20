@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getAllBooksThunk } from '../store/booksAlex';
 import Reviews from './Reviews';
+import EditBookModal from './EditBookModal';
 
 const BookById = () => {
     console.log('INSIDE BOOKS BY ID COMPONENT')
@@ -10,6 +11,8 @@ const BookById = () => {
     const dispatch = useDispatch();
     const booksDict = useSelector((state) => (state?.books))
     const singleBook = booksDict[id]
+    /* julie code */
+    const currentUser = useSelector((state) => state?.session?.user);
 
     useEffect(() => {
         console.log('BOOKS BY ID USE EFFECT')
@@ -26,6 +29,12 @@ const BookById = () => {
                     <img src={singleBook.image_url} alt='Cover' style={{height: '100px'}}/>
                     <div>{singleBook.description}</div>
                 </div>
+                {/* julie code */}
+                {singleBook && currentUser && currentUser.id === singleBook.user_id && (
+                    <div>
+                        <EditBookModal />
+                    </div>
+                )}
                 <Reviews />
         </>
     );
