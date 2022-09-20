@@ -46,18 +46,15 @@ useEffect(() => {
             </NavLink>
           </div>
           <div className='navBarLinksContainer'>
-            <button className='navBarRightButton'>
-            <NavLink className='navBarTextLink' to='/books' exact={true} activeClassName='active'>
-              Home 
+            <NavLink className='navBarLinksContainer' to='/books' exact={true} activeClassName='active'> 
+            Home
             </NavLink>
-            </button>
+
           </div>
           <div className='navBarLinksContainer'>
-           <button className='navBarRightButton'>
-            <NavLink className='navBarTextLink' to='/my-books' exact={true} activeClassName='active'>
-              My Books
+            <NavLink className='navBarLinksContainer' to='/my-books' exact={true} activeClassName='active'>
+            My Books
             </NavLink>
-            </button>
           </div>
         </div>
         <div className='navBarRight'>
