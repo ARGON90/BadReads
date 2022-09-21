@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session";
+import { createDefaultBookshelvesThunk, getUserBookshelvesThunk, } from '../../store/bookshelvesRed';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -19,7 +20,11 @@ const SignUpForm = () => {
     setErrors([])
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
-      if (data) {
+      // await console.log(data)
+      const defaults = await dispatch(createDefaultBookshelvesThunk({ userID: data.id }))
+      const shelves = await dispatch(getUserBookshelvesThunk())
+      // const some = await console.log("THIS IS DATA", data)
+      if (data.errors) {
         setErrors(data)
       }
     } else {
@@ -68,7 +73,7 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-        <div className='formText'>Username</div>
+          <div className='formText'>Username</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -80,7 +85,7 @@ const SignUpForm = () => {
           </label>
         </div>
         <div>
-        <div className='formText' >Email</div>
+          <div className='formText' >Email</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -91,7 +96,7 @@ const SignUpForm = () => {
           </label>
         </div>
         <div className='passwordAlert'>
-        <div className='formText'>Password</div>
+          <div className='formText'>Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
@@ -108,7 +113,7 @@ const SignUpForm = () => {
           </div>
         </div>
         <div>
-        <div className='formText'>Re-Password</div>
+          <div className='formText'>Re-Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
