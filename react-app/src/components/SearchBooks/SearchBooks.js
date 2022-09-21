@@ -32,6 +32,11 @@ const SearchBookBar = ({ setSearchBar}) => {
         }
     }
 
+    const clearInput = () => {
+        setFilterBooks([])
+        setSearchable('')
+    }
+
     const handleSubmit = () => {
         history.push(`/books/${searchable}`)
         setFilterBooks([])
@@ -49,17 +54,22 @@ const SearchBookBar = ({ setSearchBar}) => {
                 placeholder='Search books'
                 />
             </form>
+            <span className='searchClear'>
+                    <button className="buttonClear"
+                        onClick={searchable.length ? clearInput : () => setSearchBar(false)}
+                        title={searchable.length ? 'Clear Search' : 'Close Search'}> X </button>
+                </span>
     
         <div className='bookResultsDiv'>
             {filterBooks && (
                 filterBooks.slice(0, 5).map((book, idx) => (
-                    <NavLink to={`/books/${book.id}`}>
+                    <NavLink to={`/books/${book.id}`}  className="bookSearchList">
                         <div className='searchBookBarResult'
                             key={idx} 
                             onClick={() => setSearchBar(false)}>
                                 <div className="searchBarTitle">{book.title} <br></br></div>
                                 <div className='searchBarAuthor'>by {book.author}</div>
-                            </div>
+                        </div>
                     </NavLink>
                 ))
             )}

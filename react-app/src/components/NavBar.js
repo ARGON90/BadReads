@@ -5,10 +5,11 @@ import LogoutButton from './auth/LogoutButton';
 import './CSS/NavBar.css';
 import BookshelfIcon from '../images/bookshelficon.svg'
 import SearchBar from './SearchBooks/SearchBooks';
+import NavSearch from "../images/navsearch.svg"
 
 const NavBar = () => {
 
-  const [showSearch, setSearchBar] = useState(false)
+  const [showSearchBar, setSearchBar] = useState(false)
   const [ showDropdown, setShowDropdown ] = useState(false)
   const handleDropdown = () => {
     if (showDropdown) return
@@ -60,14 +61,20 @@ useEffect(() => {
             </NavLink>
           </div>
         </div>
-        <div>
-        <div className='navBarSearch'>
-          <SearchBar setSearchBar={setSearchBar}/>     
-        </div>   
+        <div>  
         </div>
         <div className='navBarRight'>
           <div >
           <div className='navBarRightMenu'>
+            <div className='navBarSearch'>
+              <img className='navBarSearchIcon' width="30"
+                src={NavSearch}
+                alt='Search Icon'
+                onClick={() => setSearchBar(!showSearchBar)} />
+                {showSearchBar && (
+                  <SearchBar setSearchBar={setSearchBar}/>
+                )}  
+            </div> 
              <div className='navbarHoverSquare'>
               <div className="navBarBookhelfIcon">
                 <NavLink to="/bookshelves" exact={true} activeClassName='active'>
