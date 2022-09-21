@@ -88,14 +88,19 @@ useEffect(() => {
               <div className='navBarDMenuName'>
               {sessionUser.username}
               </div>
-              <div class="navBarBookshelveLink">
+              <div className="navBarBookshelveLink">
                 <NavLink className='navBarDMenuText' to="/bookshelves" exact={true} activeClassName='active'>
                   Bookshelves
                 </NavLink>
               </div>
-              <div class="navBarBookshelveLink">
-                <NavLink className='navBarDMenuText' to="/bookshelves" exact={true} activeClassName='active'>
+              <div className="navBarBookshelveLink">
+                <NavLink className='navBarDMenuText' to="/my-books" exact={true} activeClassName='active'>
                   My Books
+                </NavLink>
+              </div>
+              <div className="navBarBookshelveLink">
+                <NavLink className='navBarDMenuText' to="/books" exact={true} activeClassName='active'>
+                 Home
                 </NavLink>
               </div>
               <div className="dDownMenuLine">
