@@ -262,6 +262,7 @@ const Bookshelves = () => {
                         <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
                             <div
                                 onClick={() => {
+                                    setToggleAddButton(true)
                                     if (bookEditID === id) {
                                         setBookEditID(false)
                                     } else { setBookEditID(id) }
@@ -354,6 +355,7 @@ const Bookshelves = () => {
                         <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
                             <div
                                 onClick={() => {
+                                    setToggleAddButton(true)
                                     if (bookEditID === id) {
                                         setBookEditID(false)
                                     } else { setBookEditID(id) }
