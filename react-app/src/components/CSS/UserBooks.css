@@ -58,21 +58,21 @@
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
 }
 
+/*
 .my-books-page-info-popup-container {
   position: relative;
-  /* display: none; */
-}
+} */
 
-.my-books-page-book-popup {
+/* .my-books-page-book-popup {
   display: none;
   position: absolute;
-}
+} */
 
-.my-books-page-book-popup:hover {
+/* .my-books-page-book-popup:hover {
   display: block;
   background-color: #ffffff;
   color: #181818;
-}
+} */
 
 .my-books-page-buttons-container {
   display: flex;
