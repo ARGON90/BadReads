@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
-import './CSS/NavBar.css'
+import './CSS/NavBar.css';
+import BookshelfIcon from '../images/bookshelficon.svg'
 import SearchBar from './SearchBooks/SearchBooks';
 
 const NavBar = () => {
@@ -65,13 +66,22 @@ useEffect(() => {
         </div>   
         </div>
         <div className='navBarRight'>
+          <div >
           <div className='navBarRightMenu'>
-            <div className='navbarHoverSquare'>
-            <button onClick={handleDropdown} className='navBarDropDownMenu'>
-              <div className="usernameLetter">
-              {sessionUser.username[0]}
+             <div className='navbarHoverSquare'>
+              <div className="navBarBookhelfIcon">
+                <NavLink to="/bookshelves" exact={true} activeClassName='active'>
+                <img alt="Bookshelf Icon" src={BookshelfIcon} width="38" height="38"/>
+                </NavLink>
               </div>
-            </button>
+              </div>
+              <div className='navbarHoverSquare'>
+              <button onClick={handleDropdown} className='navBarDropDownMenu'>
+                <div className="usernameLetter">
+                 {sessionUser.username[0]}
+                </div>
+              </button>
+            </div>
             </div>
             {showDropdown &&
             <div className='navBarDropDownContainer'>
@@ -81,6 +91,11 @@ useEffect(() => {
               <div class="navBarBookshelveLink">
                 <NavLink className='navBarDMenuText' to="/bookshelves" exact={true} activeClassName='active'>
                   Bookshelves
+                </NavLink>
+              </div>
+              <div class="navBarBookshelveLink">
+                <NavLink className='navBarDMenuText' to="/bookshelves" exact={true} activeClassName='active'>
+                  My Books
                 </NavLink>
               </div>
               <div className="dDownMenuLine">

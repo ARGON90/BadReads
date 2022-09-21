@@ -118,13 +118,21 @@
     border: 1px solid #FFFFFF;
 }
 
+.navBarRightMenu {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.navBarBookhelfIcon {
+    cursor: pointer;
+    padding: 8px 5px 0px 5px;
+}
+
 .navbarHoverSquare:hover {
     background-color: #382110;
 }
 
-.navBarRightMenu {
-    position: relative;
-}
 
 .navBarDropDownContainer {
     width: 250px;
@@ -152,6 +160,9 @@
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+.navBarBookshelveLink {
+    margin-top: 10px;
+}
 
 .navBarDMenuText {
     cursor: pointer;
