@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { NavLink, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllBooksThunk } from '../../store/booksAlex'
-import '../CSS/SearchBar.css'
+import { getAllBooksThunk } from '../store/booksAlex'
+import './CSS/SearchBar.css'
 
 const SearchBookBar = ({ setSearchBar}) => {
     
@@ -32,6 +32,19 @@ const SearchBookBar = ({ setSearchBar}) => {
         }
     }
 
+    const handleAuthorFilter = (e) => {
+        const findBook = e.target.value
+        setSearchable(findBook)
+        const findTitle = Object.values(books).filter(book => {
+            return book.author.toLowerCase().includes(findBook.toLowerCase())
+        })
+        if (findBook === '') {
+            setFilterBooks([])
+        } else {
+            setFilterBooks(findTitle)
+        }
+    }
+
     const clearInput = () => {
         setFilterBooks([])
         setSearchable('')
@@ -50,14 +63,14 @@ const SearchBookBar = ({ setSearchBar}) => {
                 <input
                 type='text'
                 value={searchable}
-                onChange={handleBookFilter}
+                onChange={handleBookFilter, handleAuthorFilter}
                 placeholder='Search books'
                 />
             </form>
             <span className='searchClear'>
                     <button className="buttonClear"
                         onClick={searchable.length ? clearInput : () => setSearchBar(false)}
-                        title={searchable.length ? 'Clear Search' : 'Close Search'}> X </button>
+                    > X </button>
                 </span>
     
         <div className='bookResultsDiv'>

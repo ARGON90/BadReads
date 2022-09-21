@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './CSS/NavBar.css';
 import BookshelfIcon from '../images/bookshelficon.svg'
-import SearchBar from './SearchBooks/SearchBooks';
+import SearchBar from './SearchBooks';
 import NavSearch from "../images/navsearch.svg"
 
 const NavBar = () => {

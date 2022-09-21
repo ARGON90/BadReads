@@ -51,11 +51,12 @@
 
 .navBarRight {
     display: flex;
-    width: 900px;
+    width: 100%;
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
 }
+
 .navBarLeft {
     display: flex;
     width: 900px;
@@ -95,7 +96,7 @@
 .navBarDropDownMenu {
     cursor: pointer;
     display: inline-block;
-    position: relative;
+    position: sticky;
     width: 40px;
     height: 40px;
     margin: 8px 10px;
@@ -133,7 +134,6 @@
     background-color: #382110;
 }
 
-
 .navBarDropDownContainer {
     width: 250px;
     height: auto;
@@ -141,7 +141,6 @@
     margin-top: 0rem;
     margin-left:1rem;
     position: absolute;
-    right: 1px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
