@@ -271,7 +271,7 @@ const Bookshelves = () => {
 
                                     let arr = genShelfIDArr(id)
                                     setBookshelfIDArr(arr)
-                                    // console.log(bookshelfIDArr)
+                                    console.log('BOOKSHELF ID ARRAY', bookshelfIDArr)
                                     return
                                 }}
                                 className='bookshelf_page_imageEdit'>edit</div>
