@@ -64,7 +64,7 @@ const SignUpForm = () => {
         </div>
         <div className='signUpErrors'>
           {errors.map((error, ind) => (
-            <li className="textError" key={ind}>{error}</li>
+            <li className="textError" key={ind}>{error.split(":")[1]}</li>
           ))}
         </div>
         <div>
