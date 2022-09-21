@@ -19,35 +19,18 @@ const SearchBookBar = ({ setSearchBar}) => {
         fetchBooks().catch(console.error)
     }, [dispatch])
 
-    const handleBookFilter = (e) => {
-        const findBook = e.target.value
+    const handleBookFilter = (keyword) => {
+        const findBook = keyword.target.value
         setSearchable(findBook)
         const findTitle = Object.values(books).filter(book => {
-            return book.title.toLowerCase().includes(findBook.toLowerCase())
+             return ((book.title.toLowerCase().includes(findBook.toLowerCase())) || book.author.toLowerCase().includes(findBook.toLowerCase()) )
         })
         if (findBook === '') {
             setFilterBooks([])
-        } else {
+        } 
+        else {
             setFilterBooks(findTitle)
         }
-    }
-
-    // const handleAuthorFilter = (e) => {
-    //     const findBook = e.target.value
-    //     setSearchable(findBook)
-    //     const findAuthor = Object.values(books).filter(book => {
-    //         return book.author.toLowerCase().includes(findBook.toLowerCase())
-    //     })
-    //     if (findBook === '') {
-    //         setFilterBooks([])
-    //     } else {
-    //         setFilterBooks(findAuthor)
-    //     }
-    // }
-
-   const twoCalls = (e) => {
-        this.handleBookFilter(e)
-        this.handleAuthorFilter()
     }
 
 

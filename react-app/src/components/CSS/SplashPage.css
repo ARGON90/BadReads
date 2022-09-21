@@ -353,7 +353,10 @@ img.splashBook {
 
 .textError {
     text-align: left;
-    padding: 8px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 6px;
 }
 
 .signUpErrors {
@@ -365,6 +368,6 @@ img.splashBook {
     margin-bottom: 24px;
     background-color: #FFF5F3;
     border-radius: 16px;
-    font-size: 14px;
+    font-size: 15px;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }

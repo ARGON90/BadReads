@@ -62,7 +62,7 @@ const SignUpForm = () => {
         <div className='createAccount'>
           Create Account
         </div>
-        <div className='signUpErrors'>
+        <div className='signUpErrors'> 
           {errors.map((error, ind) => (
             <li className="textError" key={ind}>{error.split(":")[1]}</li>
           ))}
