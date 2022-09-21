@@ -7,6 +7,7 @@ import BookshelfIcon from '../images/bookshelficon.svg'
 import SearchBar from './SearchBooks';
 import NavSearch from "../images/navsearch.svg"
 
+
 const NavBar = () => {
 
   const [showSearchBar, setSearchBar] = useState(false)
