@@ -164,7 +164,7 @@ const Bookshelves = () => {
     return (
         <>
             <div className='bookshelf_page_outer'>
-                <div className="bookshelf_page_title">My Books </div>
+                <div className="bookshelf_page_title">My Bookshelves </div>
             </div>
             <div className='bookshelf_page_outer'>
                 <div className='bookshelf_page_inner1'>
