@@ -1,24 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;900&family=Merriweather:wght@300;700;900&display=swap');
 
-.alex_gr-button {
-    border-radius: 3px;
-    border: 1px solid #D6D0C4;
-    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-    font-size: 14px;
-    -moz-appearance: none;
-    -o-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    display: inline-block;
-    text-decoration: none;
-    color: #333333;
-    background-color: #F4F1EA;
-    line-height: 1;
-    padding: 8px 12px;
-    height: 32px;
-    width: 122px;
-}
+
 
 .alex_review_page_title {
     font-weight: 900;
@@ -41,6 +23,10 @@
     font-size: 14px;
 }
 
+.alex_font_red {
+    color: red;
+}
+
 
 /* CREATE Review Page */
 
@@ -50,4 +36,25 @@
 
 .alex_text_area:focus {
     box-shadow: -0.5px 3.5px 6px #0a6a0a;
-  }
+}
+
+
+.alex_gr-button {
+    border-radius: 3px;
+    border: 1px solid #D6D0C4;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 14px;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #333333;
+    background-color: #F4F1EA;
+    line-height: 1;
+    padding: 8px 12px;
+    height: 32px;
+    width: 122px;
+}

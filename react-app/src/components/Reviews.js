@@ -94,11 +94,11 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
                             <button
                                 onClick={editReview}
                                 className='alex_gr-button'
-                            >Edit this Review</button>
+                            >Edit Review</button>
                             <button
                                 onClick={deleteReview}
                                 className='alex_gr-button'
-                            >Delete this Review</button>
+                            >Delete Review</button>
                         </div>
                         : null}
 

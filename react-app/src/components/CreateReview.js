@@ -5,7 +5,7 @@ import { createReviewThunk } from "../store/reviews";
 import '../components/CSS/Reviews.css'
 
 
-const CreateReview = ({bookId, userId, displayLanding}) => {
+const CreateReview = ({ bookId, userId, displayLanding }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector(state => state?.session?.user);
@@ -18,12 +18,12 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
 
 
   useEffect(() => {
-    const newErrors = [];
+    const newErrors = {};
 
-    if (!currentUser) newErrors.push('Please log in or sign up with BadReads to continue.');
-    if (stars <= 0 || stars > 5) newErrors.push('Star Rating must be between 1 and 5.');
-    if (review.length <= 0) newErrors.push('Review is required.');
-    if (review.length > 1000) newErrors.push('Review must be 1000 characters or less.');
+    if (!currentUser) newErrors.login = 'Please log in or sign up with BadReads to continue.';
+    if (stars <= 0 || stars > 5) newErrors.stars = 'Star rating must be between 1 and 5.';
+    if (review.length <= 0) newErrors.review = 'Review is required.';
+    if (review.length > 1000) newErrors.reviewLength = 'Review must be 1000 characters or less.';
 
     setErrors(newErrors);
   }, [currentUser, review, stars])
@@ -50,20 +50,17 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
   return (
     <>
       <form
-      className="create-book-form"
-      onSubmit={handleSubmit}>
+        className="create-book-form"
+        onSubmit={handleSubmit}>
         <div
-            // className="create-book-modal-body"
+        // className="create-book-modal-body"
         >
           <div
-            // className="create-book-form-errors-container"
+          // className="create-book-form-errors-container"
           >
-            {errors.map((error, idx) => (
-              <span key={idx}>Error: {error}</span>
-            ))}
           </div>
           <label
-            // className="create-book-form-label"
+          // className="create-book-form-label"
           >My rating:</label>
           <input
             // className="create-book-form-input"
@@ -73,8 +70,9 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
             value={stars}
             onChange={updateStars}
           />
-                    <label
-            // className="create-book-form-label"
+          <div className='alex_font_red'>{errors.stars}</div>
+          <label
+          // className="create-book-form-label"
           >What did you think?</label>
           <textarea
             // className="create-book-form-input"
@@ -84,12 +82,14 @@ const CreateReview = ({bookId, userId, displayLanding}) => {
             value={review}
             onChange={updateReview}
           />
+          <div className='alex_font_red' >{errors.review}</div>
+          <div className='alex_font_red' >{errors.reviewLength}</div>
         </div>
 
         <button
-        type="submit"
-        disabled={errors.length ? true : false}
-        className="alex_gr-button"
+          type="submit"
+          disabled={errors.length ? true : false}
+          className="alex_gr-button"
         >Create Review</button>
       </form>
     </>
