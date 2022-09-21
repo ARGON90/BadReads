@@ -49,9 +49,9 @@ const SignUpForm = () => {
 
   const handleDemoUser = async (e) => {
     e.preventDefault();
-    const email = 'demo@aa.io';
-    const password = 'password';
-    await dispatch(sessionActions.login(email, password));
+    const email1 = 'demo@aa.io';
+    const password1 = 'password';
+    await dispatch(sessionActions.login(email1, password1));
     history.push('/')
   };
 

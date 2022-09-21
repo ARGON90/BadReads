@@ -136,7 +136,7 @@ export default function SplashPage() {
                         <a href="https://github.com/">Justine Jang</a>
                     </div>
                     <div className='footerColumn'>
-                        <h2 className='footerColumnTitle'>CONNECT</h2>
+                        <h2 className='footerColumnTitle'>SOURCE CODE</h2>
                         <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
                     </div>
                 </div>

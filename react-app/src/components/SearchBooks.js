@@ -81,7 +81,7 @@ const SearchBookBar = ({ setSearchBar}) => {
                         <div className='searchBookBarResult'
                             key={idx} 
                             onClick={() => setSearchBar(false)}>
-                                <div className="searchBarTitle">{book.title} <br></br></div>
+                                <div className="searchBarTitle">{book.title}<br></br></div>
                                 <div className='searchBarAuthor'>by {book.author}</div>
                         </div>
                     </NavLink>
