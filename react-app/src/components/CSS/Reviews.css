@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;900&family=Merriweather:wght@300;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;900&family=Merriweather:wght@300;400;700;900&display=swap');
 
 
 
@@ -27,6 +27,17 @@
     color: red;
 }
 
+.alex_font_black {
+    color: black
+}
+
+.alex_bold {
+    font-weight: bold;
+}
+
+.alex_text_deco_none {
+    text-decoration: none;
+}
 
 /* CREATE Review Page */
 
@@ -58,3 +69,7 @@
     height: 32px;
     width: 122px;
 }
+
+.alex_gr-button:hover {
+    background-color: rgba(39, 28, 20, 0.75);
+  }

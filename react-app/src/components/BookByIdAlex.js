@@ -13,7 +13,7 @@ const BookById = () => {
     const booksDict = useSelector((state) => (state?.books))
     const singleBook = booksDict[id]
     console.log(singleBook, 'SINGLE BOOK')
-    const [ display, setDisplay ] = useState('landing')
+    const [display, setDisplay] = useState('landing')
 
     useEffect(() => {
         console.log('BOOKS BY ID USE EFFECT')
@@ -25,15 +25,20 @@ const BookById = () => {
     return (
         <>
             <h1
-            className='alex_review_page_title'
+                className='alex_review_page_title'
             >{singleBook.title} </h1>
-                <div className='alex_merriweather_300' key={singleBook.id}>
-                    <h2 className='alex_font_16'>by {singleBook.author}</h2>
-                    <img src={singleBook.image_url} alt='Cover' style={{height: '100px'}}/>
-                    {display == 'landing' ? <div className='alex_font_14'>{singleBook.banned}</div> : null}
-                    {display == 'landing' ? <div className='alex_font_14'>{singleBook.description}</div> : null}
+            <div key={singleBook.id}>
+                <h2 className='alex_merriweather_300 alex_font_16'>by {singleBook.author}</h2>
+                <img src={singleBook.image_url} alt='Cover' style={{ height: '100px' }} />
+                {display == 'landing' ? <div>
+                    <div className='alex_merriweather_300 alex_font_14 alex_bold'>Why was it banned?</div>
+                    <div className='alex_merriweather_300 alex_font_14' >{singleBook.banned}</div>
+                    <br></br>
+                    <div className='alex_merriweather_300 alex_font_14' >{singleBook.description}</div>
                 </div>
-                <Reviews display={display} setDisplay={setDisplay}/>
+                    : null}
+            </div>
+            <Reviews display={display} setDisplay={setDisplay} />
         </>
     );
 }

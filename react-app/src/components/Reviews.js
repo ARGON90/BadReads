@@ -51,7 +51,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
     function noReviews() {
         if (reviewsByBookId.length == 0) {
             return (
-                <div>This book hasn't been reviewed yet</div>
+                <div className='alex_merriweather_300 alex_font_14' >This book hasn't been reviewed yet</div>
             )
         }
     }
@@ -134,7 +134,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
                 <div>
                     {display === 'landing' ?
                         <div>
-                            <div>{currentUserUsername}, start your review of {singleBook.title}</div>
+                            <div className='alex_merriweather_300 alex_font_14' >{currentUserUsername}, start your review of {singleBook.title}</div>
                             <button
                                 onClick={displayCreate}
                                 className='alex_gr-button'
