@@ -11,6 +11,7 @@ const NavBar = () => {
 
   const [showSearchBar, setSearchBar] = useState(false)
   const [ showDropdown, setShowDropdown ] = useState(false)
+
   const handleDropdown = () => {
     if (showDropdown) return
     setShowDropdown(true)
@@ -83,14 +84,14 @@ useEffect(() => {
               </div>
               </div>
               <div className='navbarHoverSquare'>
-              <button onClick={handleDropdown} className='navBarDropDownMenu'>
+              <button onClick={handleDropdown} show className='navBarDropDownMenu'>
                 <div className="usernameLetter">
                  {sessionUser.username[0]}
                 </div>
               </button>
             </div>
             </div>
-            {showDropdown &&
+            {showDropdown && (
             <div className='navBarDropDownContainer'>
               <div className='navBarDMenuName'>
               {sessionUser.username}
@@ -113,7 +114,7 @@ useEffect(() => {
               <div className="dDownMenuLine">
               <LogoutButton />
               </div>
-            </div>}
+            </div> )}
           </div>
         </div>
       </div>

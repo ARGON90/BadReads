@@ -54,7 +54,7 @@ const SearchBookBar = ({ setSearchBar}) => {
                 type='text'
                 value={searchable}
                 onChange={handleBookFilter}
-                placeholder='Search books'
+                placeholder='Search by book or by author'
                 />
             </form>
             <span className='searchClear'>
