@@ -1,23 +1,14 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { NavLink, useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllBooksThunk } from '../store/booksAlex'
+import { useSelector } from 'react-redux';
 import './CSS/SearchBar.css'
 
 const SearchBookBar = ({ setSearchBar}) => {
     
     const history = useHistory()
-    const dispatch = useDispatch()
     const books = useSelector(state => state.books)
     const [filterBooks, setFilterBooks] = useState([])
     const [searchable, setSearchable] = useState('')
-
-    useEffect(() => {
-        const fetchBooks = async () => {
-            await dispatch(getAllBooksThunk())
-        }
-        fetchBooks().catch(console.error)
-    }, [dispatch])
 
     const handleBookFilter = (keyword) => {
         const findBook = keyword.target.value

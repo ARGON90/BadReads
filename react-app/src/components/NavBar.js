@@ -12,6 +12,7 @@ const NavBar = () => {
   const [showSearchBar, setSearchBar] = useState(false)
   const [ showDropdown, setShowDropdown ] = useState(false)
 
+
   const handleDropdown = () => {
     if (showDropdown) return
     setShowDropdown(true)
@@ -23,7 +24,7 @@ const NavBar = () => {
   return require(`../images/${img}`).default
   }
 
-
+  
 
 useEffect(() => {
     if (!showDropdown) return
