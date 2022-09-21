@@ -351,7 +351,7 @@ const Bookshelves = () => {
                         </div>
 
                     )}
-                    {shelfID && bookshelvesDict[shelfID]?.books.map((id) =>
+                    {shelfID && bookshelvesDict[shelfID]?.books?.map((id) =>
 
                         //REPEAT OF UPPER DIV
                         <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
@@ -446,7 +446,7 @@ const Bookshelves = () => {
 
 
                     )}
-                    {shelfID && bookshelvesDict[shelfID].books.length === 0 &&
+                    {shelfID && bookshelvesDict[shelfID].books?.length === 0 &&
 
                         <div className="bookshelf_page_noMatch">No matching items!</div>
 
