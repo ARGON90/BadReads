@@ -124,7 +124,7 @@ const EditBookForm = ({ setShowModal, userBook }) => {
           <label className="edit-book-form-label">Year</label>
           <input
             className="edit-book-form-input"
-            type="integer"
+            type="number"
             placeholder="Year"
             required
             value={year}

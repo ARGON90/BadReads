@@ -110,11 +110,11 @@ const CreateBookForm = ({ setShowModal }) => {
             value={title}
             onChange={updateTitle}
           />
-          <div className="edit-book-form-error-message">{errors.title}</div>
+          <div className="edit-book-form-error-message">{errors?.title}</div>
           <label className="create-book-form-label">Year</label>
           <input
             className="create-book-form-input"
-            type="integer"
+            type="number"
             placeholder="Year"
             required
             value={year}

@@ -72,6 +72,12 @@
   color: #A9A9A9;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .edit-book-modal-body {
   display: flex;
   flex-direction: column;
@@ -108,6 +114,10 @@
   background-color: #F4F1EA;
   width: 100px;
   height: 23px;
+}
+
+.edit-book-form-submit:disabled {
+  color: #A9A9A9;
 }
 
 .edit-book-form-submit:hover:enabled,

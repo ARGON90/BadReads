@@ -74,6 +74,12 @@
   color: #A9A9A9;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .create-book-modal-body {
   display: flex;
   flex-direction: column;
@@ -112,13 +118,16 @@
   height: 23px;
 }
 
+.create-book-form-submit:disabled {
+  color: #A9A9A9;
+}
+
 .create-book-form-submit:hover:enabled,
 .create-book-form-cancel:hover {
   cursor: pointer;
   background-color: #ede6d6;
   font-weight: bold;
 }
-
 
 @media screen and (max-width: 900px) {
   .create-book-form {
