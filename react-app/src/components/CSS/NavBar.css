@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: auto;
+    height: 95px;
     width: 100%;
     position: sticky;
     top: 0;
@@ -76,31 +76,19 @@
 /* left side nav bar */
 /* home and my books link */
 .navBarLinksContainer {
-    padding: 13px 9px 7px 9px;
-}
-
-.navBarTextLink {
+    padding: 10px 9px 7px 9px;
     color: #382110;
     text-decoration: none;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 18px;
-}
-
-.navBarRightButton {
-    border: none;
-    background-color: transparent;
-    height: 30px;
-    width: fit-content;
-
-}
-
-.navBarTextLink:hover {
-    color: white
+    height: 26px;
 }
 
 .navBarLinksContainer:hover {
     background-color: #382110;
+    color:#FFFFFF;
 }
+
 
 /* drop down menu */
 .navBarDropDownMenu {

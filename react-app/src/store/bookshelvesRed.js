@@ -3,6 +3,7 @@ const GET_USER_BOOKSHELVES = '/bookshelves/user'
 const ADD_USER_BOOKSHELF = '/bookshelves/user/add'
 const DELETE_USER_BOOKSHELF = '/bookshelves/user/delete'
 const EDIT_USER_BOOKSHELF = '/bookshelves/user/edit'
+const UPDATE_LIBRARY = 'bookshelves/user/library'
 
 //actions
 
@@ -31,6 +32,13 @@ const deleteUserBookshelf = (id) => {
     return {
         type: DELETE_USER_BOOKSHELF,
         payload: id
+    }
+}
+
+const updateLibrary = (updatedShelves) => {
+    return {
+        type: UPDATE_LIBRARY,
+        payload: updatedShelves
     }
 }
 
@@ -81,6 +89,7 @@ export const renameUserBookshelfThunk = (bookshelf, id) => async (dispatch) => {
     }
 }
 
+
 export const deleteUserBookshelfThunk = (id) => async (dispatch) => {
     const response = await fetch(`/api/bookshelves/${id}`, {
         method: 'DELETE'
@@ -92,6 +101,23 @@ export const deleteUserBookshelfThunk = (id) => async (dispatch) => {
     }
 }
 
+export const updateLibraryThunk = (updateLib) => async (dispatch) => {
+
+    const response = await fetch(`/api/bookshelves/library`,
+        {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updateLib)
+        }
+    );
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(updateLibrary(data));
+        return JSON.stringify(data);
+    }
+}
 // # //REDUCER
 const initialState = { userBookshelves: {} }
 const bookshelvesReducer = (state = initialState, action) => {
@@ -120,6 +146,11 @@ const bookshelvesReducer = (state = initialState, action) => {
             bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
             let editBookShelf = action.payload
             bookshelves.userBookshelves[editBookShelf.id] = editBookShelf
+            return bookshelves
+
+        case UPDATE_LIBRARY:
+            bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
+            // bookshelves.userBookshelves = action.payload
             return bookshelves
 
         default:

@@ -1,6 +1,6 @@
 * {
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    caret-color: transparent;
+    /* caret-color: transparent; */
 }
 
 .bookshelf_page_outer {
@@ -97,12 +97,41 @@
     cursor: pointer;
 }
 
+.bookshelf_page_imageEdit {
+    margin-left: 10px;
+
+    background-color: #F4F1EA;
+    height: 10px;
+    font-size: small;
+    text-align: center;
+    width: 30px;
+    padding: 3px 3px 8px 3px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    /* position: fixed; */
+    color: rgba(0, 0, 0, 0.7);
+
+}
+
 .bookshelf_page_img {
     margin: 10px;
-    height: 150px;
+    max-width: 100%;
+    max-height: 100%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s;
+}
+
+.bookshelf_page_outerImage {
+    height: 150px;
+    transition: 0.3s;
+
+}
+
+.bookshelf_page_outerImage:hover {
+    height: 200px;
+    /* box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); */
 }
 
 .bookshelf_page_img:hover {
@@ -129,7 +158,8 @@
 .bookshelf_page_submitShelfButton:hover,
 .bookshelf_page_editDone:hover,
 .bookshelf_page_XRenameShelf:hover,
-.bookshelf_page_submitRenameShelfButton:hover {
+.bookshelf_page_submitRenameShelfButton:hover,
+.bookshelf_page_imageEdit:hover {
     background-color: #e7e5e1;
 }
 
@@ -138,7 +168,7 @@
     width: 100px;
     border: 1px solid rgba(170, 170, 170, 0.5);
     border-radius: 5px;
-    height: 10px;
+    height: 18px;
     margin: 0px;
 
 }
@@ -198,7 +228,7 @@
     color: rgba(210, 46, 46, 0.8);
     font-weight: bolder;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 8px;
     align-self: center;
 }
 
@@ -245,9 +275,10 @@
     width: 100px;
     border: 1px solid rgba(170, 170, 170, 0.5);
     border-radius: 5px;
-    height: 13px;
+    height: 22px;
     margin-left: 25px;
     margin-bottom: 0px;
+    margin-top: 6px;
     color: rgba(0, 0, 0, 0.8);
 
 }
@@ -287,3 +318,78 @@
     margin-top: 6px;
     margin-left: 10px;
 }
+
+.bookshelf_page_bookEditForm {
+    background-color: rgba(244, 241, 234, 1);
+    padding: 8px;
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 5px;
+    position: relative;
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.bookshelf_page_bookLabel {
+    color: #00635d;
+    padding: 5px;
+}
+
+.bookshelf_page_bookInputWrapDiv {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.bookshelf_page_bookSave {
+    background-color: #00635d;
+    height: 10px;
+    font-size: small;
+    font-weight: bolder;
+    text-align: center;
+    width: 80px;
+    padding-top: 5px;
+    border: 1px solid rgba(170, 170, 170, 1);
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    padding-bottom: 19px;
+    margin-top: 6px;
+    margin-left: 3px;
+}
+
+.bookshelf_page_bookSave:hover {
+    background-color: #558482;
+}
+
+.bookshelf_page_bookEditStatus {
+    margin-top: 10px;
+    padding-left: 5px;
+    font-weight: bolder;
+    border-bottom: 1px solid rgba(170, 170, 170, 1);
+    color: #00635d;
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+}
+
+.bookshelf_page_bookEditShelves {
+    margin-top: 2px;
+    padding-left: 5px;
+    font-weight: bolder;
+    border-bottom: 1px solid rgba(170, 170, 170, 1);
+    color: #00635d;
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+}
+
+/* .bookshelf_page_bookRadio,
+.bookshelf_page_bookCheck {
+    height: 13px;
+    width: 13px;
+
+
+    border: 1px solid #34495E;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    color: #00635d;
+    background-color: #00635d;
+} */
