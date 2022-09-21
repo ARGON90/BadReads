@@ -3,6 +3,8 @@ const CREATE_REVIEW = '/reviews/createReview'
 const EDIT_REVIEW = '/reviews/editReview'
 const DELETE_ONE_REVIEW = '/reviews/deleteReview'
 
+//toggle drop down off when you toggle other things
+
 const deleteReviewById = (id) => {
     return {
         type: DELETE_ONE_REVIEW,
