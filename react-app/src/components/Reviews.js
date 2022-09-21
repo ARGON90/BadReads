@@ -8,7 +8,7 @@ import CreateReview from './CreateReview'
 import EditReview from './EditReview';
 
 
-const Reviews = ({ display, setDisplay, displayLanding }) => {
+const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggle }) => {
     console.log('INSIDE REVIEWS COMPONENT')
     const history = useHistory()
     const { id } = useParams()
@@ -21,10 +21,12 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
 
     function displayCreate() {
         setDisplay((display) => display = 'create')
+        setDropToggle((dropToggle) => dropToggle = false)
     }
 
     function displayLanding() {
         setDisplay((display) => display = 'landing')
+        setDropToggle((dropToggle) => dropToggle = false)
     }
 
     useEffect(() => {
@@ -51,7 +53,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
     function noReviews() {
         if (reviewsByBookId.length == 0) {
             return (
-                <div className='alex_merriweather_300 alex_font_14' >This book hasn't been reviewed yet</div>
+                <div className='alex_merriweather_300 alex_font_14 alex_bold' >This book hasn't been reviewed yet</div>
             )
         }
     }
@@ -74,23 +76,27 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
             function deleteReview() {
                 dispatch(deleteReviewThunk(reviewId))
                 dispatch(getAllReviewsThunk())
+                setDropToggle((dropToggle) => dropToggle = false)
             }
 
             function editReview() {
                 setDisplay((display) => display = 'edit')
-                console.log(`${reviewId}`)
+                setDropToggle((dropToggle) => dropToggle = false)
             }
 
             //USER HAS AN EXISTING REVIEW
 
             return (
-                <div>
+                <div className='alex_merriweather_300 alex_font_14' >
                     {display === 'landing' ?
                         <div>
-                            <div>Would you like to edit your review, {currentUserUsername}?</div>
-                            <div>You rated {singleBook.title} {stars} stars</div>
-                            <div>{updatedDate(updated_at)}</div>
-                            <div>"{review}"</div>
+                            <div
+                            className='alex_merriweather_300 alex_font_14'>Would you like to edit your review,
+                            <p>{currentUserUsername}?</p>
+                            </div>
+                            <div className='alex_merriweather_300 alex_font_14'>You rated {singleBook.title} {stars} stars</div>
+                            <div className='alex_merriweather_300 alex_font_14'>{updatedDate(updated_at)}</div>
+                            <div className='alex_merriweather_300 alex_font_14'>"{review}"</div>
                             <button
                                 onClick={editReview}
                                 className='alex_gr-button'
@@ -131,7 +137,7 @@ const Reviews = ({ display, setDisplay, displayLanding }) => {
 
         else {
             return (
-                <div>
+                <div className='alex_merriweather_300 alex_font_14'>
                     {display === 'landing' ?
                         <div>
                             <div className='alex_merriweather_300 alex_font_14' >{currentUserUsername}, start your review of {singleBook.title}</div>

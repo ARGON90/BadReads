@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;900&family=Merriweather:wght@300;400;700;900&display=swap');
 
-
-
+/* FONTS */
 .alex_review_page_title {
     font-weight: 900;
     font-size: 24px;
@@ -39,6 +38,40 @@
     text-decoration: none;
 }
 
+
+/* DISPLAYS */
+
+.alex_flex_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.alex_flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.alex_width_240 {
+    width: 240px;
+}
+
+.alex_width_650 {
+    width: 650px;
+}
+
+.alex_row_gap_10 {
+    row-gap: 10px;
+}
+
+.alex_margin_remove {
+    margin: none;
+}
+
+.alex_margin_right_10 {
+    margin-right: 10px;
+}
+
+
 /* CREATE Review Page */
 
 .alex_text_area {
@@ -49,6 +82,8 @@
     box-shadow: -0.5px 3.5px 6px #0a6a0a;
 }
 
+
+/*  BUTTONS AND IMAGES */
 
 .alex_gr-button {
     border-radius: 3px;
@@ -70,78 +105,46 @@
     width: 122px;
 }
 
+
 .alex_gr-button:hover {
-    background-color: rgba(39, 28, 20, 0.75);
+    background-color: #e7e5e1;
 }
 
 .alex-image-size {
     width: 145.5px;
     height: 200px;
+}
+
+.alex-image-fill {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.alex_bookshelf_div {
+    height: 32px;
 
 }
 
 
-/* books lise */
 
-.alex-books-page-title {
-    font-size: 22px;
-    color: #00635d;
-    font-weight: 600;
-    padding-bottom: 10px;
-    font-family: "Merriweather", Georgia, "Times New Roman", serif;
-    width: 940px;
-}
-
-
-.alex-books-page-outer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.alex-books-page-container {
-    margin-top: 20px;
-    max-width: 970px;
-    /* border: 1px solid black; */
-}
-
-.alex-books-page-header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.alex-books-page-separator {
-    border-bottom: 1px solid rgba(170, 170, 170, 0.3);
-    width: 922px;
-}
-
-.alex-books-page-books-item-container {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    /* justify-content: space-around; */
-    gap: 10px;
-}
-
-.my-books-page-book-item {
-    width: 15%;
-}
-
-.my-books-page-book-cover {
-    margin: 5px 0px;
+#alex_bookshelf_button {
     height: 100%;
     width: 100%;
-}
-
-.my-books-page-book-cover:hover {
-    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
-}
-
-.my-books-page-edit-button-container:hover,
-.my-books-page-delete-button-container:hover {
-    background-color: #ede6d6;
-    font-weight: bold;
-
+    border-radius: 3px;
+    border: 1px solid #D6D0C4;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 14px;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #333333;
+    background-color: #F4F1EA;
+    line-height: 1;
+    padding: 8px 12px;
 }
