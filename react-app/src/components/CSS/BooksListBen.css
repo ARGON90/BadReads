@@ -1,0 +1,97 @@
+.booklist_outer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+
+}
+
+@media screen and (max-width: 1300px) {
+    .booklist_outer {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr)
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .booklist_outer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .booklist_outer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .booklist_outer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .booklist_outer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr)
+    }
+}
+
+.booklist_h1 {
+    font-size: 30px;
+    color: #00635d;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(170, 170, 170, 0.3);
+    font-family: "Merriweather", Georgia, "Times New Roman", serif;
+    /* needs to track width and margins of inner2 and inner1 */
+    width: 940px;
+    text-align: center;
+}
+
+.booklist_outerWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.booklist_navLink {
+    width: 150px;
+    height: 100px;
+    margin: 10px 10px 60px 10px;
+    text-decoration: none;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+}
+
+.booklist_image {
+    height: 170px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.booklist_image:hover {
+    height: 200px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.booklist_bybook {
+    width: 200px;
+    height: 265px;
+    text-align: center;
+}
+
+.booklist_author {
+    font-style: italic;
+    color: rgb(85, 85, 85);
+}
+
+.booklist_title {
+    text-decoration: underline;
+    color: rgb(31, 31, 31);
+    font-weight: bold;
+}
