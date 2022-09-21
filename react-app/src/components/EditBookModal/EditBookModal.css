@@ -9,12 +9,13 @@
   border-radius: 5px;
   background-color: #F4F1EA;
   cursor: pointer;
-  width: 80px;
+  width: 60px;
   height: 23px;
 }
 
 .edit-book-button:hover {
-  background-color: rgba(39, 28, 20, 0.75);
+  background-color: #ede6d6;
+  font-weight: bold;
 }
 
 .edit-book-form {
@@ -26,15 +27,12 @@
   background-color: white;
   font-size: 14px;
   color: #181818;
-  /* position: relative; */
 }
 
 .edit-book-form-title {
   font-size: 18px;
   font-weight: bold;
   color: #333333;
-  /* text-align: center; */
-  /* padding-bottom: 20px; */
 }
 
 .edit-book-form-errors-container {
@@ -60,6 +58,19 @@
   padding: 2px;
   cursor: pointer;
   caret-color: black;
+  text-overflow: ellipsis;
+  color: #5d5d5d;
+}
+
+.edit-book-form-input:focus {
+  outline: none;
+  border: 1px solid #d0ba94;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 15%);
+  color: #181818;
+}
+
+.edit-book-form-input::placeholder {
+  color: #A9A9A9;
 }
 
 .edit-book-modal-body {
@@ -69,18 +80,45 @@
   max-width: 100%;
   background-color: white;
   position: relative;
-  border-radius: 20px;
 }
 
-.edit-book-form-submit {
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
+.edit-book-form-body-separator {
   display: block;
-  align-self: center;
-  width: 7rem;
-  height: 100%;
-  min-width: 10rem;
-  background-color: #1e1915;
+  margin-top: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.edit-book-form-submit,
+.edit-book-form-cancel {
+  align-items: center;
+  text-align: center;
+  font-size: small;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 1px solid rgba(170, 170, 170, 0.3);
+  border-radius: 5px;
+  background-color: #F4F1EA;
+  width: 100px;
+  height: 23px;
+}
+
+.edit-book-form-submit:hover:enabled,
+.edit-book-form-cancel:hover {
   cursor: pointer;
+  background-color: #ede6d6;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+  .edit-book-form {
+    max-width: 50vh;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .edit-book-form {
+    max-height: 50vh;
+  }
 }

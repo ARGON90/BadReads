@@ -9,12 +9,13 @@
   border-radius: 5px;
   background-color: #F4F1EA;
   cursor: pointer;
-  width: 80px;
+  width: 90px;
   height: 23px;
 }
 
 .create-book-button:hover {
-  background-color: rgba(39, 28, 20, 0.75);
+  background-color: #ede6d6;
+  font-weight: bold;
 }
 
 .create-book-form {
@@ -59,12 +60,19 @@
   padding: 2px;
   cursor: pointer;
   caret-color: black;
+  text-overflow: ellipsis;
+  color: #5d5d5d;
 }
 
 .create-book-form-input:focus {
   outline: none;
   border: 1px solid #d0ba94;
   box-shadow: 0 1px 2px rgb(0 0 0 / 15%);
+  color: #181818;
+}
+
+.create-book-form-input::placeholder {
+  color: #A9A9A9;
 }
 
 .create-book-modal-body {
@@ -82,17 +90,38 @@
   border-bottom: 1px solid #eee;
 }
 
-.create-book-form-submit {
+.create-book-form-submit,
+.create-book-form-cancel {
   align-items: center;
   text-align: center;
   font-size: small;
   justify-content: center;
   color: rgba(0, 0, 0, 0.7);
   margin-top: 10px;
+  margin-right: 10px;
   border: 1px solid rgba(170, 170, 170, 0.3);
   border-radius: 5px;
   background-color: #F4F1EA;
-  cursor: pointer;
-  width: 80px;
+  width: 100px;
   height: 23px;
+}
+
+.create-book-form-submit:hover:enabled,
+.create-book-form-cancel:hover {
+  cursor: pointer;
+  background-color: #ede6d6;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 900px) {
+  .create-book-form {
+    max-width: 50vh;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .create-book-form {
+    max-height: 50vh;
+  }
 }

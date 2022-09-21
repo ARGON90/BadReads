@@ -26,6 +26,17 @@ const EditBookForm = ({ setShowModal, userBook }) => {
   const updateBanned = (e) => setBanned(e.target.value);
   const updateImageUrl = (e) => setImageUrl(e.target.value);
 
+  const isValidImage = (string) => {
+    const validEndings = [".jpg", ".jpeg", ".png", ".tiff"];
+    for (let i = 0; i < validEndings.length; i++) {
+      let suffix = validEndings[i];
+      if (string.endsWith(suffix)) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   useEffect(() => {
     dispatch(getAllBooksThunk())
   }, [dispatch])
@@ -59,8 +70,11 @@ const EditBookForm = ({ setShowModal, userBook }) => {
     } else if (banned.length > 5000) {
       newErrors.push("Banned reason must be 5000 characters or less.");
     }
+    if (!isValidImage(imageUrl)) {
+      newErrors.push("Please provide a valid image.");
+    }
     setErrors(newErrors);
-  }, [currentUser, title, year, author, description]);
+  }, [currentUser, title, year, author, description, banned, imageUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -150,19 +164,22 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             onChange={updateImageUrl}
           />
         </div>
-        <button
-          className="edit-book-form-submit"
-          type="submit"
-          disabled={errors.length ? true : false}
-        >
-          Save Changes
-        </button>
-        <button
-          className="edit-book-form-cancel"
-          onClick={() => setShowModal(false)}
-        >
-          Cancel
-        </button>
+        <div className="edit-book-form-body-separator"></div>
+        <div className="edit-book-form-button-container">
+          <button
+            className="edit-book-form-submit"
+            type="submit"
+            disabled={errors.length ? true : false}
+          >
+            Save Changes
+          </button>
+          <button
+            className="edit-book-form-cancel"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </>
   );

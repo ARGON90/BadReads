@@ -22,6 +22,17 @@ const CreateBookForm = ({ setShowModal }) => {
   const updateBanned = (e) => setBanned(e.target.value);
   const updateImageUrl = (e) => setImageUrl(e.target.value);
 
+  const isValidImage = (string) => {
+    const validEndings = ['.jpg', '.jpeg', '.png', '.tiff']
+    for (let i = 0; i < validEndings.length; i++) {
+      let suffix = validEndings[i]
+      if (string.endsWith(suffix)) {
+        return true
+      }
+    }
+    return false
+  };
+
   useEffect(() => {
     const newErrors = [];
 
@@ -51,8 +62,11 @@ const CreateBookForm = ({ setShowModal }) => {
     } else if (banned.length > 5000) {
       newErrors.push('Banned reason must be 5000 characters or less.');
     }
+    if (!isValidImage(imageUrl)) {
+      newErrors.push("Please provide a valid image.");
+    }
     setErrors(newErrors);
-  }, [currentUser, title, year, author, description, banned])
+  }, [currentUser, title, year, author, description, banned, imageUrl])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,6 +88,9 @@ const CreateBookForm = ({ setShowModal }) => {
       history.push('/my-books');
     }
   }
+
+  console.log(errors)
+
   return (
     <>
       <form className="create-book-form" onSubmit={handleSubmit}>
@@ -140,7 +157,21 @@ const CreateBookForm = ({ setShowModal }) => {
           />
         </div>
         <div className="create-book-form-body-separator"></div>
-        <button className="create-book-form-submit" type="submit" disabled={errors.length ? true : false}>Submit</button>
+        <div className="create-book-form-button-container">
+        <button
+          className="create-book-form-submit"
+          type="submit"
+          disabled={errors.length ? true : false}
+        >
+          Submit
+        </button>
+        <button
+          className="create-book-form-cancel"
+          onClick={() => setShowModal(false)}
+        >
+          Cancel
+        </button>
+        </div>
       </form>
     </>
   )
