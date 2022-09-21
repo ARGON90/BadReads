@@ -11,7 +11,6 @@ const Bookshelves = () => {
 
     const dispatch = useDispatch();
     const bookshelvesDict = useSelector((state) => (state?.bookshelves?.userBookshelves))
-    // const userID = useSelector((state) => state?.session?.user?.id)
     const booksDict = useSelector((state) => state?.books)
 
     const [shelfID, setShelfID] = useState(false)
@@ -20,9 +19,7 @@ const Bookshelves = () => {
     const [renameShelfName, setRenameShelfName] = useState('')
     const [toggleEdit, setToggleEdit] = useState(false)
     const [toggleRename, setToggleRename] = useState(false)
-    // const [toggleBookEdit, setToggleBookEdit] = useState(false)
     const [bookEditID, setBookEditID] = useState(false)
-
     const [bookshelfIDArr, setBookshelfIDArr] = useState([])
 
     //turn usershelves slice of store into arr

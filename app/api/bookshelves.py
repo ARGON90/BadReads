@@ -91,7 +91,7 @@ def update_library():
 
 #    //send back all user shelves
 
-    print("i amshelfidarr",shelfIDArr)
+    # print("i amshelfidarr",shelfIDArr)
     # shelves_user = [x.to_dict() for x in current_user.bookshelves]
     return  {}
 
