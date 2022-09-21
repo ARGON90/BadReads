@@ -45,16 +45,17 @@ const SearchBookBar = ({ setSearchBar}) => {
         }
     }
 
-    const clearInput = () => {
-        setFilterBooks([])
-        setSearchable('')
-    }
-
     const handleSubmit = () => {
         history.push(`/books/${searchable}`)
         setFilterBooks([])
         setSearchBar(false)
     }
+
+    const clearInput = () => {
+        setFilterBooks([])
+        setSearchable('')
+    }
+
 
     return (
         <div className='searchBarDiv'>
@@ -63,7 +64,7 @@ const SearchBookBar = ({ setSearchBar}) => {
                 <input
                 type='text'
                 value={searchable}
-                onChange={handleBookFilter, handleAuthorFilter}
+                onChange={(handleBookFilter, handleAuthorFilter)}
                 placeholder='Search books'
                 />
             </form>
