@@ -212,19 +212,7 @@ div.splashPageImg {
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }
 
-.signUpErrors {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 24px;
-    background-color: #FFF5F3;
-    border-radius: 16px;
-    line-height: 30px;
-    font-size: 15px;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
-}
+
 
 
 
@@ -360,4 +348,23 @@ img.splashBook {
 .footerColumn a:hover {
     text-decoration: underline;
     color: #382110;
+}
+
+
+.textError {
+    text-align: left;
+    padding: 8px;
+}
+
+.signUpErrors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    background-color: #FFF5F3;
+    border-radius: 16px;
+    font-size: 14px;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }

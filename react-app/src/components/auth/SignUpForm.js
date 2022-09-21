@@ -64,7 +64,7 @@ const SignUpForm = () => {
         </div>
         <div className='signUpErrors'>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <li className="textError" key={ind}>{error}</li>
           ))}
         </div>
         <div>
@@ -103,7 +103,6 @@ const SignUpForm = () => {
           </label>
           <div className="alertDiv">
           <div className="alertIcon">
-            <i class="a-icon a-icon-alert"></i>
           </div>
           <span className="alertIconText">Passwords must be at least 6 characters.</span>
           </div>

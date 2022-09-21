@@ -32,18 +32,24 @@ const SearchBookBar = ({ setSearchBar}) => {
         }
     }
 
-    const handleAuthorFilter = (e) => {
-        const findBook = e.target.value
-        setSearchable(findBook)
-        const findTitle = Object.values(books).filter(book => {
-            return book.author.toLowerCase().includes(findBook.toLowerCase())
-        })
-        if (findBook === '') {
-            setFilterBooks([])
-        } else {
-            setFilterBooks(findTitle)
-        }
+    // const handleAuthorFilter = (e) => {
+    //     const findBook = e.target.value
+    //     setSearchable(findBook)
+    //     const findAuthor = Object.values(books).filter(book => {
+    //         return book.author.toLowerCase().includes(findBook.toLowerCase())
+    //     })
+    //     if (findBook === '') {
+    //         setFilterBooks([])
+    //     } else {
+    //         setFilterBooks(findAuthor)
+    //     }
+    // }
+
+   const twoCalls = (e) => {
+        this.handleBookFilter(e)
+        this.handleAuthorFilter()
     }
+
 
     const handleSubmit = () => {
         history.push(`/books/${searchable}`)
@@ -64,7 +70,7 @@ const SearchBookBar = ({ setSearchBar}) => {
                 <input
                 type='text'
                 value={searchable}
-                onChange={(handleBookFilter, handleAuthorFilter)}
+                onChange={handleBookFilter}
                 placeholder='Search books'
                 />
             </form>
