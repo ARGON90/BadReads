@@ -81,6 +81,7 @@ const Bookshelves = () => {
         //end
         //dispatch here
         dispatch(addUserBookshelvesThunk(newBookShelf))
+        // dispatch(getUserBookshelvesThunk())
         setToggleAddButton(true)
         setShelfName('')
     }
@@ -461,6 +462,7 @@ const Bookshelves = () => {
                 </div>}
                 {toggleEdit &&
                     <div className='bookshelf_page_editInner2'>
+                        {customArr?.length === 0 && <div className="bookshelf_page_noMatch">No custom bookshelves!</div>}
                         {customArr.map((shelf) =>
                             <div key={shelf.id} className="bookshelf_page_editWrap">
                                 <div
