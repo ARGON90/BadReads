@@ -62,12 +62,12 @@ export default function SplashPage() {
                             <div className="splashMiddleTeam">
                                 <div className="splashMiddleRow">
                                     <p>Connect with Alex</p>
-                                    <a href="https://github.com/" target='_blank'>
+                                    <a href="https://github.com/ARGON90" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                                         </div>
                                     </a>
-                                    <a href="https://www.linkedin.com/" target='_blank'>
+                                    <a href="https://www.linkedin.com/in/alex-gonglach/" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                                         </div>
@@ -76,12 +76,12 @@ export default function SplashPage() {
                                 <hr></hr>
                                 <div className="splashMiddleRow">
                                     <p>Connect with Ben</p>
-                                    <a href="https://github.com/" target='_blank'>
+                                    <a href="https://github.com/benwaldee" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                                         </div>
                                     </a>
-                                    <a href="https://www.linkedin.com/" target='_blank'>
+                                    <a href="https://www.linkedin.com/in/benwaldee/" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                                         </div>
@@ -90,7 +90,7 @@ export default function SplashPage() {
                                 <hr></hr>
                                 <div className="splashMiddleRow">
                                     <p>Connect with Julie</p>
-                                    <a href="https://github.com/" target='_blank'>
+                                    <a href="https://github.com/julieyj" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                                         </div>
@@ -104,12 +104,12 @@ export default function SplashPage() {
                                 <hr></hr>
                                 <div className="splashMiddleRow">
                                     <p>Connect with Justine</p>
-                                    <a href="https://github.com/" target='_blank'>
+                                    <a href="https://github.com/jvstinejvng" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('githubbook.png')} alt='badreads logo' />
                                         </div>
                                     </a>
-                                    <a href="https://www.linkedin.com/" target='_blank'>
+                                    <a href="https://www.linkedin.com/in/jvstinejvng/" target='_blank'>
                                         <div className='socialLinks'>
                                             <img className="splashBook" src={IMAGE('linkedInbook.png')} alt='badreads logo' />
                                         </div>
@@ -130,13 +130,13 @@ export default function SplashPage() {
                     </div>
                     <div className='footerColumn'>
                         <h2 className='footerColumnTitle'>WORK WITH US</h2>
-                        <a href="https://github.com/">Alex Gonglach</a>
-                        <a href="https://github.com/">Ben Waldee</a>
-                        <a href="https://github.com/">Julie Jung</a>
-                        <a href="https://github.com/">Justine Jang</a>
+                        <a href="https://github.com/ARGON90">Alex Gonglach</a>
+                        <a href="https://github.com/benwaldee">Ben Waldee</a>
+                        <a href="https://github.com/julieyj">Julie Jung</a>
+                        <a href="https://github.com/jvstinejvng">Justine Jang</a>
                     </div>
                     <div className='footerColumn'>
-                        <h2 className='footerColumnTitle'>CONNECT</h2>
+                        <h2 className='footerColumnTitle'>SOURCE CODE</h2>
                         <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
                     </div>
                 </div>
