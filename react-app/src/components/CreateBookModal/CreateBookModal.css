@@ -33,8 +33,7 @@
 .create-book-form-title {
   font-size: 18px;
   font-weight: bold;
-  color: #333333;
-  /* text-align: center; */
+  color: #00635d;
 }
 
 .create-book-form-errors-container {
@@ -84,7 +83,14 @@
   position: relative;
 }
 
-.create-book-form-body-separator {
+.create-book-form-body-separator-top {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.create-book-form-body-separator-bottom {
   display: block;
   margin-top: 15px;
   border-bottom: 1px solid #eee;

@@ -32,11 +32,10 @@
 .edit-book-form-title {
   font-size: 18px;
   font-weight: bold;
-  color: #333333;
+  color: #00635d;
 }
 
-.edit-book-form-errors-container {
-  padding: 10px 0px;
+.edit-book-form-error-message {
   color: red;
 }
 
@@ -82,7 +81,14 @@
   position: relative;
 }
 
-.edit-book-form-body-separator {
+.edit-book-form-body-separator-top {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.edit-book-form-body-separator-bottom {
   display: block;
   margin-top: 15px;
   border-bottom: 1px solid #eee;
