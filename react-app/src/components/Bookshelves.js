@@ -348,7 +348,15 @@ const Bookshelves = () => {
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />
                         </div>
 
-                    )}
+                    )
+
+                    }
+                    {!shelfID && bookIDArr?.length === 0 &&
+
+                        <div className="bookshelf_page_noMatch">No matching items!</div>
+
+                    }
+
                     {shelfID && bookshelvesDict[shelfID]?.books?.map((id) =>
 
                         //REPEAT OF UPPER DIV
