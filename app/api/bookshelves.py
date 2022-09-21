@@ -104,6 +104,33 @@ def delete_bookshelf(id):
     db.session.commit()
     return id
 
+@bookshelves.route('/default',methods=['POST'])
+def create_default():
+    data = request.json
+    userID = data['userID']
+
+    h_read = Bookshelf(
+        user_id=userID,
+        default=True,
+        name="Have Read"
+    )
+    c_read = Bookshelf(
+        user_id=userID,
+        default=True,
+        name="Currently Reading"
+    )
+    w_read = Bookshelf(
+        user_id=userID,
+        default=True,
+        name="Will Read"
+    )
+
+    db.session.add(h_read)
+    db.session.add(c_read)
+    db.session.add(w_read)
+    db.session.commit()
+    return {}
+
 @bookshelves.route('/<id>',methods=['PUT'])
 def edit_bookshelf(id):
     data = request.json

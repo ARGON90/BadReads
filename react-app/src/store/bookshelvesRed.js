@@ -4,6 +4,7 @@ const ADD_USER_BOOKSHELF = '/bookshelves/user/add'
 const DELETE_USER_BOOKSHELF = '/bookshelves/user/delete'
 const EDIT_USER_BOOKSHELF = '/bookshelves/user/edit'
 const UPDATE_LIBRARY = 'bookshelves/user/library'
+const DEFAULT_CREATE = 'bookshelves/user/default'
 
 //actions
 
@@ -39,6 +40,13 @@ const updateLibrary = (updatedShelves) => {
     return {
         type: UPDATE_LIBRARY,
         payload: updatedShelves
+    }
+}
+
+const createDefaultBookshelves = (empty) => {
+    return {
+        type: DEFAULT_CREATE,
+        payload: empty
     }
 }
 
@@ -118,6 +126,23 @@ export const updateLibraryThunk = (updateLib) => async (dispatch) => {
         return JSON.stringify(data);
     }
 }
+
+export const createDefaultBookshelvesThunk = (userID) => async (dispatch) => {
+    const response = await fetch(`/api/bookshelves/default`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userID)
+    }
+    );
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(createDefaultBookshelves(data));
+        return JSON.stringify(data);
+    }
+}
+
 // # //REDUCER
 const initialState = { userBookshelves: {} }
 const bookshelvesReducer = (state = initialState, action) => {
@@ -149,6 +174,11 @@ const bookshelvesReducer = (state = initialState, action) => {
             return bookshelves
 
         case UPDATE_LIBRARY:
+            bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
+            // bookshelves.userBookshelves = action.payload
+            return bookshelves
+
+        case DEFAULT_CREATE:
             bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
             // bookshelves.userBookshelves = action.payload
             return bookshelves
