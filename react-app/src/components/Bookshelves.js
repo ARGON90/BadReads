@@ -12,9 +12,9 @@ const Bookshelves = () => {
 
     const dispatch = useDispatch();
 
-    //dicitonary of the userBookshelves portion of store
+    //object of the userBookshelves portion of store
     const bookshelvesDict = useSelector((state) => (state?.bookshelves?.userBookshelves))
-    //dictionary of the books portion of store
+    //object of the books portion of store
     const booksDict = useSelector((state) => state?.books)
 
     //toggled when clicking on shelf on left - used to condiotnally render books for each shelf
@@ -36,6 +36,7 @@ const Bookshelves = () => {
     //**IMPORTANT** holds the bookshelf IDs that a book is in -
     //default empty - when edit is clicked over a book, populates with initial shelves the book is in
     //changes every single time a user adjusts inputs in the form (login is in onChange in the inputs)
+    //submitted to the backend to modify DB
     const [bookshelfIDArr, setBookshelfIDArr] = useState([])
 
     //turn usershelves slice of store into arr of user shelves

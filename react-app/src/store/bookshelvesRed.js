@@ -175,12 +175,12 @@ const bookshelvesReducer = (state = initialState, action) => {
 
         case UPDATE_LIBRARY:
             bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
-            // bookshelves.userBookshelves = action.payload
+            // NOT CHANGING STATE -- using previously made thunks to do it for us
             return bookshelves
 
         case DEFAULT_CREATE:
             bookshelves = { ...state, userBookshelves: { ...state.userBookshelves } }
-            // bookshelves.userBookshelves = action.payload
+            // NOT CHANGING STATE -- using previously made thunks to do it for us
             return bookshelves
 
         default:
