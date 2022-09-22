@@ -18,7 +18,7 @@ class Book(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     user = db.relationship("User",back_populates="books")
-    reviews = db.relationship("Review",back_populates="books")
+    reviews = db.relationship("Review",back_populates="books",cascade="all, delete")
 
     bookshelves = db.relationship(
         "Bookshelf",

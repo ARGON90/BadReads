@@ -135,12 +135,12 @@ const BookById = () => {
                 <div className='alex_flex_row alex_justify_center alex_pad_top_35'>
 
                     {/* LEFT PANEL */}
-                    <div className='alex_flex_column alex_height_520 alex_row_gap_10 alex_align_center'>
+                    <div className='alex_flex_column  alex_row_gap_10 alex_align_center ben_merge_bookDiv_left'>
                         <div className='alex-image-size'>
                             <img src={singleBook.image_url} alt='Cover' className='alex-image-fill' />
                         </div>
 
-                        <div className='alex_bookshelf_div'>
+                        <div className='alex_bookshelf_div ben_bookWrap_bookId'>
                             <button
                                 onClick={() => {
                                     setDropToggle((dropToggle) => !dropToggle)
