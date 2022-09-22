@@ -535,3 +535,12 @@
     color: #00635d;
     background-color: #00635d;
 } */
+
+.ben_merge_bookDiv_left {
+    width: 200px;
+    height: fit-content;
+}
+
+.ben_bookWrap_bookId {
+    height: 30px;
+}
