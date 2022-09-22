@@ -75,7 +75,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
 
             function deleteReview() {
                 dispatch(deleteReviewThunk(reviewId))
-                dispatch(getAllReviewsThunk())
+                    .then(() => dispatch(getAllReviewsThunk()))
                 setDropToggle((dropToggle) => dropToggle = false)
             }
 
@@ -132,15 +132,16 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                             >Delete Review</button>
                         </div>
                         : null}
+                        <div className='className='alex_pad_bottom_10></div>
 
                     {display === 'edit' ?
                         <div>
                             <EditReview userId={currentUserId} bookId={id} displayLanding={displayLanding} userReview={review} userStars={stars} reviewOfCurrentUser={reviewOfCurrentUser} />
                         </div>
                         : null}
-                    <div className='alex_pad_bottom_10'></div>
+                    <div ></div>
                     {reviewsByBookId.map((review) =>
-                        <div key={review.id}>
+                        <div key={review.id} className='alex_pad_bottom_10'>
                             {display === 'landing' ?
                                 <div className='alex_flex_column'>
                                     <div className='alex_flex_row alex_justify_between'>
@@ -170,6 +171,8 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                 </div>
                                 : null}
                         </div>
+
+
                     )}
                 </div>
             )
@@ -205,7 +208,8 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                         : null}
 
                     {display === 'landing' ?
-                        <div>
+
+                        <div className='alex_pad_bottom_10'>
                             {reviewsByBookId.map((review) =>
                                 <div key={review.id}>
                                     <div className='alex_flex_row alex_justify_between'>
