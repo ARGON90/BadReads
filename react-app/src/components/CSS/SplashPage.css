@@ -370,6 +370,12 @@ img.splashBook {
 }
 
 
+/* .footerUserBooks {
+    bottom: 0;
+    position: sticky;
+    width: 100%;
+} */
+
 .textError {
     text-align: left;
     padding-left: 17px;
