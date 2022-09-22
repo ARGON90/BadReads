@@ -17,6 +17,7 @@ const DeleteBookForm = ({ setShowModal, userBook }) => {
 
     if (deletedBook) {
       console.log(`Successfully deleted bookId: ${userBook.id}`);
+      setShowModal(false);
       history.push("/my-books");
     }
   };
