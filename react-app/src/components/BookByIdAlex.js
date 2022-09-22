@@ -13,12 +13,16 @@ const BookById = () => {
     const { id } = useParams()
     const dispatch = useDispatch();
     const booksDict = useSelector((state) => (state?.books))
+    const booksArray = useSelector((state) => Object.values(state?.books))
     const singleBook = booksDict[id]
     const reviewsArray = useSelector((state) => Object.values(state?.reviews))
-    const reviewsByBookId = reviewsArray.filter(review => review.book_id == id)
+    const reviewsByBookId = reviewsArray.filter(review => review.book_id === id)
     const [display, setDisplay] = useState('landing')
     const currentUser = useSelector((state) => (state?.session?.user))
 
+    const bookIdArray = []
+    booksArray.map((books) => bookIdArray.push(books.id))
+    console.log(bookIdArray.includes(Number(id)), 'TRUE OR FALSE>>')
 
 
     useEffect(() => {
@@ -53,7 +57,7 @@ const BookById = () => {
         }
     }
 
-
+    // import from bookshelves
     let userShelves = []
     if (bookshelvesDict) {
         userShelves = Object.values(bookshelvesDict)
@@ -73,11 +77,8 @@ const BookById = () => {
     const genShelfIDArr = (bookID) => {
         let genShelfIDArr = []
         for (let shelf of userShelves) {
-
             if (shelf.books.includes(Number(bookID))) {
                 if (!genShelfIDArr.includes(shelf.id)) {
-
-
                     genShelfIDArr.push(shelf.id)
                 }
             }
@@ -101,23 +102,29 @@ const BookById = () => {
     }
     // imports from bookshelves
 
-
-
-    if (booksDict.length < 1) return <div>Loading All Books...</div>
-    if (!singleBook) return (
-        <>
-            <div className='alex_flex_column alex_align_center alex_pad_top_35'>
-                <div className='alex_review_page_title alex_pad_bottom_10'>We couldn't find the book you were looking for...</div>
-                <img className='alex-404-image ' src='https://i.imgur.com/Ou7Pk4P.jpg' alt='page not found' />
-                <div className='alex_flex_row alex_pad_top_10 '>
-                    <div className='  alex_merriweather_300 alex_font_16 alex_bold alex_margin_right_3'>Want to add a banned book to the site? Create one</div>
-                    <NavLink className={'alex_text_deco_none'} to='/my-books'>
-                        <div className='alex_merriweather_300 alex_font_16 alex_bold alex_font_green'>here!</div>
-                    </NavLink>
-                </div>
-            </div>
-        </>
+    if (booksArray.length < 1) return (
+        <div className='alex_flex_row alex_justify_center alex_pad_top_35'>
+            <div className='alex_merriweather_300 alex_font_16 alex_bold' >Loading All Books...</div>
+        </div>
     )
+    if (!bookIdArray.includes(Number(id)))
+        return (
+            <>
+                <div className='alex_flex_column alex_align_center alex_pad_top_35'>
+                    <div className='alex_review_page_title alex_pad_bottom_10'>We couldn't find the book you were looking for...</div>
+                    <img className='alex-404-image ' src='https://i.imgur.com/Ou7Pk4P.jpg' alt='page not found' />
+                    <div className='alex_flex_row alex_pad_top_10 '>
+                        <div className='alex_merriweather_300 alex_font_16 alex_bold alex_margin_right_3'>Want to add a banned book to the site? Create one</div>
+                        <NavLink className={'alex_text_deco_none'} to='/my-books'>
+                            <div className='alex_merriweather_300 alex_font_16 alex_bold alex_font_green'>here!</div>
+                        </NavLink>
+                    </div>
+                </div>
+            </>
+        )
+
+
+
 
     return (
         <>
@@ -225,7 +232,7 @@ const BookById = () => {
                             </div>
                             : <div className='alex_merriweather_300 alex_font_14'>This book hasn't been rated yet</div>}
 
-                        {display == 'landing' ?
+                        {display === 'landing' ?
                             <div>
                                 <div className='alex_merriweather_300 alex_font_14 alex_bold'>Why was it banned?</div>
                                 <div className='alex_merriweather_300 alex_font_14' >{singleBook.banned}</div>
@@ -240,6 +247,27 @@ const BookById = () => {
 
                     </div>
                 </div>
+            </div>
+            <div className='footerBookID'>
+            <div className="footerMainDiv">
+                <div className='footerContainerDiv'>
+                    <div className='footerColumn'>
+                        <h2 className='footerColumnTitle'>INSPIRED BY</h2>
+                        <a href="https://www.goodreads.com/">goodreads</a>
+                    </div>
+                    <div className='footerColumn'>
+                        <h2 className='footerColumnTitle'>WORK WITH US</h2>
+                        <a href="https://github.com/ARGON90">Alex Gonglach</a>
+                        <a href="https://github.com/benwaldee">Ben Waldee</a>
+                        <a href="https://github.com/julieyj">Julie Jung</a>
+                        <a href="https://github.com/jvstinejvng">Justine Jang</a>
+                    </div>
+                    <div className='footerColumn'>
+                        <h2 className='footerColumnTitle'>SOURCE CODE</h2>
+                        <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
+                    </div>
+                </div>
+            </div>
             </div>
         </>
     );
