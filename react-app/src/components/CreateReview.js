@@ -49,48 +49,55 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
   }
   return (
     <>
+
       <form
         className="create-book-form"
         onSubmit={handleSubmit}>
-        <div
-        // className="create-book-modal-body"
-        >
-          <div
-          // className="create-book-form-errors-container"
-          >
-          </div>
-          <label
-          // className="create-book-form-label"
-          >My rating:</label>
+        <div className='alex_merriweather_300 alex_font_14 alex_flex_column'>
+          <label className='alex_merriweather_300 alex_font_14' >My rating:</label>
           <input
-            // className="create-book-form-input"
-            type="integer"
+            type="number"
             placeholder="Stars"
             required
             value={stars}
             onChange={updateStars}
+            className='alex_input_borders alex_review_form_input'
           />
-          <div className='alex_font_red'>{errors.stars}</div>
-          <label
-          // className="create-book-form-label"
+          <div className='alex_merriweather_300 alex_font_14 alex_font_red'>{errors.stars}</div>
+          <div className="alex_pad_bottom_10"></div>
+          <label className='alex_merriweather_300 alex_font_14'
           >What did you think?</label>
           <textarea
-            // className="create-book-form-input"
             type="string"
             placeholder="Enter Your Review"
             required
             value={review}
             onChange={updateReview}
+            className='alex_height_125 alex_input_borders alex_review_form_input'
           />
-          <div className='alex_font_red' >{errors.review}</div>
-          <div className='alex_font_red' >{errors.reviewLength}</div>
+          <div className='alex_merriweather_300 alex_font_14 alex_font_red' >{errors.review}</div>
+          <div className='alex_merriweather_300 alex_font_14 alex_font_red' >{errors.reviewLength}</div>
+          <div className="alex_pad_bottom_10"></div>
         </div>
 
-        <button
-          type="submit"
-          disabled={errors.length ? true : false}
-          className="alex_gr-button"
-        >Create Review</button>
+        {Object.values(errors).length ?
+          <div className="alex_flex_row alex_justify_around">
+             <button
+              type="submit"
+              disabled={true}
+              className="alex_gr-button-disabled"
+            >Create Review</button>
+            <button onClick={displayLanding} className='alex_gr-button'>Go back</button>
+          </div>
+          :
+          <div className="alex_flex_row alex_justify_around">
+            <button
+              type="submit"
+              className="alex_gr-button"
+            >Create Review</button>
+            <button onClick={displayLanding} className='alex_gr-button'>Go back</button>
+          </div>
+        }
       </form>
     </>
   )

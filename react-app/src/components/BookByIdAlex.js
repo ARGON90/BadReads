@@ -97,16 +97,17 @@ const BookById = () => {
     return (
         <>
             {/* PAGE CONTAINER DIV */}
-            <div className='alex_flex_column alex_width_650 alex_row_gap_10'>
+            <div className='alex_flex_column alex_row_gap_10'>
 
                 {/* BOOK BY ID DIV */}
-                <div className='alex_flex_row'>
+                <div className='alex_flex_row alex_justify_center'>
 
                     {/* LEFT PANEL */}
-                    <div className='alex_flex_column alex_width_240 alex_row_gap_10 alex_margin_right_10'>
+                    <div className='alex_flex_column alex_height_520 alex_row_gap_10 alex_align_center'>
                         <div className='alex-image-size'>
                             <img src={singleBook.image_url} alt='Cover' className='alex-image-fill' />
                         </div>
+
                         <div className='alex_bookshelf_div'>
                             <button
                                 onClick={() => {
@@ -121,79 +122,83 @@ const BookById = () => {
                             >Add to Bookshelf
                             </button>
                         </div>
-                        {dropToggle &&
-                            <form className='bookshelf_page_bookEditForm'
-                                onSubmit={(e) => {
-                                    console.log(id)
-                                    handleBookEdit(e, id)
-                                    return
-                                }}>
-                                <div className="bookshelf_page_bookEditShelves">Shelves</div>
-                                {customArr.map((shelf) =>
-                                    <div className='bookshelf_page_bookInputWrapDiv'>
-                                        <label
-                                            className='bookshelf_page_bookLabel'
-                                            for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
-                                        <input
-                                            className='bookshelf_page_bookCheck'
-                                            type='checkbox'
-                                            id={`${shelf.name}${shelf.id}`}
-                                            defaultChecked={shelf.books.includes(Number(id)) ? 'checked' : ''}
-                                            onChange={() => {
-                                                if (bookshelfIDArr.includes(shelf.id)) {
+                            {dropToggle &&
+                                <form className='bookshelf_page_bookEditForm '
+                                    onSubmit={(e) => {
+                                        console.log(id)
+                                        handleBookEdit(e, id)
+                                        return
+                                    }}>
+                                    <div className="bookshelf_page_bookEditShelves">Shelves</div>
+                                    {customArr.map((shelf) =>
+                                        <div className='bookshelf_page_bookInputWrapDiv'>
+                                            <label
+                                                className='bookshelf_page_bookLabel'
+                                                for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                            <input
+                                                className='bookshelf_page_bookCheck'
+                                                type='checkbox'
+                                                id={`${shelf.name}${shelf.id}`}
+                                                defaultChecked={shelf.books.includes(Number(id)) ? 'checked' : ''}
+                                                onChange={() => {
+                                                    if (bookshelfIDArr.includes(shelf.id)) {
+                                                        let tempArr = [...bookshelfIDArr]
+                                                        let finalArr = []
+                                                        for (let id of tempArr) {
+                                                            if (id !== shelf.id) {
+                                                                finalArr.push(id)
+                                                            }
+                                                        }
+                                                        setBookshelfIDArr(finalArr)
+                                                    } else { setBookshelfIDArr([...bookshelfIDArr, shelf.id]) }
+                                                }}
+                                            ></input>
+                                        </div>
+                                    )}
+                                    <div className="bookshelf_page_bookEditStatus">Status</div>
+                                    {defaultArr.map((shelf) =>
+                                        <div className='bookshelf_page_bookInputWrapDiv bookshelf_page_bookInputWrapDivBot'>
+                                            <label
+                                                className='bookshelf_page_bookLabel'
+                                                for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
+                                            <input
+                                                className='bookshelf_page_bookRadio'
+                                                type='radio'
+                                                id={`${shelf.name}${shelf.id}`}
+                                                name='defaultRadio'
+                                                defaultChecked={shelf.books.includes(Number(id)) ? 'checked' : ''}
+                                                onChange={() => {
+
                                                     let tempArr = [...bookshelfIDArr]
                                                     let finalArr = []
                                                     for (let id of tempArr) {
-                                                        if (id !== shelf.id) {
+                                                        if (!defaultIDArr.includes(id)) {
                                                             finalArr.push(id)
                                                         }
                                                     }
+                                                    finalArr.push(shelf.id)
                                                     setBookshelfIDArr(finalArr)
-                                                } else { setBookshelfIDArr([...bookshelfIDArr, shelf.id]) }
-                                            }}
-                                        ></input>
-                                    </div>
-                                )}
-                                <div className="bookshelf_page_bookEditStatus">Status</div>
-                                {defaultArr.map((shelf) =>
-                                    <div className='bookshelf_page_bookInputWrapDiv bookshelf_page_bookInputWrapDivBot'>
-                                        <label
-                                            className='bookshelf_page_bookLabel'
-                                            for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
-                                        <input
-                                            className='bookshelf_page_bookRadio'
-                                            type='radio'
-                                            id={`${shelf.name}${shelf.id}`}
-                                            name='defaultRadio'
-                                            defaultChecked={shelf.books.includes(Number(id)) ? 'checked' : ''}
-                                            onChange={() => {
-
-                                                let tempArr = [...bookshelfIDArr]
-                                                let finalArr = []
-                                                for (let id of tempArr) {
-                                                    if (!defaultIDArr.includes(id)) {
-                                                        finalArr.push(id)
-                                                    }
-                                                }
-                                                finalArr.push(shelf.id)
-                                                setBookshelfIDArr(finalArr)
-                                            }}
-                                        ></input>
-                                    </div>
-                                )}
-                                <button
-                                    className='bookshelf_page_bookSave'
-                                >Save</button>
-                            </form>
-                        }
-                        <div className='alex_merriweather_300 alex_font_16'>{currentUserStarRating()}</div>
+                                                }}
+                                            ></input>
+                                        </div>
+                                    )}
+                                    <button
+                                        className='bookshelf_page_bookSave'
+                                    >Save</button>
+                                </form>
+                            }
                     </div>
-
+                    <div className='alex_margin_right_20'></div>
                     {/* RIGHT PANEL */}
-                    <div className='alex_flex_column alex_row_gap_10'>
+                    <div className='alex_flex_column alex_row_gap_10 alex_width_450'>
                         <div className='alex_review_page_title alex_margin_remove'>{singleBook.title} </div>
                         <div className='alex_merriweather_300 alex_font_16'>by {singleBook.author}</div>
-                        <div className='alex_merriweather_300 alex_font_16'>Average Rating: {avgStarRating}/5</div>
+                        {reviewsByBookId.length > 0 ?
+                            <div>
+                                <div className='alex_merriweather_300 alex_font_16'>Average Rating: {avgStarRating}/5</div>
+                                <div className='alex_merriweather_300 alex_font_16'>{currentUserStarRating()}</div>
+                            </div>
+                            : <div className='alex_merriweather_300 alex_font_14'>This book hasn't been rated yet</div>}
 
                         {display == 'landing' ?
                             <div>
@@ -204,9 +209,10 @@ const BookById = () => {
                             </div>
                             : null}
 
+                        <Reviews display={display} setDisplay={setDisplay} dropToggle={dropToggle} setDropToggle={setDropToggle} />
+
                     </div>
                 </div>
-                <Reviews display={display} setDisplay={setDisplay} dropToggle={dropToggle} setDropToggle={setDropToggle} />
             </div>
         </>
     );

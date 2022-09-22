@@ -92,17 +92,18 @@ export const deleteReviewThunk = (id) => async (dispatch) => {
 //REDUCER
 const initialState = {}
 const reviewsReducer = (state = initialState, action) => {
+    let newState = state
     switch (action.type) {
         case GET_ALL_REVIEWS: {
             console.log('ALL REVIEWS REDUCER')
             const allReviews = action.reviews
-            const newState = { ...state, ...allReviews }
+            let newState = { ...state, ...allReviews }
             return newState
         }
 
         case CREATE_REVIEW: {
             console.log('CREATE REVIEW REDUCER')
-            const newState = {
+            let newState = {
                 ...state,
                 [action.review.id]: action.review
             };
@@ -111,7 +112,7 @@ const reviewsReducer = (state = initialState, action) => {
 
         case EDIT_REVIEW: {
             console.log('EDIT REVIEW REDUCER')
-            const newState = {
+            let newState = {
                 ...state,
                 [action.review.id]: action.review
             };
@@ -120,7 +121,6 @@ const reviewsReducer = (state = initialState, action) => {
 
         case DELETE_ONE_REVIEW: {
             console.log('INSIDE DELETE REVIEW REDUCER');
-            const newState = { ...state };
             delete newState[action.id]
             return newState;
         }
