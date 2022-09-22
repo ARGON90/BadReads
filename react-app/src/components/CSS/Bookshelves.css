@@ -12,7 +12,7 @@
 .bookshelf_page_inner1 {
     background-color: white;
     width: 210px;
-
+    margin-left: 20px;
 }
 
 .bookshelf_page_inner2 {
@@ -43,6 +43,7 @@
     font-family: "Merriweather", Georgia, "Times New Roman", serif;
     /* needs to track width and margins of inner2 and inner1 */
     width: 940px;
+    margin-left: 20px;
 }
 
 .bookshelf_page_shelfName {
@@ -101,7 +102,7 @@
 
 .bookshelf_page_imageEdit {
     margin-left: 10px;
-
+    caret-color: transparent;
     background-color: #F4F1EA;
     height: 10px;
     font-size: small;
@@ -232,6 +233,49 @@
     cursor: pointer;
     margin-top: 8px;
     align-self: center;
+    font-size: 19px;
+    transition: transform 0.1s ease-out;
+}
+
+.bookshelf_page_delete:hover {
+    animation-name: wiggle;
+    animation-duration: .2s;
+    color: rgb(163, 1, 1);
+
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(10deg);
+    }
+
+    30% {
+        transform: rotate(20deg);
+    }
+
+    45% {
+        transform: rotate(0deg);
+    }
+
+    60% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    90% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .bookshelf_page_editRename {
@@ -321,7 +365,103 @@
     margin-left: 10px;
 }
 
+@keyframes example {
+    0% {
+        height: 0%;
+    }
+
+    5% {
+        height: 5%;
+    }
+
+    10% {
+        height: 10%;
+    }
+
+    15% {
+        height: 15%;
+    }
+
+    20% {
+        height: 20%;
+    }
+
+    25% {
+        height: 25%;
+    }
+
+    30% {
+        height: 30%;
+    }
+
+    35% {
+        height: 35%;
+    }
+
+    40% {
+        height: 40%;
+    }
+
+    45% {
+        height: 45%;
+    }
+
+    50% {
+        height: 50%;
+    }
+
+    55% {
+        height: 55%;
+    }
+
+    60% {
+        height: 60%;
+    }
+
+    65% {
+        height: 65%;
+    }
+
+    70% {
+        height: 70%;
+    }
+
+    75% {
+        height: 75%;
+    }
+
+    80% {
+        height: 80%;
+    }
+
+    85% {
+        height: 85%;
+    }
+
+    90% {
+        height: 90%;
+    }
+
+    95% {
+        height: 95%;
+    }
+
+    100% {
+        height: 100%;
+    }
+
+    /* 0% {height: 20px;}
+    0% {height: 20px;}
+    0% {height: 20px;} */
+
+}
+
 .bookshelf_page_bookEditForm {
+    height: fit-content;
+    overflow: hidden;
+    animation-name: example;
+    animation-duration: .1s;
+
     background-color: rgba(244, 241, 234, 1);
     padding: 8px;
     border: 1px solid rgba(170, 170, 170, 0.3);
@@ -395,3 +535,12 @@
     color: #00635d;
     background-color: #00635d;
 } */
+
+.ben_merge_bookDiv_left {
+    width: 200px;
+    height: fit-content;
+}
+
+.ben_bookWrap_bookId {
+    height: 30px;
+}
