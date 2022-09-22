@@ -350,7 +350,6 @@ img.splashBook {
 
 }
 
-
 .footerColumn a {
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
     font-size: 14px;
@@ -362,6 +361,12 @@ img.splashBook {
 .footerColumn a:hover {
     text-decoration: underline;
     color: #382110;
+}
+
+.footerBookID {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 
 

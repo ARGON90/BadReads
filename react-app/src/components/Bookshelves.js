@@ -581,7 +581,8 @@ const Bookshelves = () => {
                     </div>
                 }
             </div>
-            {/* <div className="footerMainDiv">
+            <div className='footerBookID'>
+            <div className="footerMainDiv">
                 <div className='footerContainerDiv'>
                     <div className='footerColumn'>
                         <h2 className='footerColumnTitle'>INSPIRED BY</h2>
@@ -599,7 +600,8 @@ const Bookshelves = () => {
                         <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
                     </div>
                 </div>
-            </div> */}
+            </div>
+            </div>
         </>
     );
 }

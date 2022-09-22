@@ -229,7 +229,7 @@ const BookById = () => {
                     </div>
                 </div>
             </div>
-            {/* <p>
+            <div className='footerBookID'>
             <div className="footerMainDiv">
                 <div className='footerContainerDiv'>
                     <div className='footerColumn'>
@@ -249,7 +249,7 @@ const BookById = () => {
                     </div>
                 </div>
             </div>
-            </p> */}
+            </div>
         </>
     );
 }

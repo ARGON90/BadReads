@@ -132,6 +132,7 @@
 
 .navbarHoverSquare:hover {
     background-color: #382110;
+
 }
 
 .navBarDropDownContainer {
@@ -146,6 +147,7 @@
     align-items: flex-start;
     box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
 }
+
 
 .navBarDMenuName {
     font-size: 18px;
