@@ -96,31 +96,35 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                 <div className='alex_merriweather_300 alex_font_14 alex_bold'>{currentUserUsername}?</div>
                             </div>
                             <div className='alex_pad_bottom_5'></div>
-                            <div className=' alex_flex_row'>
-                                <div className='alex_merriweather_300 alex_font_14'>You rated</div>
-                                <div className='alex_margin_right_3'></div>
-                                <div className='alex_merriweather_300 alex_font_14 alex_bold' > {singleBook.title} </div>
-                                <div className='alex_margin_right_3'></div>
-                                <div className='alex_merriweather_300 alex_font_14'> {stars} </div>
-                                <div className='alex_margin_right_3'></div>
-                                {stars > 1 ?
-                                    <div>
-                                        <div className='alex_merriweather_300 alex_font_14'> stars</div>
-                                    </div>
-                                    :
-                                    <div>
-                                        <div className='alex_merriweather_300 alex_font_14'> star</div>
-                                    </div>
-                                }
+                            <div className='alex_flex_row alex_justify_between'>
+                                <div className='alex_flex_row'>
+                                    <div className='alex_merriweather_300 alex_font_14'>You rated</div>
+                                    <div className='alex_margin_right_3'></div>
+                                    <div className='alex_merriweather_300 alex_font_14 alex_bold' > {singleBook.title} </div>
+                                    <div className='alex_margin_right_3'></div>
+                                    <div className='alex_merriweather_300 alex_font_14'> {stars} </div>
+                                    <div className='alex_margin_right_3'></div>
+                                    {stars > 1 ?
+                                        <div>
+                                            <div className='alex_merriweather_300 alex_font_14'> stars</div>
+                                        </div>
+                                        :
+                                        <div>
+                                            <div className='alex_merriweather_300 alex_font_14'> star</div>
+                                        </div>
+                                    }
+                                </div>
+                                <div>
+                                    <div className='alex_merriweather_300 alex_font_14'>{updatedDate(updated_at)}</div>
+                                </div>
                             </div>
                             <div className='alex_pad_bottom_5'></div>
-                            <div className='alex_merriweather_300 alex_font_14'>{updatedDate(updated_at)}</div>
                             <div className='alex_pad_bottom_3'></div>
                             <div className='alex_merriweather_300 alex_font_14'>"{review}"</div>
                             <div className='alex_pad_bottom_5'></div>
                             <button
                                 onClick={editReview}
-                                className='alex_gr-button'
+                                className='alex_gr-button alex_margin_right_3'
                             >Edit Review</button>
                             <button
                                 onClick={deleteReview}
@@ -134,14 +138,35 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                             <EditReview userId={currentUserId} bookId={id} displayLanding={displayLanding} userReview={review} userStars={stars} reviewOfCurrentUser={reviewOfCurrentUser} />
                         </div>
                         : null}
-
+                    <div className='alex_pad_bottom_10'></div>
                     {reviewsByBookId.map((review) =>
                         <div key={review.id}>
                             {display === 'landing' ?
-                                <div>
-                                    <div>{review.user.username} rated it {review.stars} stars</div>
-                                    <div>{updatedDate(review.updated_at)}</div>
-                                    <div>"{review.review}"</div>
+                                <div className='alex_flex_column'>
+                                    <div className='alex_flex_row alex_justify_between'>
+                                        <div className='alex_flex_row'>
+                                            <div className='alex_merriweather_300 alex_font_14 alex_bold'>{review.user.username}</div>
+                                            <div className='alex_margin_right_3'></div>
+                                            <div className='alex_merriweather_300 alex_font_14'>rated it {review.stars}</div>
+                                            <div className='alex_margin_right_3'></div>
+                                            {review.stars > 1 ?
+                                                <div>
+                                                    <div className='alex_merriweather_300 alex_font_14'> stars</div>
+                                                </div>
+                                                :
+                                                <div>
+                                                    <div className='alex_merriweather_300 alex_font_14'> star</div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div>
+                                            <div className='alex_merriweather_300 alex_font_14'>{updatedDate(review.updated_at)}</div>
+                                        </div>
+                                    </div>
+                                    <div className='alex_pad_bottom_3'></div>
+                                    <div>
+                                        <div className='alex_merriweather_300 alex_font_14'>"{review.review}"</div>
+                                    </div>
                                 </div>
                                 : null}
                         </div>
@@ -170,7 +195,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                             >Write A Review</button>
                         </div>
                         : null}
-                        <div className='alex_pad_bottom_10'></div>
+                    <div className='alex_pad_bottom_10'></div>
 
                     {display === 'create' ?
                         <div>
@@ -183,22 +208,26 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                         <div>
                             {reviewsByBookId.map((review) =>
                                 <div key={review.id}>
-                                    <div className='alex_flex_row'>
-                                    <div className='alex_merriweather_300 alex_font_14 alex_bold'>{review.user.username}</div>
-                                    <div className='alex_margin_right_3'></div>
-                                    <div className='alex_merriweather_300 alex_font_14'>rated it {review.stars}</div>
-                                    <div className='alex_margin_right_3'></div>
-                                    {review.stars > 1 ?
-                                        <div>
-                                            <div className='alex_merriweather_300 alex_font_14'> stars</div>
+                                    <div className='alex_flex_row alex_justify_between'>
+                                        <div className='alex_flex_row'>
+                                            <div className='alex_merriweather_300 alex_font_14 alex_bold'>{review.user.username}</div>
+                                            <div className='alex_margin_right_3'></div>
+                                            <div className='alex_merriweather_300 alex_font_14'>rated it {review.stars}</div>
+                                            <div className='alex_margin_right_3'></div>
+                                            {review.stars > 1 ?
+                                                <div>
+                                                    <div className='alex_merriweather_300 alex_font_14'> stars</div>
+                                                </div>
+                                                :
+                                                <div>
+                                                    <div className='alex_merriweather_300 alex_font_14'> star</div>
+                                                </div>
+                                            }
                                         </div>
-                                        :
                                         <div>
-                                            <div className='alex_merriweather_300 alex_font_14'> star</div>
+                                            <div className='alex_merriweather_300 alex_font_14'>{updatedDate(review.updated_at)}</div>
                                         </div>
-                                    }
                                     </div>
-                                    <div className='alex_merriweather_300 alex_font_14'>{updatedDate(review.updated_at)}</div>
                                     <div className='alex_margin_right_3'></div>
                                     <div className='alex_merriweather_300 alex_font_14'>"{review.review}"</div>
                                 </div>

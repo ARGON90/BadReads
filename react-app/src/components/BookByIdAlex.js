@@ -206,6 +206,8 @@ const BookById = () => {
                                 <div className='alex_merriweather_300 alex_font_14' >{singleBook.banned}</div>
                                 <br></br>
                                 <div className='alex_merriweather_300 alex_font_14' >{singleBook.description}</div>
+                                <br></br>
+                                
                             </div>
                             : null}
 

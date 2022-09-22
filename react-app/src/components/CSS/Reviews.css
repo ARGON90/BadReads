@@ -61,6 +61,10 @@
     justify-content: space-around;
 }
 
+.alex_justify_between {
+    justify-content: space-between;
+}
+
 .alex_justify_center {
     justify-content: center;
 }
