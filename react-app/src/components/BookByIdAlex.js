@@ -18,6 +18,27 @@ const BookById = () => {
     const reviewsByBookId = reviewsArray.filter(review => review.book_id == id)
     const [display, setDisplay] = useState('landing')
     const currentUser = useSelector((state) => (state?.session?.user))
+
+    useEffect(() => {
+        console.log('BOOKS BY ID USE EFFECT')
+        dispatch(getUserBookshelvesThunk())
+        dispatch(getAllBooksThunk())
+        dispatch(getAllReviewsThunk())
+    }, [dispatch])
+
+    let allStarRatings = [];
+    reviewsByBookId.forEach((review) => allStarRatings.push(review.stars))
+    const allStarsSum = allStarRatings.reduce((prev, curr) => prev + curr, 0);
+    let avgStarRating = parseFloat(allStarsSum / allStarRatings.length)
+
+    const [dropToggle, setDropToggle] = useState(false)
+    const bookshelvesDict = useSelector((state) => (state?.bookshelves?.userBookshelves))
+    const [bookshelfIDArr, setBookshelfIDArr] = useState([])
+
+    if (currentUser == null) {
+        return null
+    }
+
     const currentUserId = currentUser.id
     const reviewOfCurrentUser = reviewsByBookId.filter(review => review.user_id == currentUserId)
     const currentUserRating = reviewOfCurrentUser[0]?.stars
@@ -30,14 +51,7 @@ const BookById = () => {
         }
     }
 
-    let allStarRatings = [];
-    reviewsByBookId.forEach((review) => allStarRatings.push(review.stars))
-    const allStarsSum = allStarRatings.reduce((prev, curr) => prev + curr, 0);
-    let avgStarRating = parseFloat(allStarsSum / allStarRatings.length)
 
-    const [dropToggle, setDropToggle] = useState(false)
-    const bookshelvesDict = useSelector((state) => (state?.bookshelves?.userBookshelves))
-    const [bookshelfIDArr, setBookshelfIDArr] = useState([])
     let userShelves = []
     if (bookshelvesDict) {
         userShelves = Object.values(bookshelvesDict)
@@ -85,12 +99,7 @@ const BookById = () => {
     }
     // imports from bookshelves
 
-    useEffect(() => {
-        console.log('BOOKS BY ID USE EFFECT')
-        dispatch(getUserBookshelvesThunk())
-        dispatch(getAllBooksThunk())
-        dispatch(getAllReviewsThunk())
-    }, [dispatch])
+
 
     if (booksDict.length < 1) return <div>Loading All Books...</div>
     if (!singleBook) return <div>Sorry, this book doesn't exist</div>
@@ -207,7 +216,7 @@ const BookById = () => {
                                 <br></br>
                                 <div className='alex_merriweather_300 alex_font_14' >{singleBook.description}</div>
                                 <br></br>
-                                
+
                             </div>
                             : null}
 
