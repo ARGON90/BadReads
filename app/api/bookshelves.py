@@ -91,7 +91,7 @@ def update_library():
 
 #    //send back all user shelves
 
-    print("i amshelfidarr",shelfIDArr)
+    # print("i amshelfidarr",shelfIDArr)
     # shelves_user = [x.to_dict() for x in current_user.bookshelves]
     return  {}
 
@@ -103,6 +103,33 @@ def delete_bookshelf(id):
     db.session.delete(delete_me_shelf)
     db.session.commit()
     return id
+
+@bookshelves.route('/default',methods=['POST'])
+def create_default():
+    data = request.json
+    userID = data['userID']
+
+    h_read = Bookshelf(
+        user_id=userID,
+        default=True,
+        name="Have Read"
+    )
+    c_read = Bookshelf(
+        user_id=userID,
+        default=True,
+        name="Currently Reading"
+    )
+    w_read = Bookshelf(
+        user_id=userID,
+        default=True,
+        name="Will Read"
+    )
+
+    db.session.add(h_read)
+    db.session.add(c_read)
+    db.session.add(w_read)
+    db.session.commit()
+    return {}
 
 @bookshelves.route('/<id>',methods=['PUT'])
 def edit_bookshelf(id):

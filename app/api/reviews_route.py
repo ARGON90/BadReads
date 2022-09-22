@@ -47,14 +47,6 @@ def edit_review(id, reviewId):
     print('BACKEND FORM DATA', data)
     if form.validate_on_submit():
             review = Review.query.get(reviewId)
-            print('!!!!!REVIEW IN BACKEND!!!!!', review.to_dict())
-            testing =  review.to_dict()
-            print(testing['id'],        'testing!!!!!!!!!!')
-            print(testing['user_id'],   'testing!!!!!!!!!!')
-            print(testing['review'],    'testing!!!!!!!!!!')
-            print(testing['stars'],     'testing!!!!!!!!!!')
-            print(data['stars'],        'testing!!!!!!!!!!')
-
             review.review=data['review']
             review.stars=data['stars']
             review.book_id=id

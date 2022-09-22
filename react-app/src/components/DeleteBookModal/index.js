@@ -8,9 +8,9 @@ function DeleteBookModal({ userBook }) {
 
   return (
     <>
-      <div className="edit-book-container">
-        <button className="edit-book-button" onClick={() => setShowModal(true)}>
-          Delete Book
+      <div className="delete-book-container">
+        <button className="delete-book-button" onClick={() => setShowModal(true)}>
+          Delete
         </button>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>

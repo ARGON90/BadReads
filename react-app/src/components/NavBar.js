@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
-import './CSS/NavBar.css'
-import SearchBar from './SearchBooks/SearchBooks';
+import './CSS/NavBar.css';
+import BookshelfIcon from '../images/bookshelficon.svg'
+import SearchBar from './SearchBooks';
+import NavSearch from "../images/navsearch.svg"
+
 
 const NavBar = () => {
 
-  const [showSearch, setSearchBar] = useState(false)
+  const [showSearchBar, setSearchBar] = useState(false)
   const [ showDropdown, setShowDropdown ] = useState(false)
+
+
   const handleDropdown = () => {
     if (showDropdown) return
     setShowDropdown(true)
@@ -20,7 +25,7 @@ const NavBar = () => {
   return require(`../images/${img}`).default
   }
 
-
+  
 
 useEffect(() => {
     if (!showDropdown) return
@@ -59,34 +64,59 @@ useEffect(() => {
             </NavLink>
           </div>
         </div>
-        <div>
-        <div className='navBarSearch'>
-          <SearchBar setSearchBar={setSearchBar}/>     
-        </div>   
+        <div>  
         </div>
         <div className='navBarRight'>
+          <div >
           <div className='navBarRightMenu'>
-            <div className='navbarHoverSquare'>
-            <button onClick={handleDropdown} className='navBarDropDownMenu'>
-              <div className="usernameLetter">
-              {sessionUser.username[0]}
+            <div className='navBarSearch'>
+              <img className='navBarSearchIcon' width="30"
+                src={NavSearch}
+                alt='Search Icon'
+                onClick={() => setSearchBar(!showSearchBar)} />
+                {showSearchBar && (
+                  <SearchBar setSearchBar={setSearchBar}/>
+                )}  
+            </div> 
+             <div className='navbarHoverSquare'>
+              <div className="navBarBookhelfIcon">
+                <NavLink to="/bookshelves" exact={true} activeClassName='active'>
+                <img alt="Bookshelf Icon" src={BookshelfIcon} width="38" height="38"/>
+                </NavLink>
               </div>
-            </button>
+              </div>
+              <div className='navbarHoverSquare'>
+              <button onClick={handleDropdown} show className='navBarDropDownMenu'>
+                <div className="usernameLetter">
+                 {sessionUser.username[0]}
+                </div>
+              </button>
             </div>
-            {showDropdown &&
+            </div>
+            {showDropdown && (
             <div className='navBarDropDownContainer'>
               <div className='navBarDMenuName'>
               {sessionUser.username}
               </div>
-              <div class="navBarBookshelveLink">
+              <div className="navBarBookshelveLink">
                 <NavLink className='navBarDMenuText' to="/bookshelves" exact={true} activeClassName='active'>
                   Bookshelves
+                </NavLink>
+              </div>
+              <div className="navBarBookshelveLink">
+                <NavLink className='navBarDMenuText' to="/my-books" exact={true} activeClassName='active'>
+                  My Books
+                </NavLink>
+              </div>
+              <div className="navBarBookshelveLink">
+                <NavLink className='navBarDMenuText' to="/books" exact={true} activeClassName='active'>
+                 Home
                 </NavLink>
               </div>
               <div className="dDownMenuLine">
               <LogoutButton />
               </div>
-            </div>}
+            </div> )}
           </div>
         </div>
       </div>

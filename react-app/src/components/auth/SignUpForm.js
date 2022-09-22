@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session";
+import { createDefaultBookshelvesThunk, getUserBookshelvesThunk, } from '../../store/bookshelvesRed';
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -15,16 +17,20 @@ const SignUpForm = () => {
   const history = useHistory();
 
   const onSignUp = async (e) => {
+
     e.preventDefault();
     setErrors([])
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
+      const defaults = await dispatch(createDefaultBookshelvesThunk({ userID: data.id }))
+      const shelves = await dispatch(getUserBookshelvesThunk())
       if (data) {
         setErrors(data)
       }
     } else {
-      setErrors(['Passwords must match'])
+      setErrors([':Passwords must match'])
     }
+    
   };
 
   const updateUsername = (e) => {
@@ -49,9 +55,9 @@ const SignUpForm = () => {
 
   const handleDemoUser = async (e) => {
     e.preventDefault();
-    const email = 'demo@aa.io';
-    const password = 'password';
-    await dispatch(sessionActions.login(email, password));
+    const email1 = 'demo@aa.io';
+    const password1 = 'password';
+    await dispatch(sessionActions.login(email1, password1));
     history.push('/')
   };
 
@@ -64,7 +70,7 @@ const SignUpForm = () => {
         </div>
         <div className='signUpErrors'>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <li className="textError" key={ind}>{error.split(":")[1]}</li>
           ))}
         </div>
         <div>
@@ -103,7 +109,6 @@ const SignUpForm = () => {
           </label>
           <div className="alertDiv">
           <div className="alertIcon">
-            <i class="a-icon a-icon-alert"></i>
           </div>
           <span className="alertIconText">Passwords must be at least 6 characters.</span>
           </div>
