@@ -34,7 +34,8 @@ const UserBooks = () => {
     (reviews) => reviews.user_id === currentUser["id"]
     );
 
-    console.log('****', userReviews)
+  console.log(userBooks)
+  console.log(userReviews)
 
   return (
     <>
