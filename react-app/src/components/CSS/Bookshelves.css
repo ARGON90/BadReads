@@ -12,7 +12,7 @@
 .bookshelf_page_inner1 {
     background-color: white;
     width: 210px;
-
+    margin-left: 20px;
 }
 
 .bookshelf_page_inner2 {
@@ -43,6 +43,7 @@
     font-family: "Merriweather", Georgia, "Times New Roman", serif;
     /* needs to track width and margins of inner2 and inner1 */
     width: 940px;
+    margin-left: 20px;
 }
 
 .bookshelf_page_shelfName {
