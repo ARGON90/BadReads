@@ -37,3 +37,4 @@ class SignUpForm(FlaskForm):
             DataRequired(message="Enter your password"),
             Length(min=6, message="Password must be at least 6 characters")
             ])
+
