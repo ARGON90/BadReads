@@ -125,6 +125,8 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s;
+    width: 106.64px;
+    height: 150px;
 }
 
 .bookshelf_page_outerImage {
@@ -141,6 +143,7 @@
 .bookshelf_page_img:hover {
     height: 200px;
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
+    width: 135px;
 }
 
 .bookshelf_page_addShelfButton {
