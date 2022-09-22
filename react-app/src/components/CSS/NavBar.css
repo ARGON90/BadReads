@@ -110,6 +110,8 @@
     color: #F3F1EA;
     font-size: 20px;
     text-align: center;
+    text-transform: capitalize;
+
 }
 
 .navBarDropDownMenu:hover {
