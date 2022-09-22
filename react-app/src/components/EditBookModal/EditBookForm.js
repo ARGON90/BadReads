@@ -6,11 +6,17 @@ import { getAllBooksThunk, updateBook } from "../../store/booksAlex";
 const EditBookForm = ({ setShowModal, userBook }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const currentUser = useSelector((state) => state.session.user);
   const book = useSelector((state) => state?.books[userBook.id]);
-  console.log('userBook', userBook)
+  console.log("userBook", userBook);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({
+    title: "",
+    year: "",
+    author: "",
+    description: "",
+    banned: "",
+    imageUrl: "",
+  });
   const [bookId] = useState(userBook?.id);
   const [title, setTitle] = useState(userBook?.title);
   const [year, setYear] = useState(userBook?.year);
@@ -26,41 +32,55 @@ const EditBookForm = ({ setShowModal, userBook }) => {
   const updateBanned = (e) => setBanned(e.target.value);
   const updateImageUrl = (e) => setImageUrl(e.target.value);
 
-  useEffect(() => {
-    dispatch(getAllBooksThunk())
-  }, [dispatch])
-
-  useEffect(() => {
-    const newErrors = [];
-
-    if (!currentUser) {
-      newErrors.push("Please log in or sign up with BadReads to continue.");
+  const isValidImage = (string) => {
+    const validEndings = [".jpg", ".jpeg", ".png", ".tiff"];
+    for (let i = 0; i < validEndings.length; i++) {
+      let suffix = validEndings[i];
+      if (string.endsWith(suffix)) {
+        return true;
+      }
     }
+    return false;
+  };
+
+  useEffect(() => {
+    dispatch(getAllBooksThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const newErrors = {};
+
     if (title.length <= 0) {
-      newErrors.push("Title is required.");
+      newErrors["title"] = "Title is required.";
     } else if (title.length > 255) {
-      newErrors.push("Title must be 255 characters or less.");
+      newErrors["title"] = "Title must be 255 characters or less.";
+    }
+    if (isNaN(year)) {
+      newErrors["year"] = "Year must be numerical.";
     }
     if (year <= 0 || year > 2022) {
-      newErrors.push("Please provide a valid release year.");
+      newErrors["year"] = "Valid release year is required.";
     }
     if (author.length <= 0) {
-      newErrors.push("Author is required.");
+      newErrors["author"] = "Author is required.";
     } else if (author.length > 255) {
-      newErrors.push("Name of author must be 255 characters or less.");
+      newErrors["author"] = "Name of author must be 255 characters or less.";
     }
     if (description.length <= 0) {
-      newErrors.push("Description is required.");
+      newErrors["description"] = "Description is required.";
     } else if (description.length > 5000) {
-      newErrors.push("Description must be 5000 characters or less.");
+      newErrors["description"] = "Description must be 5000 characters or less.";
     }
     if (banned.length <= 0) {
-      newErrors.push("Banned reason is required.");
+      newErrors["banned"] = "Banned reason is required.";
     } else if (banned.length > 5000) {
-      newErrors.push("Banned reason must be 5000 characters or less.");
+      newErrors["banned"] = "Banned reason must be 5000 characters or less.";
+    }
+    if (!isValidImage(imageUrl)) {
+      newErrors["imageUrl"] = "Please provide a valid image.";
     }
     setErrors(newErrors);
-  }, [currentUser, title, year, author, description]);
+  }, [title, year, author, description, banned, imageUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,12 +109,8 @@ const EditBookForm = ({ setShowModal, userBook }) => {
     <>
       <form className="edit-book-form" onSubmit={handleSubmit}>
         <div className="edit-book-form-title">Edit Your Book</div>
+        <div className="edit-book-form-body-separator-top"></div>
         <div className="edit-book-modal-body">
-          <div className="edit-book-form-errors-container">
-            {errors.map((error, idx) => (
-              <div key={idx}>{error}</div>
-            ))}
-          </div>
           <label className="edit-book-form-label">Title</label>
           <input
             className="edit-book-form-input"
@@ -104,15 +120,17 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             value={title}
             onChange={updateTitle}
           />
+          <div className="edit-book-form-error-message">{errors.title}</div>
           <label className="edit-book-form-label">Year</label>
           <input
             className="edit-book-form-input"
-            type="integer"
+            type="number"
             placeholder="Year"
             required
             value={year}
             onChange={updateYear}
           />
+          <div className="edit-book-form-error-message">{errors.year}</div>
           <label className="edit-book-form-label">Author</label>
           <input
             className="edit-book-form-input"
@@ -122,6 +140,7 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             value={author}
             onChange={updateAuthor}
           />
+          <div className="edit-book-form-error-message">{errors.author}</div>
           <label className="edit-book-form-label">Description</label>
           <input
             className="edit-book-form-input"
@@ -131,6 +150,9 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             value={description}
             onChange={updateDescription}
           />
+          <div className="edit-book-form-error-message">
+            {errors.description}
+          </div>
           <label className="edit-book-form-label">Banned Reason</label>
           <input
             className="edit-book-form-input"
@@ -140,6 +162,7 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             value={banned}
             onChange={updateBanned}
           />
+          <div className="edit-book-form-error-message">{errors.banned}</div>
           <label className="edit-book-form-label">Book Cover Image URL</label>
           <input
             className="edit-book-form-input"
@@ -150,19 +173,25 @@ const EditBookForm = ({ setShowModal, userBook }) => {
             onChange={updateImageUrl}
           />
         </div>
-        <button
-          className="edit-book-form-submit"
-          type="submit"
-          disabled={errors.length ? true : false}
-        >
-          Save Changes
-        </button>
-        <button
-          className="edit-book-form-cancel"
-          onClick={() => setShowModal(false)}
-        >
-          Cancel
-        </button>
+        <div className="edit-book-form-error-message">{errors.imageUrl}</div>
+        <div className="edit-book-form-body-separator-bottom"></div>
+        <div className="edit-book-form-button-container">
+          <button
+            className="edit-book-form-submit"
+            type="submit"
+            disabled={
+              Object.values(errors).every((x) => x === "") ? false : true
+            }
+          >
+            Save Changes
+          </button>
+          <button
+            className="edit-book-form-cancel"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </>
   );

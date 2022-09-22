@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session";
+import { createDefaultBookshelvesThunk, getUserBookshelvesThunk, } from '../../store/bookshelvesRed';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -19,7 +20,11 @@ const SignUpForm = () => {
     setErrors([])
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
-      if (data) {
+      // await console.log(data)
+      const defaults = await dispatch(createDefaultBookshelvesThunk({ userID: data.id }))
+      const shelves = await dispatch(getUserBookshelvesThunk())
+      // const some = await console.log("THIS IS DATA", data)
+      if (data.errors) {
         setErrors(data)
       }
     } else {
@@ -49,9 +54,9 @@ const SignUpForm = () => {
 
   const handleDemoUser = async (e) => {
     e.preventDefault();
-    const email = 'demo@aa.io';
-    const password = 'password';
-    await dispatch(sessionActions.login(email, password));
+    const email1 = 'demo@aa.io';
+    const password1 = 'password';
+    await dispatch(sessionActions.login(email1, password1));
     history.push('/')
   };
 
@@ -62,13 +67,13 @@ const SignUpForm = () => {
         <div className='createAccount'>
           Create Account
         </div>
-        <div className='signUpErrors'>
+        <div className='signUpErrors'> 
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <li className="textError" key={ind}>{error.split(":")[1]}</li>
           ))}
         </div>
         <div>
-        <div className='formText'>Username</div>
+          <div className='formText'>Username</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -80,7 +85,7 @@ const SignUpForm = () => {
           </label>
         </div>
         <div>
-        <div className='formText' >Email</div>
+          <div className='formText' >Email</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -91,7 +96,7 @@ const SignUpForm = () => {
           </label>
         </div>
         <div className='passwordAlert'>
-        <div className='formText'>Password</div>
+          <div className='formText'>Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
@@ -103,13 +108,12 @@ const SignUpForm = () => {
           </label>
           <div className="alertDiv">
           <div className="alertIcon">
-            <i class="a-icon a-icon-alert"></i>
           </div>
           <span className="alertIconText">Passwords must be at least 6 characters.</span>
           </div>
         </div>
         <div>
-        <div className='formText'>Re-Password</div>
+          <div className='formText'>Re-Password</div>
           <label className='formFieldInput'>
             <input
               type='password'

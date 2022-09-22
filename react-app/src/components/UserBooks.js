@@ -5,7 +5,6 @@ import { getAllBooksThunk } from "../store/booksAlex";
 import CreateBookModal from "./CreateBookModal";
 import EditBookModal from "./EditBookModal";
 import DeleteBookModal from "./DeleteBookModal";
-
 import "./CSS/UserBooks.css";
 
 const UserBooks = () => {
@@ -51,11 +50,11 @@ const UserBooks = () => {
                       alt="bookcover"
                       style={{ height: "200px" }}
                     />
-                    {/* <div className="my-books-page-book-title">
-                      {userBook.title}
-                    </div>
-                    <div className="my-books-page-book-author">
-                      {userBook.author}
+                    {/* <div className="my-books-page-info-popup-container">
+                      <div className="my-books-page-book-popup">
+                        {userBook.title}
+                        {userBook.author}
+                      </div>
                     </div> */}
                   </NavLink>
                   <div className="my-books-page-buttons-container">

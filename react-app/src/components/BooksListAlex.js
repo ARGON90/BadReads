@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getAllBooksThunk } from '../store/booksAlex';
-
-import "./CSS/Reviews.css"
+import './CSS/BooksListBen.css'
 
 const BooksList = () => {
     console.log('INSIDE BOOKS LIST COMPONENT')
@@ -16,29 +15,22 @@ const BooksList = () => {
         dispatch(getAllBooksThunk())
     }, [dispatch])
 
-    if (booksList.length < 1) return <div>Loading All Books...</div>
+    if (booksList.length < 1) return <div></div>
     return (
-        <>
-            <div className='alex-books-page-outer'>
-                <div className='alex-books-page-container'>
-                    <div className='alex-books-page-header-container'>
-                        <h1 className="alex-books-page-title"> Browse All Books </h1>
+        <div className='booklist_outerWrap'>
+            <h1 className='booklist_h1'>Featured Banned Books: </h1>
+            <div className='booklist_outer'>
+                {booksList.map((book) =>
+                    <div className='booklist_bybook' key={book.id}>
+                        <NavLink className='booklist_navLink' to={`/books/${book.id}`}>
+                            <img className='booklist_image' src={book.image_url} alt='cover' />
+                            <div className='booklist_title' >{book.title}</div>
+                            <div className='booklist_author'>{book.author}</div>
+                        </NavLink>
                     </div>
-                    <div className="alex-books-page-separator"></div>
-                    <div className="alex-books-page-books-item-container">
-                    {booksList.map((book) =>
-                        <div key={book.id}>
-                            <NavLink className='alex_text_deco_none' to={`/books/${book.id}`}>
-                                <img className='alex-image-size' src={book.image_url} alt='cover' />
-                                <div>{book.title}</div>
-                                <div>{book.author}</div>
-                            </NavLink>
-                        </div>
-                    )}
-                    </div>
-                </div>
+                )}
             </div>
-        </>
+        </div>
     );
 }
 

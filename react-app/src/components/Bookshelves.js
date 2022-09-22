@@ -7,31 +7,45 @@ import "./CSS/Bookshelves.css"
 
 const Bookshelves = () => {
 
+    //used in for onClick on individual books
     const history = useHistory()
 
     const dispatch = useDispatch();
+
+    //object of the userBookshelves portion of store
     const bookshelvesDict = useSelector((state) => (state?.bookshelves?.userBookshelves))
-    // const userID = useSelector((state) => state?.session?.user?.id)
+    //object of the books portion of store
     const booksDict = useSelector((state) => state?.books)
 
+    //toggled when clicking on shelf on left - used to condiotnally render books for each shelf
     const [shelfID, setShelfID] = useState(false)
+    //toggled to show the add button as opposed to the add form
     const [toggleAddButton, setToggleAddButton] = useState(true)
+    //controlled input for adding shelf
     const [shelfName, setShelfName] = useState('')
+    //controlled input for editing shelf
     const [renameShelfName, setRenameShelfName] = useState('')
+    //toggled on (edit) - used to display edit page for bookshelves
+    //**note "(edit)"" is for editing bookshelves, "edit" is assignined books to bookshelves
     const [toggleEdit, setToggleEdit] = useState(false)
+    //toggled when clicking rename on bookshelf edit page - used for rename form
     const [toggleRename, setToggleRename] = useState(false)
-    // const [toggleBookEdit, setToggleBookEdit] = useState(false)
+    //used to conditionally render the book to shelf edit form on each book - set to ID of book when edit is clicked
     const [bookEditID, setBookEditID] = useState(false)
 
+    //**IMPORTANT** holds the bookshelf IDs that a book is in -
+    //default empty - when edit is clicked over a book, populates with initial shelves the book is in
+    //changes every single time a user adjusts inputs in the form (login is in onChange in the inputs)
+    //submitted to the backend to modify DB
     const [bookshelfIDArr, setBookshelfIDArr] = useState([])
 
-    //turn usershelves slice of store into arr
+    //turn usershelves slice of store into arr of user shelves
     let userShelves = []
     if (bookshelvesDict) {
         userShelves = Object.values(bookshelvesDict)
     }
 
-    //organize into default shelves and custom, generate defaultIDs for bookedit logic
+    //organize into default shelves and custom, generate defaultIDs for use later in book to boohslef  logic
     let defaultArr = []
     let defaultIDArr = []
     let customArr = []
@@ -45,9 +59,8 @@ const Bookshelves = () => {
     }
 
 
-    //get total books in all bookshelves non Dupes and make arr of ALL ids, exclude dups
+    //get total books in all bookshelves non Dupes and make arr of ALL ids, exclude dupes
     //and grab user id why not
-
     let bookIDArr = []
     let userID
     if (userShelves.length > 0) {
@@ -79,21 +92,14 @@ const Bookshelves = () => {
             name: shelfName,
         }
 
-        console.log(newBookShelf)
-
-        //end
-        //dispatch here
         dispatch(addUserBookshelvesThunk(newBookShelf))
         setToggleAddButton(true)
         setShelfName('')
     }
 
+    //handles deleting a shelf
     const handleDeleteShelf = (id) => {
-
-        console.log("yup")
         dispatch(deleteUserBookshelfThunk(id))
-        // dispatch(getUserBookshelvesThunk())
-        // dispatch(getAllBooksThunk())
         setToggleRename(false)
         setRenameShelfName('')
         return
@@ -103,23 +109,20 @@ const Bookshelves = () => {
     const handleRenameShelfSubmit = (e, id) => {
         e.preventDefault();
 
-
         let editBookShelf = {
             user_id: userID,
             name: renameShelfName
         };
 
-        console.log(editBookShelf);
-
-        //end
-        //dispatch here
         dispatch(renameUserBookshelfThunk(editBookShelf, id));
-
         setToggleRename(false);
         setRenameShelfName('');
         return
     }
 
+    //this is the function that is called when clicking "edit" to edit book-to-bookshelf
+    //this function uses the userShelves Arr and the specific book ID to generate an array
+    //of bookshelf IDs that that book is in.
     const genShelfIDArr = (bookID) => {
         let genShelfIDArr = []
         for (let shelf of userShelves) {
@@ -135,19 +138,16 @@ const Bookshelves = () => {
         return genShelfIDArr
     }
 
+    //this is the function that handles submission of the form for editing book-to-bookshelf
+    //it calls the updateLibraryThunk which runs what is essentially an edit/add/delete in the backend
     const handleBookEdit = (e, bookID) => {
         e.preventDefault();
-
-        // console.log("send shelfID arr back", bookshelfIDArr)
-        // console.log("send bookID back", bookID)
-
         const updateLibrary = {
             bookshelfIDArr: bookshelfIDArr,
             bookID: bookID
         }
 
-        //end
-        //run thunk for book edit
+        //**IMPORTANT** chaining thens because the updateLibraryThunk DOES NOT update store - it relies on these two thunks
         dispatch(updateLibraryThunk(updateLibrary))
             .then(() => dispatch(getUserBookshelvesThunk()))
             .then(() => dispatch(getAllBooksThunk()))
@@ -155,22 +155,27 @@ const Bookshelves = () => {
         setBookEditID(false)
     }
 
+    //onClick for each book - just takes you to the books page
     const spotIDredirect = (id) => {
-
         history.push(`/books/${id}`)
     }
 
+    //JIC for page load
     if (bookshelvesDict.length < 1 && bookshelfIDArr.length < 1) return <div></div>
+
+    //JSX
     return (
         <>
             <div className='bookshelf_page_outer'>
-                <div className="bookshelf_page_title">My Books </div>
+                <div className="bookshelf_page_title">My Bookshelves </div>
             </div>
             <div className='bookshelf_page_outer'>
                 <div className='bookshelf_page_inner1'>
                     <div className='bookshelf_page_subTitleOuter'>
                         <div className='bookshelf_page_subTitle'>Bookshelves  </div>
                         <div
+                            // this is the edit bookshelves button, it untoggles anything else that might be open
+                            //*note -- untoggling anything else when opening something new is a super common JIC pattern in my code for onCLicks
                             onClick={() => {
                                 setToggleAddButton(true)
                                 setToggleEdit(!toggleEdit)
@@ -184,11 +189,14 @@ const Bookshelves = () => {
                         className='bookshelf_page_shelfName bookshelf_page_shelfNameAll'
                         onClick={() => {
                             setToggleEdit(false)
+                            //notice how when clicking all, shelf ID does not become the shelf's ID...because all is not a shelf
+                            //the pseudo 'all' shelf relies on shelfID being false, and the bookIDarr being generated to render properly
                             setShelfID(false)
                             setBookEditID(false)
                             return
                         }}>All ({bookIDArr.length})</div>
                     <div className='bookshelf_page_defaultArr'>
+                        {/* generating the default arr left aligned list */}
                         {defaultArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
@@ -203,6 +211,7 @@ const Bookshelves = () => {
                         )}
                     </div>
                     <div className='bookshelf_page_customArr'>
+                        {/* generating the custom arr left aligned list */}
                         {customArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
@@ -215,6 +224,7 @@ const Bookshelves = () => {
                                     className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'>{shelf.name} ({shelf.books.length})</div>
                             </div>
                         )}
+                        {/* here is the contiondal rendering for the add bookshelf button VS the add bookshelf form */}
                         {toggleAddButton && <div
                             onClick={() => {
                                 setToggleRename(false)
@@ -243,6 +253,7 @@ const Bookshelves = () => {
 
                                         className='bookshelf_page_submitShelfButton'> add</button>
                                     <div
+                                        // this div is just an x to close out the form
                                         onClick={() => {
                                             setShelfName("")
                                             setToggleAddButton(true)
@@ -258,23 +269,33 @@ const Bookshelves = () => {
                         }
                     </div>
                 </div>
+                {/* here begins some too complex conditional rendering */}
+                {/* the toggle edit state var is used to rknow when to render the bookshelf edit page versus just the list of books */}
+                {/* the shelfID is used to know what books to render when clikcing on a bookshelf */}
                 {!toggleEdit && <div className='bookshelf_page_inner2'>
+                    {/* since this is rendering when shelfID is false, we know that this rendering must be for the "all" pseudo bookshelf  */}
                     {!shelfID && bookIDArr?.map((id) =>
 
-                        //Repeat this div once more below
+                        //**IMPORTANT** this is a repeated div
+                        //This div should be refactored into a component, because it is in the All section
+                        //and it is repeated  in the not ALL sections
                         <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
                             <div
                                 onClick={() => {
+                                    //this onClick logic is so that you can toggle the book-to-bookshelf edit form by repeatedly clicking
+                                    setToggleAddButton(true)
                                     if (bookEditID === id) {
                                         setBookEditID(false)
                                     } else { setBookEditID(id) }
 
+                                    //this is where the inital bookshelfIDARR is generated so that the form can be default filled properly
                                     let arr = genShelfIDArr(id)
                                     setBookshelfIDArr(arr)
-                                    console.log('BOOKSHELF ID ARRAY', bookshelfIDArr)
                                     return
                                 }}
                                 className='bookshelf_page_imageEdit'>edit</div>
+
+                            {/* if a user has clicked the book-to-bookshelf edit button, now the form will open */}
                             {bookEditID === id &&
                                 <form className='bookshelf_page_bookEditForm'
                                     onSubmit={(e) => {
@@ -283,6 +304,8 @@ const Bookshelves = () => {
                                         return
                                     }}>
                                     <div className="bookshelf_page_bookEditShelves">Shelves</div>
+                                    {/* map through the custom arrays to generate form inputs */}
+                                    {/* NOTE - these are all checkboxes since a book can be in multiple custom shelves */}
                                     {customArr.map((shelf) =>
                                         <div className='bookshelf_page_bookInputWrapDiv'>
                                             <label className='bookshelf_page_bookLabel' for={`${shelf.name}${shelf.id}`}>{shelf.name}</label>
@@ -291,8 +314,16 @@ const Bookshelves = () => {
                                                 type='checkbox'
                                                 id={`${shelf.name}${shelf.id}`}
 
+                                                //not using the bookshelfID array per say, but same logic to decide to defaultCheck
                                                 defaultChecked={shelf.books.includes(id) ? 'checked' : ''}
                                                 onChange={() => {
+
+                                                    //**IMPORTANT** the checkbox and radio buttons are not technically controlled inputs
+                                                    //what is shown on them is reall just a visual for the user
+                                                    //what is really important is that when the user makes a change and toggles the input
+                                                    //the onChange looks inside of bookshelfIDArr
+                                                    //and decides whether it needs to take the shelfID out or put it in
+                                                    //the visual check/radio or no check/radio REFLECTS this change BUT IS NOT tracking this change
                                                     if (bookshelfIDArr.includes(shelf.id)) {
                                                         let tempArr = [...bookshelfIDArr]
                                                         let finalArr = []
@@ -310,6 +341,8 @@ const Bookshelves = () => {
                                         </div>
                                     )}
                                     <div className="bookshelf_page_bookEditStatus">Status</div>
+                                    {/* map through the default arrays to generate form inputs */}
+                                    {/* NOTE - these are all radios since a book can be in only one default shelf at a time */}
                                     {defaultArr.map((shelf) =>
                                         <div className='bookshelf_page_bookInputWrapDiv bookshelf_page_bookInputWrapDivBot'>
                                             <label
@@ -323,6 +356,12 @@ const Bookshelves = () => {
                                                 defaultChecked={shelf.books.includes(id) ? 'checked' : ''}
                                                 onChange={() => {
 
+                                                    //read the IMPORTANT note above
+                                                    //major difference is that there is only a single action
+                                                    //every defaultID is taken out to start with
+                                                    //then the one seleected is put back in
+                                                    //this is very explicit so that there can never be more than one defaultShelfID
+                                                    //in the all important bookshelfIDArr
                                                     let tempArr = [...bookshelfIDArr]
                                                     let finalArr = []
                                                     for (let id of tempArr) {
@@ -339,24 +378,38 @@ const Bookshelves = () => {
                                             ></input>
                                         </div>
                                     )}
+                                    {/* submits form to run the handle func */}
                                     <button
                                         className='bookshelf_page_bookSave'
                                     >Save</button>
                                 </form>
                             }
                             <img
+                                //redirect to book specific page
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
                                 src={booksDict[Number(id)]?.image_url} alt='cover' />
                         </div>
 
-                    )}
-                    {shelfID && bookshelvesDict[shelfID]?.books.map((id) =>
+                    )
 
-                        //REPEAT OF UPPER DIV
+                    }
+                    {!shelfID && bookIDArr?.length === 0 &&
+                        //this is for the All render (since its !shelfID) and it only renders if the user has no books
+                        <div className="bookshelf_page_noMatch">No matching items!</div>
+
+                    }
+                    {/* since this is rendering when shelfID is an actual shelfID,   */}
+                    {/* this rendering must NOT be for the "all" pseudo bookshelf  */}
+                    {/* this is the rendering for each of the other clicked bookshelves */}
+                    {/* keying into the bookshelvesDict based on shelfID is how it knows which books to render */}
+                    {shelfID && bookshelvesDict[shelfID]?.books?.map((id) =>
+
+                        //REPEAT OF UPPER DIV READ THE NOTES THERE FOR EXPLANATION
                         <div className='bookshelf_page_outerImage' key={booksDict[Number(id)]?.image_url} >
                             <div
                                 onClick={() => {
+                                    setToggleAddButton(true)
                                     if (bookEditID === id) {
                                         setBookEditID(false)
                                     } else { setBookEditID(id) }
@@ -446,19 +499,30 @@ const Bookshelves = () => {
 
 
                     )}
-                    {shelfID && bookshelvesDict[shelfID].books.length === 0 &&
+                    {shelfID && bookshelvesDict[shelfID].books?.length === 0 &&
 
                         <div className="bookshelf_page_noMatch">No matching items!</div>
 
                     }
                 </div>}
+
+                {/* this only renders when the (edit) button to edit a bookshelf has been clicked */}
                 {toggleEdit &&
                     <div className='bookshelf_page_editInner2'>
+                        {/* if there are no bookshelves, then you get a nice message */}
+                        {customArr?.length === 0 && <div className="bookshelf_page_noMatch">No custom bookshelves!</div>}
+                        {/* if there are bookshelvess, render them */}
                         {customArr.map((shelf) =>
                             <div key={shelf.id} className="bookshelf_page_editWrap">
                                 <div
+                                    //this subtle DIV is actually the entire delete crud
                                     onClick={() => handleDeleteShelf(shelf.id)}
                                     className="bookshelf_page_delete">X</div>
+
+                                {/* this is a very similar render to the shelfID */}
+                                {/* by matching a state variable ID that tracks what shelf rename DIV is clicked
+                                to each of the mapped shelves */}
+                                {/* it knows which rename form to open when the rename button is clicked */}
                                 {toggleRename !== shelf.id &&
                                     <div
                                         className='bookshelf_page_editShelfName'>{shelf.name} ({shelf.books.length})</div>
@@ -476,6 +540,7 @@ const Bookshelves = () => {
                                         <form className='bookshelf_page_renameShelfForm' onSubmit={(e) => handleRenameShelfSubmit(e, shelf.id)}>
                                             <div>
                                                 <input
+                                                    //this is a normal controlled component
                                                     id='renameShelfName'
                                                     type="text"
                                                     value={renameShelfName}
