@@ -20,7 +20,6 @@ const UserBooks = () => {
   }, [dispatch]);
 
   if (currentUser == null) {
-    console.log("currentUser == null conditional");
     return null;
   }
 
@@ -29,7 +28,6 @@ const UserBooks = () => {
   );
 
   const sortedUserBooks = userBooks.sort((a, b) => (b.id - a.id));
-  console.log("sorted", sortedUserBooks)
 
   return (
     <>
@@ -83,8 +81,8 @@ const UserBooks = () => {
             </div>
           </div>
         </div>
-  
-        
+
+
       )}
       {/* <div className="footerUserBooks">
 <div className="footerMainDiv">
@@ -107,7 +105,7 @@ const UserBooks = () => {
                 </div>
             </div>
             </div> */}
- 
+
     </>
   );
 };

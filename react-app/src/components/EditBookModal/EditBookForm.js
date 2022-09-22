@@ -7,7 +7,6 @@ const EditBookForm = ({ setShowModal, userBook }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const book = useSelector((state) => state?.books[userBook.id]);
-  console.log("userBook", userBook);
 
   const [errors, setErrors] = useState({
     title: "",
