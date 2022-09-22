@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+
 }
 
 .bookshelf_page_inner1 {
@@ -119,31 +120,32 @@
 }
 
 .bookshelf_page_img {
+    object-fit: cover;
     margin: 10px;
-    max-width: 100%;
-    max-height: 100%;
+    /* max-width: 100%;
+    max-height: 100%; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s;
     width: 106.64px;
-    height: 150px;
+    height: 170px;
 }
 
 .bookshelf_page_outerImage {
-    height: 150px;
+    height: 170px;
     transition: 0.3s;
 
 }
 
 .bookshelf_page_outerImage:hover {
-    height: 200px;
+    height: 220px;
     /* box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); */
 }
 
 .bookshelf_page_img:hover {
-    height: 200px;
+    height: 220px;
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
-    width: 135px;
+    width: 125px;
 }
 
 .bookshelf_page_addShelfButton {
@@ -473,6 +475,7 @@
     position: relative;
     margin-top: 0px;
     margin-left: 10px;
+    width: 178px;
 }
 
 .bookshelf_page_bookLabel {
