@@ -16,7 +16,7 @@ const BookById = () => {
     const booksArray = useSelector((state) => Object.values(state?.books))
     const singleBook = booksDict[id]
     const reviewsArray = useSelector((state) => Object.values(state?.reviews))
-    const reviewsByBookId = reviewsArray.filter(review => review.book_id == id)
+    const reviewsByBookId = reviewsArray.filter(review => review.book_id === id)
     const [display, setDisplay] = useState('landing')
     const currentUser = useSelector((state) => (state?.session?.user))
 
@@ -232,7 +232,7 @@ const BookById = () => {
                             </div>
                             : <div className='alex_merriweather_300 alex_font_14'>This book hasn't been rated yet</div>}
 
-                        {display == 'landing' ?
+                        {display === 'landing' ?
                             <div>
                                 <div className='alex_merriweather_300 alex_font_14 alex_bold'>Why was it banned?</div>
                                 <div className='alex_merriweather_300 alex_font_14' >{singleBook.banned}</div>
