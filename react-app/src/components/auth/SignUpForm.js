@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import * as sessionActions from "../../store/session";
+import { createDefaultBookshelvesThunk, getUserBookshelvesThunk, } from '../../store/bookshelvesRed';
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -15,16 +17,20 @@ const SignUpForm = () => {
   const history = useHistory();
 
   const onSignUp = async (e) => {
+
     e.preventDefault();
     setErrors([])
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
+      const defaults = await dispatch(createDefaultBookshelvesThunk({ userID: data.id }))
+      const shelves = await dispatch(getUserBookshelvesThunk())
       if (data) {
         setErrors(data)
       }
     } else {
-      setErrors(['Passwords must match'])
+      setErrors([':Passwords must match'])
     }
+    
   };
 
   const updateUsername = (e) => {
