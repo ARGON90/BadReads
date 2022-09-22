@@ -16,7 +16,7 @@ const BookById = () => {
     const booksArray = useSelector((state) => Object.values(state?.books))
     const singleBook = booksDict[id]
     const reviewsArray = useSelector((state) => Object.values(state?.reviews))
-    const reviewsByBookId = reviewsArray.filter(review => review.book_id === id)
+    const reviewsByBookId = reviewsArray.filter(review => review.book_id === Number(id))
     const [display, setDisplay] = useState('landing')
     const currentUser = useSelector((state) => (state?.session?.user))
 
@@ -248,7 +248,7 @@ const BookById = () => {
                     </div>
                 </div>
             </div>
-            <div className='footerBookID'>
+            {/* <div className='footerBookID'>
             <div className="footerMainDiv">
                 <div className='footerContainerDiv'>
                     <div className='footerColumn'>
@@ -268,7 +268,7 @@ const BookById = () => {
                     </div>
                 </div>
             </div>
-            </div>
+            </div> */}
         </>
     );
 }

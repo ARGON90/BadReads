@@ -582,7 +582,7 @@ const Bookshelves = () => {
                     </div>
                 }
             </div>
-            <div className='footerBookID'>
+            {/* <div className='footerBookID'>
             <div className="footerMainDiv">
                 <div className='footerContainerDiv'>
                     <div className='footerColumn'>
@@ -602,7 +602,7 @@ const Bookshelves = () => {
                     </div>
                 </div>
             </div>
-            </div>
+            </div> */}
         </>
     );
 }

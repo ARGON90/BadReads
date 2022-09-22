@@ -558,3 +558,10 @@
     font-weight: bold;
     text-decoration: underline;
 }
+
+.ben_overFlow_review {
+    overflow-wrap: break-word;
+    /* width: fit-content;
+    height: fit-content; */
+    inline-size: 450px;
+}
