@@ -353,10 +353,11 @@ img.splashBook {
 
 .textError {
     text-align: left;
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 6px;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-top: 12px;
+    padding-bottom: 14px;
+    line-height: 16px;
 }
 
 .signUpErrors {
