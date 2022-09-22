@@ -49,6 +49,7 @@
 .bookshelf_page_shelfName {
     margin-top: 5px;
     margin-bottom: 5px;
+    caret-color: transparent;
 }
 
 .bookshelf_page_customArr {
@@ -543,4 +544,8 @@
 
 .ben_bookWrap_bookId {
     height: 30px;
+}
+
+.ben_underline {
+    text-decoration: underline;
 }

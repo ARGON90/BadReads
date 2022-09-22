@@ -186,7 +186,7 @@ const Bookshelves = () => {
                             className='bookshelf_page_subEdit'>(Edit)</div>
                     </div>
                     <div
-                        className='bookshelf_page_shelfName bookshelf_page_shelfNameAll'
+                        className={shelfID ? 'bookshelf_page_shelfName bookshelf_page_shelfNameAll' : 'bookshelf_page_shelfName bookshelf_page_shelfNameAll ben_underline'}
                         onClick={() => {
                             setToggleEdit(false)
                             //notice how when clicking all, shelf ID does not become the shelf's ID...because all is not a shelf
@@ -200,7 +200,7 @@ const Bookshelves = () => {
                         {defaultArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
-                                    className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'
+                                    className={shelfID !== shelf.id ? 'bookshelf_page_shelfName bookshelf_page_shelfNameDec' : 'bookshelf_page_shelfName bookshelf_page_shelfNameDec ben_underline'}
                                     onClick={() => {
                                         setToggleEdit(false)
                                         setShelfID(shelf.id)
@@ -221,7 +221,8 @@ const Bookshelves = () => {
                                         setBookEditID(false)
                                         return
                                     }}
-                                    className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'>{shelf.name} ({shelf.books.length})</div>
+                                    className={shelfID !== shelf.id ? 'bookshelf_page_shelfName bookshelf_page_shelfNameDec' : 'bookshelf_page_shelfName bookshelf_page_shelfNameDec ben_underline'}
+                                >{shelf.name} ({shelf.books.length})</div>
                             </div>
                         )}
                         {/* here is the contiondal rendering for the add bookshelf button VS the add bookshelf form */}
@@ -388,7 +389,7 @@ const Bookshelves = () => {
                                 //redirect to book specific page
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
-                                src={booksDict[Number(id)]?.image_url} alt='cover' />
+                                src={booksDict[Number(id)].image_url ? booksDict[Number(id)].image_url : 'https://wallpaperaccess.com/full/676549.jpg'} alt='cover' />
                         </div>
 
                     )
@@ -494,7 +495,7 @@ const Bookshelves = () => {
                             <img
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
-                                src={booksDict[Number(id)]?.image_url} alt='cover' />
+                                src={booksDict[Number(id)].image_url ? booksDict[Number(id)].image_url : 'https://wallpaperaccess.com/full/676549.jpg'} onError='this.style.display = "none"' alt='cover' />
                         </div>
 
 
