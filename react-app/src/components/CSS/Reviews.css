@@ -185,12 +185,12 @@
 .alex-image-fill {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .alex_bookshelf_div {
     height: 32px;
 }
-
 
 #alex_bookshelf_button:hover {
     background-color: #e7e5e1;
