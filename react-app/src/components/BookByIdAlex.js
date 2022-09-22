@@ -91,7 +91,7 @@ const BookById = () => {
         dispatch(getAllBooksThunk())
         dispatch(getAllReviewsThunk())
     }, [dispatch])
-
+    
     if (booksDict.length < 1) return <div>Loading All Books...</div>
     if (!singleBook) return <div>Sorry, this book doesn't exist</div>
     return (
