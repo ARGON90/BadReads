@@ -101,7 +101,7 @@
 
 .bookshelf_page_imageEdit {
     margin-left: 10px;
-
+    caret-color: transparent;
     background-color: #F4F1EA;
     height: 10px;
     font-size: small;
@@ -232,6 +232,49 @@
     cursor: pointer;
     margin-top: 8px;
     align-self: center;
+    font-size: 19px;
+    transition: transform 0.1s ease-out;
+}
+
+.bookshelf_page_delete:hover {
+    animation-name: wiggle;
+    animation-duration: .2s;
+    color: rgb(163, 1, 1);
+
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(10deg);
+    }
+
+    30% {
+        transform: rotate(20deg);
+    }
+
+    45% {
+        transform: rotate(0deg);
+    }
+
+    60% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    90% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .bookshelf_page_editRename {
