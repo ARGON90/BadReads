@@ -22,6 +22,8 @@
     /* border: solid black 1px; */
     display: flex;
     margin-left: 30px;
+    flex-wrap: wrap;
+
 }
 
 .bookshelf_page_editInner2 {
@@ -129,18 +131,17 @@
     transition: 0.3s;
     width: 106.64px;
     height: 170px;
+
 }
 
 .bookshelf_page_outerImage {
-    height: 170px;
+    height: fit-content;
     transition: 0.3s;
-
+    /* margin-bottom: 30px; */
+    /* width: 178px; */
 }
 
-.bookshelf_page_outerImage:hover {
-    height: 220px;
-    /* box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); */
-}
+
 
 .bookshelf_page_img:hover {
     height: 220px;
@@ -371,6 +372,7 @@
     margin-left: 10px;
 }
 
+/* not working with wrap changes - just leaving to fix if we want */
 @keyframes example {
     0% {
         height: 0%;
@@ -466,7 +468,7 @@
     height: fit-content;
     overflow: hidden;
     animation-name: example;
-    animation-duration: .1s;
+    animation-duration: 0.3s;
 
     background-color: rgba(244, 241, 234, 1);
     padding: 8px;
