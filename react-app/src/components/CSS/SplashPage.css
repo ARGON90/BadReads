@@ -1,7 +1,8 @@
 body {
     margin: 0 auto; 
-
 }
+
+
 
 /* badreads logo */
 .splashLogo {
@@ -188,15 +189,23 @@ div.splashPageImg {
 .switchFormText {
     display: flex;
     align-self: center;
+    justify-content: center;
     margin: 5px;
     border-top: 1px solid #D8D8D8;
     padding: 20px;
-}
-
-.switchFormText {
     display: inline-block;
     font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
 }
+
+.splashLogInDiv {
+    display: flex;
+    justify-content: center;
+}
+
+/* .switchFormText {
+    display: inline-block;
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+} */
 
 .loginErrors {
     display: flex;
