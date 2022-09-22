@@ -389,7 +389,7 @@ const Bookshelves = () => {
                                 //redirect to book specific page
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
-                                src={booksDict[Number(id)].image_url ? booksDict[Number(id)].image_url : 'https://wallpaperaccess.com/full/676549.jpg'} alt='cover' />
+                                src={booksDict[Number(id)]?.image_url ? booksDict[Number(id)].image_url : 'https://i.ibb.co/rQ7cKJC/5107.png'} alt='cover' />
                         </div>
 
                     )
@@ -495,7 +495,7 @@ const Bookshelves = () => {
                             <img
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
-                                src={booksDict[Number(id)].image_url ? booksDict[Number(id)].image_url : 'https://wallpaperaccess.com/full/676549.jpg'} onError='this.style.display = "none"' alt='cover' />
+                                src={booksDict[Number(id)]?.image_url ? booksDict[Number(id)].image_url : 'https://i.ibb.co/rQ7cKJC/5107.png'} alt='cover' />
                         </div>
 
 

@@ -547,5 +547,6 @@
 }
 
 .ben_underline {
+    font-weight: bold;
     text-decoration: underline;
 }
