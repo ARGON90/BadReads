@@ -89,7 +89,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
             return (
                 <div className='alex_merriweather_300 alex_font_14' >
                     {display === 'landing' ?
-                        <div>
+                        <div className='alex_pad_bottom_10' >
                             <div className='alex_flex_row'>
                                 <div className='alex_merriweather_300 alex_font_14'>Would you like to edit your review, {" "}</div>
                                 <div className='alex_margin_right_3'></div>
@@ -130,9 +130,11 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                 onClick={deleteReview}
                                 className='alex_gr-button'
                             >Delete Review</button>
+                            <div className='alex_pad_bottom_10' ></div>
+                            <div className='alex_border_bottom_grey'></div>
                         </div>
                         : null}
-                        <div className='className='alex_pad_bottom_10></div>
+                    <div className='alex_pad_bottom_10' ></div>
 
                     {display === 'edit' ?
                         <div>
@@ -143,7 +145,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                     {reviewsByBookId.map((review) =>
                         <div key={review.id} className='alex_pad_bottom_10'>
                             {display === 'landing' ?
-                                <div className='alex_flex_column'>
+                                <div className='alex_flex_column alex_border_bottom_grey'>
                                     <div className='alex_flex_row alex_justify_between'>
                                         <div className='alex_flex_row'>
                                             <div className='alex_merriweather_300 alex_font_14 alex_bold'>{review.user.username}</div>
@@ -167,6 +169,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                     <div className='alex_pad_bottom_3'></div>
                                     <div>
                                         <div className='alex_merriweather_300 alex_font_14'>"{review.review}"</div>
+                                        <div className='alex_pad_bottom_5'></div>
                                     </div>
                                 </div>
                                 : null}
@@ -184,21 +187,27 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
             return (
                 <div className='alex_merriweather_300 alex_font_14 alex_flex_column'>
                     {display === 'landing' ?
-                        <div>
-                            <div className='alex_flex_row'>
+                        <div className='alex_border_bottom_grey'>
+                            <div className='alex_flex_row alex_pad_bottom_5'>
                                 <div className='alex_merriweather_300 alex_font_14 alex_bold' >{currentUserUsername},</div>
                                 <div className='alex_margin_right_3'></div>
                                 <div className='alex_merriweather_300 alex_font_14'>start your review of</div>
                                 <div className='alex_margin_right_3'></div>
                                 <div className='alex_merriweather_300 alex_font_14 alex_bold' >{singleBook.title}</div>
                             </div>
-                            <button
-                                onClick={displayCreate}
-                                className='alex_gr-button'
-                            >Write A Review</button>
+                            <div className='alex_pad_bottom_10'>
+                                <button
+                                    onClick={displayCreate}
+                                    className='alex_gr-button'
+                                >Write A Review
+                                </button>
+                            </div>
                         </div>
+
                         : null}
+
                     <div className='alex_pad_bottom_10'></div>
+
 
                     {display === 'create' ?
                         <div>
@@ -207,11 +216,11 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                         </div>
                         : null}
 
-                    {display === 'landing' ?
 
+                    {display === 'landing' ?
                         <div className='alex_pad_bottom_10'>
                             {reviewsByBookId.map((review) =>
-                                <div key={review.id}>
+                                <div key={review.id} className='alex_pad_bottom_10 '>
                                     <div className='alex_flex_row alex_justify_between'>
                                         <div className='alex_flex_row'>
                                             <div className='alex_merriweather_300 alex_font_14 alex_bold'>{review.user.username}</div>
@@ -233,7 +242,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                         </div>
                                     </div>
                                     <div className='alex_margin_right_3'></div>
-                                    <div className='alex_merriweather_300 alex_font_14'>"{review.review}"</div>
+                                    <div className='alex_merriweather_300 alex_font_14 alex_border_bottom_grey alex_pad_bottom_5'>"{review.review}"</div>
                                 </div>
                             )}
                         </div>

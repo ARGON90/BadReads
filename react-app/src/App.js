@@ -58,6 +58,7 @@ function App() {
         </Route>
         <Route>
           <h1>404 - Page Not Found</h1>
+          <img src='https://i.imgur.com/Ou7Pk4P.jpg' alt='page not found'/>
         </Route>
       </Switch>
     </BrowserRouter>

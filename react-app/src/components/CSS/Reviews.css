@@ -30,6 +30,10 @@
     color: red;
 }
 
+.alex_font_green {
+    color: #00635D;
+}
+
 .alex_font_black {
     color: black
 }
@@ -123,6 +127,10 @@
     padding-top: 35px;
 }
 
+.alex_pad_top_10 {
+    padding-top: 35px;
+}
+
 .alex_pad_bottom_5 {
     padding-bottom: 5px;
 }
@@ -131,6 +139,13 @@
     padding-bottom: 3px;
 }
 
+.alex_border_bottom {
+    border-bottom: 1px solid #D6D0C4;
+}
+
+.alex_border_bottom_grey {
+    border-bottom: 1px solid #e4e1e1;
+}
 
 /* CREATE Review Page */
 
@@ -158,6 +173,13 @@
 .alex-image-size {
     width: 145.5px;
     height: 200px;
+}
+
+.alex-404-image {
+    width: 50%;
+    border-radius: 12px;
+    
+
 }
 
 .alex-image-fill {
