@@ -50,12 +50,6 @@ const UserBooks = () => {
                       alt="bookcover"
                       style={{ height: "200px" }}
                     />
-                    {/* <div className="my-books-page-info-popup-container">
-                      <div className="my-books-page-book-popup">
-                        {userBook.title}
-                        {userBook.author}
-                      </div>
-                    </div> */}
                   </NavLink>
                   <div className="my-books-page-buttons-container">
                     <div className="my-books-page-edit-button-container">
