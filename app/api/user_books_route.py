@@ -1,7 +1,6 @@
 from flask import Blueprint, redirect, request, jsonify
 from flask_login import login_required, current_user
 from app.models import Book, db
-from app.forms import CreateBook
 
 
 user_books_route = Blueprint('user_books', __name__)

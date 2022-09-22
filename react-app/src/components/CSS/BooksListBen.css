@@ -69,13 +69,17 @@
 }
 
 .booklist_image {
+    object-fit: cover;
     height: 170px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
+    width: 106.64px;
+
 }
 
 .booklist_image:hover {
-    height: 200px;
+    height: 220px;
+    width: 135px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -83,6 +87,7 @@
     width: 200px;
     height: 265px;
     text-align: center;
+
 }
 
 .booklist_author {

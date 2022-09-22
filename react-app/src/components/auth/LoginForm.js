@@ -76,9 +76,11 @@ const LoginForm = ({ setLogIn }) => {
         </div>
         <button className='splashSubmitButton' onClick={handleDemo}>Demo User</button>
       </form>
+      <div className="splashLogInDiv">
       <div className='switchFormText'>
         Not a member?
         <button className='switchFormButton' onClick={handleSignUp}> Sign up</button>
+      </div>
       </div>
     </>
   );

@@ -186,7 +186,7 @@ const Bookshelves = () => {
                             className='bookshelf_page_subEdit'>(Edit)</div>
                     </div>
                     <div
-                        className='bookshelf_page_shelfName bookshelf_page_shelfNameAll'
+                        className={shelfID ? 'bookshelf_page_shelfName bookshelf_page_shelfNameAll' : 'bookshelf_page_shelfName bookshelf_page_shelfNameAll ben_underline'}
                         onClick={() => {
                             setToggleEdit(false)
                             //notice how when clicking all, shelf ID does not become the shelf's ID...because all is not a shelf
@@ -200,7 +200,7 @@ const Bookshelves = () => {
                         {defaultArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
-                                    className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'
+                                    className={shelfID !== shelf.id ? 'bookshelf_page_shelfName bookshelf_page_shelfNameDec' : 'bookshelf_page_shelfName bookshelf_page_shelfNameDec ben_underline'}
                                     onClick={() => {
                                         setToggleEdit(false)
                                         setShelfID(shelf.id)
@@ -221,7 +221,8 @@ const Bookshelves = () => {
                                         setBookEditID(false)
                                         return
                                     }}
-                                    className='bookshelf_page_shelfName bookshelf_page_shelfNameDec'>{shelf.name} ({shelf.books.length})</div>
+                                    className={shelfID !== shelf.id ? 'bookshelf_page_shelfName bookshelf_page_shelfNameDec' : 'bookshelf_page_shelfName bookshelf_page_shelfNameDec ben_underline'}
+                                >{shelf.name} ({shelf.books.length})</div>
                             </div>
                         )}
                         {/* here is the contiondal rendering for the add bookshelf button VS the add bookshelf form */}
@@ -388,7 +389,7 @@ const Bookshelves = () => {
                                 //redirect to book specific page
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
-                                src={booksDict[Number(id)]?.image_url} alt='cover' />
+                                src={booksDict[Number(id)]?.image_url ? booksDict[Number(id)].image_url : 'https://i.ibb.co/rQ7cKJC/5107.png'} alt='cover' />
                         </div>
 
                     )
@@ -494,7 +495,7 @@ const Bookshelves = () => {
                             <img
                                 onClick={() => spotIDredirect(id)}
                                 className="bookshelf_page_img"
-                                src={booksDict[Number(id)]?.image_url} alt='cover' />
+                                src={booksDict[Number(id)]?.image_url ? booksDict[Number(id)].image_url : 'https://i.ibb.co/rQ7cKJC/5107.png'} alt='cover' />
                         </div>
 
 
@@ -581,6 +582,27 @@ const Bookshelves = () => {
                     </div>
                 }
             </div>
+            {/* <div className='footerBookID'>
+            <div className="footerMainDiv">
+                <div className='footerContainerDiv'>
+                    <div className='footerColumn'>
+                        <h2 className='footerColumnTitle'>INSPIRED BY</h2>
+                        <a href="https://www.goodreads.com/">goodreads</a>
+                    </div>
+                    <div className='footerColumn'>
+                        <h2 className='footerColumnTitle'>WORK WITH US</h2>
+                        <a href="https://github.com/ARGON90">Alex Gonglach</a>
+                        <a href="https://github.com/benwaldee">Ben Waldee</a>
+                        <a href="https://github.com/julieyj">Julie Jung</a>
+                        <a href="https://github.com/jvstinejvng">Justine Jang</a>
+                    </div>
+                    <div className='footerColumn'>
+                        <h2 className='footerColumnTitle'>SOURCE CODE</h2>
+                        <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
+                    </div>
+                </div>
+            </div>
+            </div> */}
         </>
     );
 }

@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+
 }
 
 .bookshelf_page_inner1 {
@@ -21,6 +22,8 @@
     /* border: solid black 1px; */
     display: flex;
     margin-left: 30px;
+    flex-wrap: wrap;
+
 }
 
 .bookshelf_page_editInner2 {
@@ -49,6 +52,7 @@
 .bookshelf_page_shelfName {
     margin-top: 5px;
     margin-bottom: 5px;
+    caret-color: transparent;
 }
 
 .bookshelf_page_customArr {
@@ -118,28 +122,31 @@
 }
 
 .bookshelf_page_img {
+    object-fit: cover;
     margin: 10px;
-    max-width: 100%;
-    max-height: 100%;
+    /* max-width: 100%;
+    max-height: 100%; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s;
+    width: 106.64px;
+    height: 170px;
+
 }
 
 .bookshelf_page_outerImage {
-    height: 150px;
+    height: fit-content;
     transition: 0.3s;
-
+    /* margin-bottom: 30px; */
+    /* width: 178px; */
 }
 
-.bookshelf_page_outerImage:hover {
-    height: 200px;
-    /* box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); */
-}
+
 
 .bookshelf_page_img:hover {
-    height: 200px;
+    height: 220px;
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
+    width: 125px;
 }
 
 .bookshelf_page_addShelfButton {
@@ -365,6 +372,7 @@
     margin-left: 10px;
 }
 
+/* not working with wrap changes - just leaving to fix if we want */
 @keyframes example {
     0% {
         height: 0%;
@@ -460,7 +468,7 @@
     height: fit-content;
     overflow: hidden;
     animation-name: example;
-    animation-duration: .1s;
+    animation-duration: 0.3s;
 
     background-color: rgba(244, 241, 234, 1);
     padding: 8px;
@@ -469,6 +477,7 @@
     position: relative;
     margin-top: 0px;
     margin-left: 10px;
+    width: 178px;
 }
 
 .bookshelf_page_bookLabel {
@@ -543,4 +552,16 @@
 
 .ben_bookWrap_bookId {
     height: 30px;
+}
+
+.ben_underline {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.ben_overFlow_review {
+    overflow-wrap: break-word;
+    /* width: fit-content;
+    height: fit-content; */
+    inline-size: 450px;
 }

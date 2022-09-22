@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import BookById from './components/BookByIdAlex';
 import Bookshelves from './components/Bookshelves';
 import UserBooks from './components/UserBooks';
+import NotFound from './components/NotFound'
 
 
 
@@ -57,8 +58,7 @@ function App() {
           <UserBooks />
         </Route>
         <Route>
-          <h1>404 - Page Not Found</h1>
-          <img src='https://i.imgur.com/Ou7Pk4P.jpg' alt='page not found'/>
+          <NotFound />
         </Route>
       </Switch>
     </BrowserRouter>

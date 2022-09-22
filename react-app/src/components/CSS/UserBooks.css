@@ -49,6 +49,7 @@
   margin: 5px 0px;
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .my-books-page-book-cover:hover {
@@ -67,4 +68,19 @@
   background-color: #ede6d6;
   font-weight: bold;
 
+}
+
+.my-books-page-books-item-empty-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.my-books-page-empty-container-message {
+  font-size: 26px;
+  font-weight:  600;
+  width: 470px;
+  color: #333333;
 }
