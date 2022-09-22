@@ -109,7 +109,7 @@ const BookById = () => {
             <div className='alex_flex_column alex_row_gap_10'>
 
                 {/* BOOK BY ID DIV */}
-                <div className='alex_flex_row alex_justify_center'>
+                <div className='alex_flex_row alex_justify_center alex_pad_top_35'>
 
                     {/* LEFT PANEL */}
                     <div className='alex_flex_column alex_height_520 alex_row_gap_10 alex_align_center'>
