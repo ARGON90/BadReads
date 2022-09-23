@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { getAllBooksThunk } from '../store/booksAlex';
+import { useParams } from 'react-router-dom';
 import { getAllReviewsThunk, deleteReviewThunk } from '../store/reviews';
 import '../components/CSS/Reviews.css'
 import CreateReview from './CreateReview'
@@ -9,8 +8,7 @@ import EditReview from './EditReview';
 
 
 const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggle }) => {
-    console.log('INSIDE REVIEWS COMPONENT')
-    const history = useHistory()
+    // console.log('INSIDE REVIEWS COMPONENT')
     const { id } = useParams()
     const dispatch = useDispatch();
     const booksDict = useSelector((state) => (state?.books))
@@ -30,7 +28,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
     }
 
     useEffect(() => {
-        console.log('REVIEWS USE EFFECT')
+        // console.log('REVIEWS USE EFFECT')
         dispatch(getAllReviewsThunk())
     }, [dispatch])
 

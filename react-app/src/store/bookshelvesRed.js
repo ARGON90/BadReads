@@ -103,7 +103,7 @@ export const deleteUserBookshelfThunk = (id) => async (dispatch) => {
         method: 'DELETE'
     });
     if (response.ok) {
-        const data = await response.json();
+        await response.json();
         dispatch(deleteUserBookshelf(id));
         return JSON.stringify(id);
     }

@@ -22,15 +22,15 @@ const SignUpForm = () => {
     setErrors([])
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
-      const defaults = await dispatch(createDefaultBookshelvesThunk({ userID: data.id }))
-      const shelves = await dispatch(getUserBookshelvesThunk())
+      await dispatch(createDefaultBookshelvesThunk({ userID: data.id }))
+      await dispatch(getUserBookshelvesThunk())
       if (data) {
         setErrors(data)
       }
     } else {
       setErrors([':Passwords must match'])
     }
-    
+
   };
 
   const updateUsername = (e) => {
@@ -74,7 +74,7 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-        <div className='formText'>Username</div>
+          <div className='formText'>Username</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -86,7 +86,7 @@ const SignUpForm = () => {
           </label>
         </div>
         <div>
-        <div className='formText' >Email</div>
+          <div className='formText' >Email</div>
           <label className='formFieldInput'>
             <input
               type='text'
@@ -97,7 +97,7 @@ const SignUpForm = () => {
           </label>
         </div>
         <div className='passwordAlert'>
-        <div className='formText'>Password</div>
+          <div className='formText'>Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
@@ -108,13 +108,13 @@ const SignUpForm = () => {
             />
           </label>
           <div className="alertDiv">
-          <div className="alertIcon">
-          </div>
-          <span className="alertIconText">Passwords must be at least 6 characters.</span>
+            <div className="alertIcon">
+            </div>
+            <span className="alertIconText">Passwords must be at least 6 characters.</span>
           </div>
         </div>
         <div>
-        <div className='formText'>Re-Password</div>
+          <div className='formText'>Re-Password</div>
           <label className='formFieldInput'>
             <input
               type='password'
