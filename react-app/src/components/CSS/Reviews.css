@@ -281,8 +281,8 @@
 .single-book-page-footer-container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    margin-left: 20%;
+    justify-content: center;
+    /* margin-left: 20%; */
     padding: 15px 0px;
 }
 

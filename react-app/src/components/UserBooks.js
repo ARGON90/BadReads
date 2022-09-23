@@ -81,9 +81,60 @@ const UserBooks = () => {
           </div>
         </div>
       </div>
-      {isLoaded && (
-        <div className="my-books-page-footer-404">
-          <div className="my-books-page-footer-container-404">
+      {isLoaded && filteredBookList?.length > 0 && (
+        <div className="my-books-page-footer">
+          <div className="my-books-page-footer-container">
+            <div className="my-books-page-footer-column-1">
+              <h2 className="my-books-page-footer-heading">INSPIRED BY</h2>
+              <a
+                className="my-books-page-column-1-goodreads"
+                href="https://www.goodreads.com/"
+              >
+                goodreads
+              </a>
+            </div>
+            <div className="my-books-page-footer-column-2">
+              <h2 className="my-books-page-footer-heading">WORK WITH US</h2>
+              <a
+                className="my-books-page-column-2-name"
+                href="https://github.com/ARGON90"
+              >
+                Alex Gonglach
+              </a>
+              <a
+                className="my-books-page-column-2-name"
+                href="https://github.com/benwaldee"
+              >
+                Ben Waldee
+              </a>
+              <a
+                className="my-books-page-column-2-name"
+                href="https://github.com/julieyj"
+              >
+                Julie Jung
+              </a>
+              <a
+                className="my-books-page-column-2-name"
+                href="https://github.com/jvstinejvng"
+              >
+                Justine Jang
+              </a>
+            </div>
+            <div className="my-books-page-footer-column-3">
+              <h2 className="my-books-page-footer-heading">SOURCE CODE</h2>
+              <a
+                className="my-books-page-column-3-github"
+                href="https://github.com/ARGON90/BadReads"
+              >
+                Github Repository
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+      {isLoaded && !filteredBookList?.length && (
+        <div className="my-books-page-footer">
+          <div className="my-books-page-footer-container">
             <div className="my-books-page-footer-column-1">
               <h2 className="my-books-page-footer-heading">INSPIRED BY</h2>
               <a
