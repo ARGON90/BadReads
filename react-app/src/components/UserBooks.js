@@ -82,8 +82,8 @@ const UserBooks = () => {
         </div>
       </div>
       {isLoaded && (
-        <div className="my-books-page-footer">
-          <div className="my-books-page-footer-container">
+        <div className="my-books-page-footer-404">
+          <div className="my-books-page-footer-container-404">
             <div className="my-books-page-footer-column-1">
               <h2 className="my-books-page-footer-heading">INSPIRED BY</h2>
               <a

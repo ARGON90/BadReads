@@ -168,7 +168,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                     </div>
                                     <div className='alex_pad_bottom_3'></div>
                                     <div>
-                                        <div className='alex_merriweather_300 alex_font_14'>"{review.review}"</div>
+                                        <div className='alex_merriweather_300 alex_font_14 ben_overFlow_review'>"{review.review}"</div>
                                         <div className='alex_pad_bottom_5'></div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                         </div>
                                     </div>
                                     <div className='alex_margin_right_3'></div>
-                                    <div className='alex_merriweather_300 alex_font_14 alex_border_bottom_grey alex_pad_bottom_5'>"{review.review}"</div>
+                                    <div className='alex_merriweather_300 alex_font_14 alex_border_bottom_grey alex_pad_bottom_5 ben_overFlow_review'>"{review.review}"</div>
                                 </div>
                             )}
                         </div>
