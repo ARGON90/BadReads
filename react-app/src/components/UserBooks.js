@@ -28,14 +28,14 @@ const UserBooks = () => {
 
   const userBooks = booksList.filter(
     (book) => book.user_id === currentUser["id"]
-    );
+  );
 
   const userReviews = reviewsList.filter(
     (reviews) => reviews.user_id === currentUser["id"]
-    );
+  );
 
-  console.log(userBooks)
-  console.log(userReviews)
+  console.log(userBooks);
+  console.log(userReviews);
 
   const sortedUserBooks = userBooks.sort((a, b) => b.id - a.id);
 
@@ -43,7 +43,7 @@ const UserBooks = () => {
 
   return (
     <>
-      {isLoaded && currentUser && userBooks && userReviews && (
+      {isLoaded && currentUser && userBooks.length > 0 && userReviews && (
         <div className="my-books-page-outer">
           <div className="my-books-page-container">
             <div className="my-books-page-header-container">
@@ -117,6 +117,22 @@ const UserBooks = () => {
                 </tr>
               ))}
             </table>
+          </div>
+        </div>
+      )}
+      {isLoaded && userBooks && userBooks.length == 0 && (
+        <div className="my-books-page-books-item-empty-outer">
+          <div className="my-books-page-books-item-empty-container">
+            <div className="my-books-page-empty-container-image">
+              <img
+                src="https://d15be2nos83ntc.cloudfront.net/images/404.png"
+                alt="no-books"
+                style={{ width: "470px" }}
+              />
+            </div>
+            <div className="my-books-page-empty-container-message">
+              You have not added any books to BadReads yet.
+            </div>
           </div>
         </div>
       )}
