@@ -8,7 +8,7 @@ import DeleteBookModal from "./DeleteBookModal";
 import "./CSS/UserBooks.css";
 
 const UserBooks = () => {
-  console.log("INSIDE USER BOOKS COMPONENT");
+  // console.log("INSIDE USER BOOKS COMPONENT");
   const history = useHistory();
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,8 +16,8 @@ const UserBooks = () => {
   const filterResponse = (books) => {
     return currentUser
       ? books
-          .filter((book) => book.user_id === currentUser["id"])
-          .sort((a, b) => b.id - a.id)
+        .filter((book) => book.user_id === currentUser["id"])
+        .sort((a, b) => b.id - a.id)
       : history.push("/");
   };
 
