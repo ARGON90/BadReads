@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100%;
 }
 
 .my-books-page-container {
   margin-top: 20px;
   max-width: 970px;
-  /* border: 1px solid black; */
+  overflow: auto;
+  padding-bottom: 100px;
 }
 
 .my-books-page-header-container {
@@ -50,6 +52,7 @@ th {
   margin: 5px 0px;
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .my-books-page-book-cover:hover {
@@ -60,4 +63,65 @@ th {
 .my-books-page-delete-button-container:hover {
   background-color: #ede6d6;
   font-weight: bold;
+}
+
+.my-books-page-books-item-empty-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.my-books-page-empty-container-message {
+  font-size: 26px;
+  font-weight:  600;
+  width: 470px;
+  color: #333333;
+}
+
+.my-books-page-footer {
+  background-color: #f9f8f4;
+  height: 250px;
+  position: relative;
+  clear: both;
+}
+
+.my-books-page-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20%;
+  padding: 15px 0px;
+}
+
+.my-books-page-footer-heading {
+  color: #767676;
+  margin-right: 50px;
+  font-size: 14px;
+  padding-bottom: 5px;
+  padding-top: 32px;
+}
+
+.my-books-page-footer-column-1,
+.my-books-page-footer-column-2,
+.my-books-page-footer-column-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+
+.my-books-page-column-1-goodreads,
+.my-books-page-column-2-name,
+.my-books-page-column-3-github {
+  font-size: 14px;
+  color: #382110;
+  text-decoration: none;
+  padding-bottom: 8px;
+}
+
+a:hover {
+  text-decoration: underline;
 }

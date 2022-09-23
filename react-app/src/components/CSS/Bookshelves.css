@@ -7,12 +7,23 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    /*julie footer code*/
+    min-height: 100%;
+}
+
+.bookshelf_page_outer_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    /*julie footer code*/
+    padding-bottom: 400px;
+    overflow: auto;
 }
 
 .bookshelf_page_inner1 {
     background-color: white;
     width: 210px;
-
+    margin-left: 20px;
 }
 
 .bookshelf_page_inner2 {
@@ -21,6 +32,8 @@
     /* border: solid black 1px; */
     display: flex;
     margin-left: 30px;
+    flex-wrap: wrap;
+
 }
 
 .bookshelf_page_editInner2 {
@@ -43,11 +56,13 @@
     font-family: "Merriweather", Georgia, "Times New Roman", serif;
     /* needs to track width and margins of inner2 and inner1 */
     width: 940px;
+    margin-left: 20px;
 }
 
 .bookshelf_page_shelfName {
     margin-top: 5px;
     margin-bottom: 5px;
+    caret-color: transparent;
 }
 
 .bookshelf_page_customArr {
@@ -101,7 +116,7 @@
 
 .bookshelf_page_imageEdit {
     margin-left: 10px;
-
+    caret-color: transparent;
     background-color: #F4F1EA;
     height: 10px;
     font-size: small;
@@ -117,28 +132,31 @@
 }
 
 .bookshelf_page_img {
+    object-fit: cover;
     margin: 10px;
-    max-width: 100%;
-    max-height: 100%;
+    /* max-width: 100%;
+    max-height: 100%; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: 0.3s;
+    width: 106.64px;
+    height: 170px;
+
 }
 
 .bookshelf_page_outerImage {
-    height: 150px;
+    height: fit-content;
     transition: 0.3s;
-
+    /* margin-bottom: 30px; */
+    /* width: 178px; */
 }
 
-.bookshelf_page_outerImage:hover {
-    height: 200px;
-    /* box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); */
-}
+
 
 .bookshelf_page_img:hover {
-    height: 200px;
+    height: 220px;
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
+    width: 125px;
 }
 
 .bookshelf_page_addShelfButton {
@@ -232,6 +250,49 @@
     cursor: pointer;
     margin-top: 8px;
     align-self: center;
+    font-size: 19px;
+    transition: transform 0.1s ease-out;
+}
+
+.bookshelf_page_delete:hover {
+    animation-name: wiggle;
+    animation-duration: .2s;
+    color: rgb(163, 1, 1);
+
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(10deg);
+    }
+
+    30% {
+        transform: rotate(20deg);
+    }
+
+    45% {
+        transform: rotate(0deg);
+    }
+
+    60% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    90% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .bookshelf_page_editRename {
@@ -321,7 +382,104 @@
     margin-left: 10px;
 }
 
+/* not working with wrap changes - just leaving to fix if we want */
+@keyframes example {
+    0% {
+        height: 0%;
+    }
+
+    5% {
+        height: 5%;
+    }
+
+    10% {
+        height: 10%;
+    }
+
+    15% {
+        height: 15%;
+    }
+
+    20% {
+        height: 20%;
+    }
+
+    25% {
+        height: 25%;
+    }
+
+    30% {
+        height: 30%;
+    }
+
+    35% {
+        height: 35%;
+    }
+
+    40% {
+        height: 40%;
+    }
+
+    45% {
+        height: 45%;
+    }
+
+    50% {
+        height: 50%;
+    }
+
+    55% {
+        height: 55%;
+    }
+
+    60% {
+        height: 60%;
+    }
+
+    65% {
+        height: 65%;
+    }
+
+    70% {
+        height: 70%;
+    }
+
+    75% {
+        height: 75%;
+    }
+
+    80% {
+        height: 80%;
+    }
+
+    85% {
+        height: 85%;
+    }
+
+    90% {
+        height: 90%;
+    }
+
+    95% {
+        height: 95%;
+    }
+
+    100% {
+        height: 100%;
+    }
+
+    /* 0% {height: 20px;}
+    0% {height: 20px;}
+    0% {height: 20px;} */
+
+}
+
 .bookshelf_page_bookEditForm {
+    height: fit-content;
+    overflow: hidden;
+    animation-name: example;
+    animation-duration: 0.3s;
+
     background-color: rgba(244, 241, 234, 1);
     padding: 8px;
     border: 1px solid rgba(170, 170, 170, 0.3);
@@ -329,6 +487,7 @@
     position: relative;
     margin-top: 0px;
     margin-left: 10px;
+    width: 178px;
 }
 
 .bookshelf_page_bookLabel {
@@ -395,3 +554,72 @@
     color: #00635d;
     background-color: #00635d;
 } */
+
+.ben_merge_bookDiv_left {
+    width: 200px;
+    height: fit-content;
+}
+
+.ben_bookWrap_bookId {
+    height: 30px;
+}
+
+.ben_underline {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.ben_overFlow_review {
+    overflow-wrap: break-word;
+    /* width: fit-content;
+    height: fit-content; */
+    inline-size: 450px;
+}
+
+
+/*julie footer code*/
+.bookshelves-page-footer {
+    background-color: #f9f8f4;
+    height: 250px;
+    position: relative;
+    clear: both;
+}
+
+.bookshelves-page-footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 20%;
+    padding: 15px 0px;
+}
+
+.bookshelves-page-footer-heading {
+    color: #767676;
+    margin-right: 50px;
+    font-size: 14px;
+    padding-bottom: 5px;
+    padding-top: 32px;
+}
+
+.bookshelves-page-footer-column-1,
+.bookshelves-page-footer-column-2,
+.bookshelves-page-footer-column-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+
+.bookshelves-page-column-1-goodreads,
+.bookshelves-page-column-2-name,
+.bookshelves-page-column-3-github {
+    font-size: 14px;
+    color: #382110;
+    text-decoration: none;
+    padding-bottom: 8px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooksThunk } from "../store/booksAlex";
@@ -12,17 +12,17 @@ const UserBooks = () => {
   console.log("INSIDE USER BOOKS COMPONENT");
 
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const currentUser = useSelector((state) => state?.session?.user);
   const booksList = useSelector((state) => Object.values(state?.books));
   const reviewsList = useSelector((state) => Object.values(state?.reviews));
 
   useEffect(() => {
-    dispatch(getAllBooksThunk());
+    dispatch(getAllBooksThunk()).then(() => setIsLoaded(true));
     dispatch(getAllReviewsThunk());
   }, [dispatch]);
 
   if (currentUser == null) {
-    console.log("currentUser == null conditional");
     return null;
   }
 
@@ -37,9 +37,13 @@ const UserBooks = () => {
   console.log(userBooks)
   console.log(userReviews)
 
+  const sortedUserBooks = userBooks.sort((a, b) => b.id - a.id);
+
+  if (!isLoaded) return null;
+
   return (
     <>
-      {currentUser && userBooks && userReviews && (
+      {isLoaded && currentUser && userBooks && userReviews && (
         <div className="my-books-page-outer">
           <div className="my-books-page-container">
             <div className="my-books-page-header-container">

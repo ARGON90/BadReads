@@ -16,7 +16,7 @@ const DeleteBookForm = ({ setShowModal, userBook }) => {
     let deletedBook = await dispatch(deleteBook(userBook.id));
 
     if (deletedBook) {
-      console.log(`Successfully deleted bookId: ${userBook.id}`);
+      setShowModal(false);
       history.push("/my-books");
     }
   };
