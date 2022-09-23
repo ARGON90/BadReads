@@ -17,7 +17,7 @@ const Bookshelves = () => {
     //object of the books portion of store
     const booksDict = useSelector((state) => state?.books)
 
-    //toggled when clicking on shelf on left - used to condiotnally render books for each shelf
+    //toggled when clicking on shelf on left - used to conditionally render books for each shelf
     const [shelfID, setShelfID] = useState(false)
     //toggled to show the add button as opposed to the add form
     const [toggleAddButton, setToggleAddButton] = useState(true)
@@ -48,8 +48,9 @@ const Bookshelves = () => {
     //organize into default shelves and custom, generate defaultIDs for use later in book to boohslef  logic
     let defaultArr = []
     let defaultIDArr = []
-    let customArr = []
+    let customArr = [1]
     if (userShelves.length > 0) {
+        customArr = []
         for (let shelf of userShelves) {
             if (shelf.default) {
                 defaultArr.push(shelf)
@@ -212,7 +213,7 @@ const Bookshelves = () => {
                     </div>
                     <div className='bookshelf_page_customArr'>
                         {/* generating the custom arr left aligned list */}
-                        {customArr.map((shelf) =>
+                        {customArr[0] !== 1 && customArr.map((shelf) =>
                             <div key={shelf.id}>
                                 <div
                                     onClick={() => {
@@ -395,7 +396,7 @@ const Bookshelves = () => {
                     )
 
                     }
-                    {!shelfID && bookIDArr?.length === 0 &&
+                    {customArr[0] !== 1 && !shelfID && bookIDArr?.length === 0 &&
                         //this is for the All render (since its !shelfID) and it only renders if the user has no books
                         <div className="bookshelf_page_noMatch">No matching items!</div>
 
@@ -511,7 +512,7 @@ const Bookshelves = () => {
                 {toggleEdit &&
                     <div className='bookshelf_page_editInner2'>
                         {/* if there are no bookshelves, then you get a nice message */}
-                        {customArr?.length === 0 && <div className="bookshelf_page_noMatch">No custom bookshelves!</div>}
+                        {customArr[0] !== 1 && customArr.length === 0 && <div className="bookshelf_page_noMatch">No custom bookshelves!</div>}
                         {/* if there are bookshelvess, render them */}
                         {customArr.map((shelf) =>
                             <div key={shelf.id} className="bookshelf_page_editWrap">
