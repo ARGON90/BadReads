@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooksThunk } from "../store/booksAlex";
 import CreateBookModal from "./CreateBookModal";
@@ -9,33 +9,25 @@ import "./CSS/UserBooks.css";
 
 const UserBooks = () => {
   console.log("INSIDE USER BOOKS COMPONENT");
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [filteredBooks, setFilteredBooks] = useState([]);
-
-  const currentUser = useSelector((state) => state?.session?.user);
-  const booksList = useSelector((state) => state?.books);
-
-  useEffect(() => {
-    // dispatch(getAllBooksThunk()).then((response) => {
-    //   const newFilteredBooks = filterResponse(
-    //     Object.values(JSON.parse(response))
-    //   );
-    //   setFilteredBooks(newFilteredBooks);
-    // });
-
-    // setIsLoaded(true);
-    dispatch(getAllBooksThunk());
-  }, [dispatch]);
-
-  console.log(booksList)
 
   const filterResponse = (books) => {
-    return books
-      .filter((book) => book.user_id === currentUser["id"])
-      .sort((a, b) => b.id - a.id);
+    return currentUser
+      ? books
+          .filter((book) => book.user_id === currentUser["id"])
+          .sort((a, b) => b.id - a.id)
+      : history.push("/");
   };
+
+  const currentUser = useSelector((state) => state?.session?.user);
+  const booksList = useSelector((state) => Object.values(state?.books));
+  const filteredBookList = filterResponse(booksList);
+
+  useEffect(() => {
+    dispatch(getAllBooksThunk()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
   return (
     <>
@@ -50,8 +42,9 @@ const UserBooks = () => {
           <div className="my-books-page-separator"></div>
           <div className="my-books-page-books-item-container">
             {isLoaded &&
-              booksList.length &&
-              Object.values(booksList).map((userBook, index) => (
+              currentUser &&
+              filteredBookList?.length > 0 &&
+              filteredBookList?.map((userBook, index) => (
                 <div className="my-books-page-book-item" key={index}>
                   <NavLink to={`/books/${userBook.id}`}>
                     <img
@@ -71,7 +64,7 @@ const UserBooks = () => {
                   </div>
                 </div>
               ))}
-            {isLoaded && !filteredBooks.length && (
+            {isLoaded && currentUser && !filteredBookList?.length && (
               <div className="my-books-page-books-item-empty-container">
                 <div className="my-books-page-empty-container-image">
                   <img
