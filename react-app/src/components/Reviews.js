@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { getAllBooksThunk } from '../store/booksAlex';
+import { useParams } from 'react-router-dom';
 import { getAllReviewsThunk, deleteReviewThunk } from '../store/reviews';
 import '../components/CSS/Reviews.css'
 import CreateReview from './CreateReview'
@@ -9,8 +8,7 @@ import EditReview from './EditReview';
 
 
 const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggle }) => {
-    console.log('INSIDE REVIEWS COMPONENT')
-    const history = useHistory()
+    // console.log('INSIDE REVIEWS COMPONENT')
     const { id } = useParams()
     const dispatch = useDispatch();
     const booksDict = useSelector((state) => (state?.books))
@@ -30,7 +28,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
     }
 
     useEffect(() => {
-        console.log('REVIEWS USE EFFECT')
+        // console.log('REVIEWS USE EFFECT')
         dispatch(getAllReviewsThunk())
     }, [dispatch])
 
@@ -168,7 +166,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                     </div>
                                     <div className='alex_pad_bottom_3'></div>
                                     <div>
-                                        <div className='alex_merriweather_300 alex_font_14'>"{review.review}"</div>
+                                        <div className='alex_merriweather_300 alex_font_14 ben_overFlow_review'>"{review.review}"</div>
                                         <div className='alex_pad_bottom_5'></div>
                                     </div>
                                 </div>
@@ -242,7 +240,7 @@ const Reviews = ({ display, setDisplay, displayLanding, dropToggle, setDropToggl
                                         </div>
                                     </div>
                                     <div className='alex_margin_right_3'></div>
-                                    <div className='alex_merriweather_300 alex_font_14 alex_border_bottom_grey alex_pad_bottom_5'>"{review.review}"</div>
+                                    <div className='alex_merriweather_300 alex_font_14 alex_border_bottom_grey alex_pad_bottom_5 ben_overFlow_review'>"{review.review}"</div>
                                 </div>
                             )}
                         </div>

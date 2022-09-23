@@ -25,7 +25,10 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
     if (review.length <= 0) newErrors.review = 'Review is required.';
     if (review.length > 1000) newErrors.reviewLength = 'Review must be 1000 characters or less.';
 
-    setErrors(newErrors);
+    return () => setErrors(newErrors);
+
+
+
   }, [currentUser, review, stars])
 
   const handleSubmit = async (e) => {
@@ -82,7 +85,7 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
 
         {Object.values(errors).length ?
           <div className="alex_flex_row alex_justify_around">
-             <button
+            <button
               type="submit"
               disabled={true}
               className="alex_gr-button-disabled"

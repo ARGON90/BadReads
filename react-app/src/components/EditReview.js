@@ -19,7 +19,7 @@ const EditReview = ({ bookId, userId, userReview, userStars, displayLanding, rev
   const updateStars = (e) => setStars(e.target.value);
 
   useEffect(() => {
-    console.log('EDIT REVIEWS USE EFFECT FOR ALL REVIEWS')
+    // console.log('EDIT REVIEWS USE EFFECT FOR ALL REVIEWS')
     dispatch(getAllReviewsThunk())
   }, [dispatch])
 
@@ -88,7 +88,7 @@ const EditReview = ({ bookId, userId, userReview, userStars, displayLanding, rev
 
         {Object.values(errors).length ?
           <div className="alex_flex_row alex_justify_around">
-             <button
+            <button
               type="submit"
               disabled={true}
               className="alex_gr-button-disabled"

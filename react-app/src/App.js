@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './components/NavBar';
 import SplashPage from './components/SplashPage';
-import HomePage from './components/HomePage';
+
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import BooksList from './components/BooksListAlex';
@@ -22,7 +22,7 @@ function App() {
   const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -37,16 +37,16 @@ function App() {
       {sessionUser && <NavBar />}
       <Switch>
         <Route path='/' exact={true}>
-            <SplashPage />
+          <SplashPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <Route path='/books' exact={true} >
-          <BooksList/>
+          <BooksList />
         </Route>
         <Route path='/books/:id' exact={true} >
-          <BookById/>
+          <BookById />
         </Route>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />

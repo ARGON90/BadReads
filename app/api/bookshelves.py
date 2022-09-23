@@ -32,7 +32,7 @@ def all_bookshelves():
 @bookshelves.route('/',methods=['POST'])
 def add_bookshelf():
     data = request.json
-    print(data)
+    # print(data)
     newShelf = Bookshelf(
         user_id=data["user_id"],
         default=False,
@@ -84,7 +84,7 @@ def update_library():
 
     upBook.bookshelves = shelfInst
 
-    print("i am new bookshelf list in book",upBook.bookshelves)
+    # print("i am new bookshelf list in book",upBook.bookshelves)
 
     db.session.add(upBook)
     db.session.commit()

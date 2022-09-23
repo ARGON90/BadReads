@@ -1,5 +1,5 @@
 body {
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 
@@ -166,7 +166,7 @@ div.splashPageImg {
 .formFieldInput input {
     cursor: pointer;
     font-size: 15px;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 
@@ -178,7 +178,7 @@ div.splashPageImg {
     background-color:transparent;
     font-size: 16px;
     color: #00635D;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .switchFormButton:hover {
@@ -194,7 +194,7 @@ div.splashPageImg {
     border-top: 1px solid #D8D8D8;
     padding: 20px;
     display: inline-block;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .splashLogInDiv {
@@ -204,7 +204,7 @@ div.splashPageImg {
 
 /* .switchFormText {
     display: inline-block;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 } */
 
 .loginErrors {
@@ -218,7 +218,7 @@ div.splashPageImg {
     border-radius: 16px;
     line-height: 30px;
     font-size: 15px;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 
@@ -239,7 +239,7 @@ div.splashPageImg {
 }
 
 .splashMiddleLeft {
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     color: #382110;
     width: 260px;;
     font-size: 14px;
@@ -248,7 +248,7 @@ div.splashPageImg {
 }
 
 .splashMiddleRight {
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     color: #382110;
     width: 260px;
     font-size: 14px;
@@ -293,7 +293,7 @@ div.splashPageImg {
 }
 
 .splashBook {
-    width: 80px; 
+    width: 80px;
 }
 
 img.splashBook {
@@ -326,7 +326,7 @@ img.splashBook {
 
 .footerContainerDiv {
     display: flex;
-    justify-content: flex-start;
+    justify-content:center;
     flex-direction: row;
     margin: auto;
     width: 960px;
@@ -339,7 +339,7 @@ img.splashBook {
     margin-right: 50px;
     font-size: 14px;
     padding-bottom: 5px;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .footerColumn {
@@ -351,7 +351,7 @@ img.splashBook {
 }
 
 .footerColumn a {
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #382110;
     text-decoration: none;
@@ -395,5 +395,5 @@ img.splashBook {
     background-color: #FFF5F3;
     border-radius: 16px;
     font-size: 15px;
-    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif; 
+    font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }

@@ -35,7 +35,7 @@ const loadReviews = (reviews) => {
 
 //THUNK - ALL REVIEWS
 export const getAllReviewsThunk = () => async (dispatch) => {
-    console.log('ALL REVIEWS THUNK')
+    // console.log('ALL REVIEWS THUNK')
     const response = await fetch(`/api/reviews/`);
     if (response.ok) {
         const data = await response.json();
@@ -46,7 +46,7 @@ export const getAllReviewsThunk = () => async (dispatch) => {
 
 //THUNK - CREATE A REVIEW
 export const createReviewThunk = (data) => async (dispatch) => {
-    console.log('CREATE REVIEW  THUNK')
+    // console.log('CREATE REVIEW  THUNK')
     const response = await fetch(`/api/reviews/${data.book_id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -61,8 +61,8 @@ export const createReviewThunk = (data) => async (dispatch) => {
 
 //THUNK - EDIT A REVIEW
 export const editReviewThunk = (data) => async (dispatch) => {
-    console.log('EDIT REVIEW THUNK')
-    console.log('DATA', data)
+    // console.log('EDIT REVIEW THUNK')
+    // console.log('DATA', data)
     const response = await fetch(`/api/reviews/${data.book_id}/${data.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -77,7 +77,7 @@ export const editReviewThunk = (data) => async (dispatch) => {
 
 //THUNK - DELETE A REVIEW
 export const deleteReviewThunk = (id) => async (dispatch) => {
-    console.log("INSIDE DELETE REVIEW THUNK")
+    // console.log("INSIDE DELETE REVIEW THUNK")
     const response = await fetch(`/api/reviews/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -95,14 +95,14 @@ const reviewsReducer = (state = initialState, action) => {
     let newState = state
     switch (action.type) {
         case GET_ALL_REVIEWS: {
-            console.log('ALL REVIEWS REDUCER')
+            // console.log('ALL REVIEWS REDUCER')
             const allReviews = action.reviews
             let newState = { ...state, ...allReviews }
             return newState
         }
 
         case CREATE_REVIEW: {
-            console.log('CREATE REVIEW REDUCER')
+            // console.log('CREATE REVIEW REDUCER')
             let newState = {
                 ...state,
                 [action.review.id]: action.review
@@ -111,7 +111,7 @@ const reviewsReducer = (state = initialState, action) => {
         }
 
         case EDIT_REVIEW: {
-            console.log('EDIT REVIEW REDUCER')
+            // console.log('EDIT REVIEW REDUCER')
             let newState = {
                 ...state,
                 [action.review.id]: action.review
@@ -120,7 +120,7 @@ const reviewsReducer = (state = initialState, action) => {
         }
 
         case DELETE_ONE_REVIEW: {
-            console.log('INSIDE DELETE REVIEW REDUCER');
+            // console.log('INSIDE DELETE REVIEW REDUCER');
             delete newState[action.id]
             return newState;
         }
