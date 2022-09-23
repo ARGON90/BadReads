@@ -57,6 +57,7 @@
     flex-direction: row;
 }
 
+
 .alex_flex_column {
     display: flex;
     flex-direction: column;
@@ -253,4 +254,65 @@
     padding: 8px 12px;
     height: 32px;
     width: 122px;
+}
+
+/* julie footer code */
+.julie_outer_div {
+    padding-bottom: 300px;
+    overflow: auto;
+}
+
+.julie_outer_div_404 {
+    padding-bottom: 300px;
+    overflow: auto;
+}
+
+.julie_inner_container {
+    min-height: 100%;
+}
+
+.single-book-page-footer {
+    background-color: #f9f8f4;
+    height: 250px;
+    position: relative;
+    clear: both;
+}
+
+.single-book-page-footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 20%;
+    padding: 15px 0px;
+}
+
+.single-book-page-footer-heading {
+    color: #767676;
+    margin-right: 50px;
+    font-size: 14px;
+    padding-bottom: 5px;
+    padding-top: 32px;
+}
+
+.single-book-page-footer-column-1,
+.single-book-page-footer-column-2,
+.single-book-page-footer-column-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+
+.single-book-page-column-1-goodreads,
+.single-book-page-column-2-name,
+.single-book-page-column-3-github {
+    font-size: 14px;
+    color: #382110;
+    text-decoration: none;
+    padding-bottom: 8px;
+}
+
+a:hover {
+    text-decoration: underline;
 }
