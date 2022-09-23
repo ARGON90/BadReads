@@ -44,8 +44,6 @@ export const createBook = (data) => async dispatch => {
         body: JSON.stringify(data)
     });
 
-    console.log('response', response)
-
     if (response.ok) {
         const book = await response.json();
         console.log('RESPONSE OK, BOOK', book)
