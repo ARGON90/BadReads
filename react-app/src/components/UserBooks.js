@@ -12,80 +12,82 @@ const UserBooks = () => {
 
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
   const currentUser = useSelector((state) => state?.session?.user);
-  const booksList = useSelector((state) => Object.values(state?.books));
+  const booksList = useSelector((state) => state?.books);
 
   useEffect(() => {
-    console.log("GET ALL BOOKS/USERBOOKS USE EFFECT");
-    dispatch(getAllBooksThunk()).then(() => setIsLoaded(true));
+    // dispatch(getAllBooksThunk()).then((response) => {
+    //   const newFilteredBooks = filterResponse(
+    //     Object.values(JSON.parse(response))
+    //   );
+    //   setFilteredBooks(newFilteredBooks);
+    // });
+
+    // setIsLoaded(true);
+    dispatch(getAllBooksThunk());
   }, [dispatch]);
 
-  if (currentUser == null) {
-    return null;
-  }
+  console.log(booksList)
 
-  const userBooks = booksList.filter(
-    (book) => book.user_id === currentUser["id"]
-  );
-
-  const sortedUserBooks = userBooks.sort((a, b) => b.id - a.id);
-
-  if (!isLoaded) return null;
+  const filterResponse = (books) => {
+    return books
+      .filter((book) => book.user_id === currentUser["id"])
+      .sort((a, b) => b.id - a.id);
+  };
 
   return (
     <>
-      {isLoaded && currentUser && userBooks && (
-        <div className="my-books-page-outer">
-          <div className="my-books-page-container">
-            <div className="my-books-page-header-container">
-              <div className="my-books-page-title">My Books</div>
-              <div className="my-books-page-create-button-container">
-                <CreateBookModal />
-              </div>
-            </div>
-            <div className="my-books-page-separator"></div>
-            <div className="my-books-page-books-item-container">
-              {isLoaded &&
-                userBooks &&
-                userBooks.length > 0 &&
-                userBooks?.map((userBook, index) => (
-                  <div className="my-books-page-book-item" key={index}>
-                    <NavLink to={`/books/${userBook.id}`}>
-                      <img
-                        className="my-books-page-book-cover"
-                        src={userBook.image_url}
-                        alt="bookcover"
-                        style={{ height: "200px" }}
-                      />
-                    </NavLink>
-                    <div className="my-books-page-buttons-container">
-                      <div className="my-books-page-edit-button-container">
-                        <EditBookModal userBook={userBook} />
-                      </div>
-                      <div className="my-books-page-delete-button-container">
-                        <DeleteBookModal userBook={userBook} />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              {isLoaded && userBooks && userBooks.length == 0 && (
-                <div className="my-books-page-books-item-empty-container">
-                  <div className="my-books-page-empty-container-image">
-                    <img
-                      src="https://d15be2nos83ntc.cloudfront.net/images/404.png"
-                      alt="no-books"
-                      style={{ width: "470px" }}
-                    />
-                  </div>
-                  <div className="my-books-page-empty-container-message">
-                    You have not added any books to BadReads yet.
-                  </div>
-                </div>
-              )}
+      <div className="my-books-page-outer">
+        <div className="my-books-page-container">
+          <div className="my-books-page-header-container">
+            <div className="my-books-page-title">My Books</div>
+            <div className="my-books-page-create-button-container">
+              <CreateBookModal />
             </div>
           </div>
+          <div className="my-books-page-separator"></div>
+          <div className="my-books-page-books-item-container">
+            {isLoaded &&
+              booksList.length &&
+              Object.values(booksList).map((userBook, index) => (
+                <div className="my-books-page-book-item" key={index}>
+                  <NavLink to={`/books/${userBook.id}`}>
+                    <img
+                      className="my-books-page-book-cover"
+                      src={userBook.image_url}
+                      alt="bookcover"
+                      style={{ height: "200px" }}
+                    />
+                  </NavLink>
+                  <div className="my-books-page-buttons-container">
+                    <div className="my-books-page-edit-button-container">
+                      <EditBookModal userBook={userBook} />
+                    </div>
+                    <div className="my-books-page-delete-button-container">
+                      <DeleteBookModal userBook={userBook} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            {isLoaded && !filteredBooks.length && (
+              <div className="my-books-page-books-item-empty-container">
+                <div className="my-books-page-empty-container-image">
+                  <img
+                    src="https://d15be2nos83ntc.cloudfront.net/images/404.png"
+                    alt="no-books"
+                    style={{ width: "470px" }}
+                  />
+                </div>
+                <div className="my-books-page-empty-container-message">
+                  You have not added any books to BadReads yet.
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
       <div className="my-books-page-footer">
         <div className="my-books-page-footer-container">
           <div className="my-books-page-footer-column-1">
