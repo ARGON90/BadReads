@@ -58,10 +58,16 @@ const UserBooks = () => {
                 <th className="my-books-pager-table-header-cover">cover</th>
                 <th className="my-books-pager-table-header-title">title</th>
                 <th className="my-books-pager-table-header-author">author</th>
-                <th className="my-books-pager-table-header-avg-ratings">avg rating</th>
-                <th className="my-books-pager-table-header-user-rating">your rating</th>
+                <th className="my-books-pager-table-header-avg-ratings">
+                  avg rating
+                </th>
+                <th className="my-books-pager-table-header-user-rating">
+                  your rating
+                </th>
                 <th className="my-books-pager-table-header-shelves">shelves</th>
-                <th className="my-books-pager-table-header-create-review">review</th>
+                <th className="my-books-pager-table-header-create-review">
+                  review
+                </th>
                 <th className="my-books-pager-table-header-buttons"></th>
                 <th className="my-books-pager-table-header-buttons"></th>
               </tr>
@@ -95,7 +101,9 @@ const UserBooks = () => {
                   <td className="my-books-page-user-rating-container"></td>
                   <td className="my-books-page-shelves-container"></td>
                   <td className="my-books-page-create-review-link-container">
-                    <NavLink to={`/books/${userBook.id}`}>Write or edit a review</NavLink>
+                    <NavLink to={`/books/${userBook.id}`}>
+                      Write or edit a review
+                    </NavLink>
                   </td>
                   <td
                     className="my-books-page-edit-container"
@@ -112,6 +120,55 @@ const UserBooks = () => {
           </div>
         </div>
       )}
+      <div className="my-books-page-footer">
+        <div className="my-books-page-footer-container">
+          <div className="my-books-page-footer-column-1">
+            <h2 className="my-books-page-footer-heading">INSPIRED BY</h2>
+            <a
+              className="my-books-page-column-1-goodreads"
+              href="https://www.goodreads.com/"
+            >
+              goodreads
+            </a>
+          </div>
+          <div className="my-books-page-footer-column-2">
+            <h2 className="my-books-page-footer-heading">WORK WITH US</h2>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/ARGON90"
+            >
+              Alex Gonglach
+            </a>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/benwaldee"
+            >
+              Ben Waldee
+            </a>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/julieyj"
+            >
+              Julie Jung
+            </a>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/jvstinejvng"
+            >
+              Justine Jang
+            </a>
+          </div>
+          <div className="my-books-page-footer-column-3">
+            <h2 className="my-books-page-footer-heading">SOURCE CODE</h2>
+            <a
+              className="my-books-page-column-3-github"
+              href="https://github.com/ARGON90/BadReads"
+            >
+              Github Repository
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
