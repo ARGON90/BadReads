@@ -83,8 +83,8 @@ const UserBooks = () => {
             </div>
           </div>
         </div>
-  
-        
+
+
       )}
       {/* <div className="footerUserBooks">
 <div className="footerMainDiv">
@@ -107,7 +107,7 @@ const UserBooks = () => {
                 </div>
             </div>
             </div> */}
- 
+
     </>
   );
 };
