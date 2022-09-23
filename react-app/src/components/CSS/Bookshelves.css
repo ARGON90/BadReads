@@ -7,7 +7,17 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    /*julie footer code*/
+    min-height: 100%;
+}
 
+.bookshelf_page_outer_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    /*julie footer code*/
+    padding-bottom: 400px;
+    overflow: auto;
 }
 
 .bookshelf_page_inner1 {
@@ -564,4 +574,52 @@
     /* width: fit-content;
     height: fit-content; */
     inline-size: 450px;
+}
+
+
+/*julie footer code*/
+.bookshelves-page-footer {
+    background-color: #f9f8f4;
+    height: 250px;
+    position: relative;
+    clear: both;
+}
+
+.bookshelves-page-footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 20%;
+    padding: 15px 0px;
+}
+
+.bookshelves-page-footer-heading {
+    color: #767676;
+    margin-right: 50px;
+    font-size: 14px;
+    padding-bottom: 5px;
+    padding-top: 32px;
+}
+
+.bookshelves-page-footer-column-1,
+.bookshelves-page-footer-column-2,
+.bookshelves-page-footer-column-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+
+.bookshelves-page-column-1-goodreads,
+.bookshelves-page-column-2-name,
+.bookshelves-page-column-3-github {
+    font-size: 14px;
+    color: #382110;
+    text-decoration: none;
+    padding-bottom: 8px;
+}
+
+a:hover {
+    text-decoration: underline;
 }

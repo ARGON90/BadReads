@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooksThunk } from "../store/booksAlex";
@@ -11,12 +11,13 @@ const UserBooks = () => {
   console.log("INSIDE USER BOOKS COMPONENT");
 
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const currentUser = useSelector((state) => state?.session?.user);
   const booksList = useSelector((state) => Object.values(state?.books));
 
   useEffect(() => {
     console.log("GET ALL BOOKS/USERBOOKS USE EFFECT");
-    dispatch(getAllBooksThunk());
+    dispatch(getAllBooksThunk()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   if (currentUser == null) {
@@ -27,11 +28,13 @@ const UserBooks = () => {
     (book) => book.user_id === currentUser["id"]
   );
 
-  const sortedUserBooks = userBooks.sort((a, b) => (b.id - a.id));
+  const sortedUserBooks = userBooks.sort((a, b) => b.id - a.id);
+
+  if (!isLoaded) return null;
 
   return (
     <>
-      {currentUser && userBooks && (
+      {isLoaded && currentUser && userBooks && (
         <div className="my-books-page-outer">
           <div className="my-books-page-container">
             <div className="my-books-page-header-container">
@@ -42,7 +45,8 @@ const UserBooks = () => {
             </div>
             <div className="my-books-page-separator"></div>
             <div className="my-books-page-books-item-container">
-              {userBooks &&
+              {isLoaded &&
+                userBooks &&
                 userBooks.length > 0 &&
                 userBooks?.map((userBook, index) => (
                   <div className="my-books-page-book-item" key={index}>
@@ -64,7 +68,7 @@ const UserBooks = () => {
                     </div>
                   </div>
                 ))}
-              {userBooks && userBooks.length == 0 && (
+              {isLoaded && userBooks && userBooks.length == 0 && (
                 <div className="my-books-page-books-item-empty-container">
                   <div className="my-books-page-empty-container-image">
                     <img
@@ -81,31 +85,56 @@ const UserBooks = () => {
             </div>
           </div>
         </div>
-
-
       )}
-      {/* <div className="footerUserBooks">
-<div className="footerMainDiv">
-                <div className='footerContainerDiv'>
-                    <div className='footerColumn'>
-                        <h2 className='footerColumnTitle'>INSPIRED BY</h2>
-                        <a href="https://www.goodreads.com/">goodreads</a>
-                    </div>
-                    <div className='footerColumn'>
-                        <h2 className='footerColumnTitle'>WORK WITH US</h2>
-                        <a href="https://github.com/ARGON90">Alex Gonglach</a>
-                        <a href="https://github.com/benwaldee">Ben Waldee</a>
-                        <a href="https://github.com/julieyj">Julie Jung</a>
-                        <a href="https://github.com/jvstinejvng">Justine Jang</a>
-                    </div>
-                    <div className='footerColumn'>
-                        <h2 className='footerColumnTitle'>SOURCE CODE</h2>
-                        <a href="https://github.com/ARGON90/BadReads">Github Repository</a>
-                    </div>
-                </div>
-            </div>
-            </div> */}
-
+      <div className="my-books-page-footer">
+        <div className="my-books-page-footer-container">
+          <div className="my-books-page-footer-column-1">
+            <h2 className="my-books-page-footer-heading">INSPIRED BY</h2>
+            <a
+              className="my-books-page-column-1-goodreads"
+              href="https://www.goodreads.com/"
+            >
+              goodreads
+            </a>
+          </div>
+          <div className="my-books-page-footer-column-2">
+            <h2 className="my-books-page-footer-heading">WORK WITH US</h2>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/ARGON90"
+            >
+              Alex Gonglach
+            </a>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/benwaldee"
+            >
+              Ben Waldee
+            </a>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/julieyj"
+            >
+              Julie Jung
+            </a>
+            <a
+              className="my-books-page-column-2-name"
+              href="https://github.com/jvstinejvng"
+            >
+              Justine Jang
+            </a>
+          </div>
+          <div className="my-books-page-footer-column-3">
+            <h2 className="my-books-page-footer-heading">SOURCE CODE</h2>
+            <a
+              className="my-books-page-column-3-github"
+              href="https://github.com/ARGON90/BadReads"
+            >
+              Github Repository
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
