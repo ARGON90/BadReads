@@ -18,9 +18,6 @@ const EditReview = ({ bookId, userId, userReview, userStars, displayLanding, rev
   const updateReview = (e) => setReview(e.target.value);
   const updateStars = (e) => setStars(e.target.value);
 
-  useEffect(() => {
-    dispatch(getAllReviewsThunk())
-  }, [dispatch])
 
   useEffect(() => {
     const newErrors = {};

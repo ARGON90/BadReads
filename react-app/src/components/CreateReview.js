@@ -18,9 +18,6 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
   const updateStars = (e) => setStars(e.target.value);
 
 
-  useEffect(() => {
-    dispatch(getAllReviewsThunk())
-  }, [dispatch])
 
 
 
@@ -32,7 +29,11 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
     if (review.length <= 0) newErrors.review = 'Review is required.';
     if (review.length > 1000) newErrors.reviewLength = 'Review must be 1000 characters or less.';
 
+
     setErrors(newErrors)
+
+    // cleanup
+    return null;
   }, [currentUser, review, stars])
 
   const handleSubmit = async (e) => {
