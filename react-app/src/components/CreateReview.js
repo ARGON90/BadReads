@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createReviewThunk } from "../store/reviews";
+import { getAllReviewsThunk } from "../store/reviews";
 import '../components/CSS/Reviews.css'
 
 
@@ -17,6 +18,9 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
   const updateStars = (e) => setStars(e.target.value);
 
 
+
+
+
   useEffect(() => {
     const newErrors = {};
 
@@ -25,10 +29,11 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
     if (review.length <= 0) newErrors.review = 'Review is required.';
     if (review.length > 1000) newErrors.reviewLength = 'Review must be 1000 characters or less.';
 
-    return () => setErrors(newErrors);
 
+    setErrors(newErrors)
 
-
+    // cleanup
+    return null;
   }, [currentUser, review, stars])
 
   const handleSubmit = async (e) => {
@@ -66,7 +71,7 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
             onChange={updateStars}
             className='alex_input_borders alex_review_form_input'
           />
-          <div className='alex_merriweather_300 alex_font_14 alex_font_red'>{errors.stars}</div>
+          {errors.stars ? <div className='alex_merriweather_300 alex_font_14 alex_font_red'>{errors.stars}</div> : null}
           <div className="alex_pad_bottom_10"></div>
           <label className='alex_merriweather_300 alex_font_14'
           >What did you think?</label>
@@ -78,12 +83,12 @@ const CreateReview = ({ bookId, userId, displayLanding }) => {
             onChange={updateReview}
             className='alex_height_125 alex_input_borders alex_review_form_input'
           />
-          <div className='alex_merriweather_300 alex_font_14 alex_font_red' >{errors.review}</div>
-          <div className='alex_merriweather_300 alex_font_14 alex_font_red' >{errors.reviewLength}</div>
+          <div className='alex_merriweather_300 alex_font_14 alex_font_red'>{errors.review}</div>
+          <div className='alex_merriweather_300 alex_font_14 alex_font_red'>{errors.reviewLength}</div>
           <div className="alex_pad_bottom_10"></div>
         </div>
 
-        {Object.values(errors).length ?
+        {Object.values(errors).length || !stars || !review ?
           <div className="alex_flex_row alex_justify_around">
             <button
               type="submit"
