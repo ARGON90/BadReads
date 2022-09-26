@@ -19,7 +19,6 @@ const EditReview = ({ bookId, userId, userReview, userStars, displayLanding, rev
   const updateStars = (e) => setStars(e.target.value);
 
   useEffect(() => {
-    // console.log('EDIT REVIEWS USE EFFECT FOR ALL REVIEWS')
     dispatch(getAllReviewsThunk())
   }, [dispatch])
 
